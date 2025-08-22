@@ -1,33 +1,40 @@
 import React, { useState } from "react";
+import { useLanguage } from "../../LanguageContext";
 
-function TextInput({ question }) {
-  const [answer, setAnswer] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+export default function TextInput({ question, onAnswered }) {
+  const { t } = useLanguage();
+  const [value, setValue] = useState("");
+
+  const submit = () => {
+    const expected =
+      question.correctAnswers && Array.isArray(question.correctAnswers) && question.correctAnswers.length
+        ? question.correctAnswers
+        : [question.answer].filter(Boolean);
+
+    const ok = expected
+      .map((s) => String(s).trim().toLowerCase())
+      .includes(String(value).trim().toLowerCase());
+
+    onAnswered(!!ok);
+  };
 
   return (
-    <div>
-      <h2 className="text-xl font-semibold mb-4">{question.question}</h2>
+    <div className="w-full">
+      <h2 className="text-lg font-semibold mb-4">{question.question}</h2>
       <input
         type="text"
-        value={answer}
-        onChange={(e) => setAnswer(e.target.value)}
-        className="border rounded px-2 py-1 w-full"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        className="w-full border rounded-lg px-3 py-2"
+        placeholder={t("your_answer_placeholder")}
+        onKeyDown={(e) => e.key === "Enter" && submit()}
       />
       <button
-        onClick={() => setSubmitted(true)}
-        className="mt-3 px-4 py-2 bg-blue-500 text-white rounded-lg"
+        onClick={submit}
+        className="mt-3 px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-sky-700"
       >
-        Submit
+        {t("submit")}
       </button>
-      {submitted && (
-        <p className="mt-2">
-          {answer.toLowerCase() === question.answer.toLowerCase()
-            ? "✅ Correct!"
-            : "❌ Try again"}
-        </p>
-      )}
     </div>
   );
 }
-
-export default TextInput;

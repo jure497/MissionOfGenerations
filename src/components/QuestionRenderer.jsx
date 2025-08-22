@@ -1,25 +1,30 @@
 import React from "react";
-import MultipleChoice from "./questions/MultipleChoice";
-import TextInput from "./questions/TextInput";
-import PictureSelect from "./questions/PictureSelect";
+import MultipleChoice from "./questions/MultipleChoice.jsx";
+import TextInput from "./questions/TextInput.jsx";
+import PictureSelect from "./questions/PictureSelect.jsx";
 
-export default function QuestionRenderer({ question, onNext }) {
-  const handleAnswer = (isCorrect) => {
-    setTimeout(() => {
-      onNext(isCorrect);
-    }, 1000); // small delay for feedback
-  };
+export default function QuestionRenderer({ question, onAnswered }) {
+  if (!question || !question.type) {
+    return <div>Invalid question</div>;
+  }
 
-  if (!question) return null;
+  const type = (question.type || "").toLowerCase().trim();
 
-  switch (question.type) {
-    case "multiple-choice":
-      return <MultipleChoice question={question} onAnswered={handleAnswer} />;
-    case "text-input":
-      return <TextInput question={question} onAnswered={handleAnswer} />;
-    case "picture-select":
-      return <PictureSelect question={question} onAnswered={handleAnswer} />;
+  switch (type) {
+    case "multiple_choice":
+      return <MultipleChoice question={question} onAnswered={onAnswered} />;
+
+    case "text_input":
+      return <TextInput question={question} onAnswered={onAnswered} />;
+
+    case "picture_select":
+      return <PictureSelect question={question} onAnswered={onAnswered} />;
+
     default:
-      return <p>Unknown question type</p>;
+      return (
+        <div className="p-3 rounded-lg border bg-yellow-50 border-yellow-300 text-yellow-900">
+          ⚠️ Unknown question type: <b>{question.type}</b>
+        </div>
+      );
   }
 }

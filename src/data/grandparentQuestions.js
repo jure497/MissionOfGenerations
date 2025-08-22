@@ -9,10 +9,9 @@ const grandparentQuestions = [
     {
       id: "gp2",
       type: "text-input",
-      question: "Type the year when man first walked on the Moon:",
+      question: "Type the year when humans first walked on the Moon:",
       answer: "1969",
     },
   ];
-  
   export default grandparentQuestions;
   

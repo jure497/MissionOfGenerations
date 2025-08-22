@@ -17,12 +17,11 @@ const grandchildQuestions = [
       type: "picture-select",
       question: "Which one is a bicycle?",
       options: [
-        { src: "https://cdn-icons-png.flaticon.com/512/2972/2972185.png", value: "car" },
-        { src: "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", value: "bicycle" },
+        { src: "https://cdn-icons-png.flaticon.com/512/741/741407.png", value: "car" },
+        { src: "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", value: "bicycle" }
       ],
       answer: "bicycle",
     },
   ];
-  
   export default grandchildQuestions;
   

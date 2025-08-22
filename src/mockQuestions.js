@@ -1,4 +1,4 @@
-export default [
+/**export default [
     {
     id: "1",
     type: "multiple_choice",
@@ -36,3 +36,4 @@ export default [
     roles: ["grandparent"]
     }
     ];
+    */
