@@ -46,7 +46,7 @@ export default function Home() {
         </div>
 
         <p className="text-xs text-gray-500 mt-6 text-center">
-          {t("start_quiz")}
+          {t("start_quiz")} 
         </p>
       </div>
     </div>
