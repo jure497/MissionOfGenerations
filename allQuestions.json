@@ -1,10 +1,6 @@
 [
     {
-        "question": {
-            "en": "Which of these animals can fly?",
-            "sl": "Katera od teh živali lahko leti?"
-          },
-        
+        "question": "Which of these animals can fly?",
       "type": "multiple_choice",
       "roles": ["grandchild"],
       "options": ["Dog", "Eagle", "Cat"],
