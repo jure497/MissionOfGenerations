@@ -45,7 +45,7 @@ function Quiz() {
       setAnswered(false);
       setLastCorrect(null);
       setFinished(false);
-    }, [role]);
+    }, [role]); 
   
     // 🔑 Persist state to localStorage
     React.useEffect(() => {
