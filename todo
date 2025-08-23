@@ -9,3 +9,5 @@ npm start
 npm run build
 firebase deploy
 node importData.js
+
+https://mission-of-generations.web.app/
