@@ -31,7 +31,63 @@
           { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "bicycle" }
         ],
         "answer": "bicycle"
-    }
-  ]
+    },
+    
+        {
+            "question": "Which of these fruits is yellow?",
+            "type": "multiple_choice",
+            "roles": ["grandchild"],
+            "options": ["Apple", "Banana", "Grapes"],
+            "answer": "Banana"
+        },
+        {
+            "question": "What is 5 x 3?",
+            "type": "multiple_choice",
+            "roles": ["grandchild"],
+            "options": ["8", "15", "10", "20"],
+            "answer": "15"
+        },
+        {
+            "question": "Type the capital of France.",
+            "type": "text_input",
+            "roles": ["grandparent"],
+            "answer": "Paris"
+        },
+        {
+            "question": "Which one is a cat?",
+            "type": "picture-select",
+            "roles": ["grandparent"],
+            "options": [
+                { "src": "https://cdn-icons-png.flaticon.com/512/616/616408.png", "value": "dog" },
+                { "src": "https://cdn-icons-png.flaticon.com/512/616/6164082.png", "value": "cat" }
+            ],
+            "answer": "cat"
+        },
+        {
+            "question": "Which of these shapes has three sides?",
+            "type": "multiple_choice",
+            "roles": ["grandchild"],
+            "options": ["Square", "Triangle", "Circle"],
+            "answer": "Triangle"
+        },
+        {
+            "question": "Type the color of the sky on a clear day.",
+            "type": "text_input",
+            "roles": ["grandparent"],
+            "answer": "Blue"
+        },
+        {
+            "question": "Which one is a bus?",
+            "type": "picture-select",
+            "roles": ["grandparent"],
+            "options": [
+                { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "car" },
+                { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "bus" }
+            ],
+            "answer": "bus"
+        }
+    ]
+    
+  
   
 

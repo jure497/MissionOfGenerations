@@ -1,3 +1,11 @@
 languages
 random questions
 more types of questions
+
+
+
+----------
+npm start
+npm run build
+firebase deploy
+node importData.js
