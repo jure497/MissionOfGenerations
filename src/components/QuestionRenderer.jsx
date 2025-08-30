@@ -1,31 +1,60 @@
-//QuestionRenderer.jsx
-import React from "react";
+// QuestionRenderer.jsx
+import React, { useState } from "react";
 import MultipleChoice from "./questions/MultipleChoice.jsx";
 import TextInput from "./questions/TextInput.jsx";
 import PictureSelect from "./questions/PictureSelect.jsx";
+import FeedbackOverlay from "./FeedbackOverlay.jsx"; 
+import Mascot from "./Mascot.jsx"; // 👈 new mascot
 
 export default function QuestionRenderer({ question, onAnswered }) {
+  const [feedbackTrigger, setFeedbackTrigger] = useState(0);
+  const [streak, setStreak] = useState(0);
+  const [mascotMood, setMascotMood] = useState("idle"); // 👈 mood state
+
   if (!question || !question.type) {
     return <div>Invalid question</div>;
   }
 
   const type = (question.type || "").toLowerCase().trim();
 
-  switch (type) {
-    case "multiple_choice":
-      return <MultipleChoice question={question} onAnswered={onAnswered} />;
+  const handleAnswered = (isCorrect) => {
+    if (isCorrect) {
+      setStreak((s) => s + 1);
+      setFeedbackTrigger((n) => n + 1);
 
-    case "text_input":
-      return <TextInput question={question} onAnswered={onAnswered} />;
+      if (streak + 1 > 0 && (streak + 1) % 3 === 0) {
+        setMascotMood("celebrate"); // 🎉 streak celebration
+      } else {
+        setMascotMood("happy"); // 😀 normal correct
+      }
+    } else {
+      setStreak(0); 
+      setMascotMood("sad"); // 😢 wrong answer
+    }
 
-    case "picture_select":
-      return <PictureSelect question={question} onAnswered={onAnswered} />;
+    // reset mascot back to idle after 2s
+    setTimeout(() => setMascotMood("idle"), 2000);
 
-    default:
-      return (
-        <div className="p-3 rounded-lg border bg-yellow-50 border-yellow-300 text-yellow-900">
-          ⚠️ Unknown question type: <b>{question.type}</b>
-        </div>
-      );
-  }
+    onAnswered(isCorrect);
+  };
+
+  return (
+    <div className="relative w-full">
+      {type === "multiple_choice" && (
+        <MultipleChoice question={question} onAnswered={handleAnswered} />
+      )}
+      {type === "text_input" && (
+        <TextInput question={question} onAnswered={handleAnswered} />
+      )}
+      {type === "picture_select" && (
+        <PictureSelect question={question} onAnswered={handleAnswered} />
+      )}
+
+      {/* 🎉 Base feedback animations */}
+      <FeedbackOverlay trigger={feedbackTrigger} streak={streak} />
+
+      {/* 👾 Mascot helper */}
+      <Mascot visible={true} mood={mascotMood} />
+    </div>
+  );
 }
