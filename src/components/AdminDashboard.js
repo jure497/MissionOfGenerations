@@ -1,4 +1,5 @@
 // AdminDashboard.js
+/**
 import { useState } from "react";
 import { db } from "./firebase"; // Firestore setup
 import { collection, addDoc } from "firebase/firestore";
@@ -45,3 +46,4 @@ export default function AdminDashboard() {
     </div>
   );
 }
+*/

@@ -1,93 +1,86 @@
 [
-    {
-        "question": "Which of these animals can fly?",
-      "type": "multiple_choice",
-      "roles": ["grandchild"],
-      "options": ["Dog", "Eagle", "Cat"],
-      "answer": "Eagle"
+  {
+    "question": {
+      "en": "Which of these fruits is yellow?",
+      "sl": "Katero izmed teh sadežev je rumeno?"
     },
-    {
-      "question": "What is 2 + 2?",
-      "type": "multiple_choice",
-      "roles": ["grandchild"],
-      "options": ["2", "3", "4", "5"],
-      "answer": "4"
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Apple", "Banana", "Grapes"],
+      "sl": ["Jabolko", "Banana", "Grozdje"]
     },
-    {
-      "question": "Type the capital of Slovenia.",
-      "type": "text_input",
-      "roles": ["grandparent"],
-      "answer": "Ljubljana"
+    "answer": {
+      "en": "Banana",
+      "sl": "Banana"
+    }
+  },
+  {
+    "question": {
+      "en": "Type the capital of Slovenia.",
+      "sl": "Vpiši glavno mesto Slovenije."
     },
-    {
-       
-
-        "question": "Which one is a bicycle?",
-        "type": "picture-select",
-        
-        "roles" : ["grandparent"],
-        "options": [
-          { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "car" },
-          { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "bicycle" }
-        ],
-        "answer": "bicycle"
+    "type": "text_input",
+    "roles": ["grandparent"],
+    "answer": {
+      "en": "Ljubljana",
+      "sl": "Ljubljana"
+    }
+  },
+  {
+    "question": {
+      "en": "Which one is a bicycle?",
+      "sl": "Kateri je kolo?"
     },
-    
-        {
-            "question": "Which of these fruits is yellow?",
-            "type": "multiple_choice",
-            "roles": ["grandchild"],
-            "options": ["Apple", "Banana", "Grapes"],
-            "answer": "Banana"
-        },
-        {
-            "question": "What is 5 x 3?",
-            "type": "multiple_choice",
-            "roles": ["grandchild"],
-            "options": ["8", "15", "10", "20"],
-            "answer": "15"
-        },
-        {
-            "question": "Type the capital of France.",
-            "type": "text_input",
-            "roles": ["grandparent"],
-            "answer": "Paris"
-        },
-        {
-            "question": "Which one is a cat?",
-            "type": "picture-select",
-            "roles": ["grandparent"],
-            "options": [
-                { "src": "https://cdn-icons-png.flaticon.com/512/616/616408.png", "value": "dog" },
-                { "src": "https://cdn-icons-png.flaticon.com/512/616/6164082.png", "value": "cat" }
-            ],
-            "answer": "cat"
-        },
-        {
-            "question": "Which of these shapes has three sides?",
-            "type": "multiple_choice",
-            "roles": ["grandchild"],
-            "options": ["Square", "Triangle", "Circle"],
-            "answer": "Triangle"
-        },
-        {
-            "question": "Type the color of the sky on a clear day.",
-            "type": "text_input",
-            "roles": ["grandparent"],
-            "answer": "Blue"
-        },
-        {
-            "question": "Which one is a bus?",
-            "type": "picture-select",
-            "roles": ["grandparent"],
-            "options": [
-                { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "car" },
-                { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "bus" }
-            ],
-            "answer": "bus"
-        }
-    ]
-    
-  
-  
-
+    "type": "picture_select",
+    "roles": ["grandchild"],
+    "options": {
+      "en": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "car" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "bicycle" }
+      ],
+      "sl": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "avto" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "kolo" }
+      ]
+    },
+    "answer": {
+      "en": "bicycle",
+      "sl": "kolo"
+    }
+  },
+  {
+    "question": {
+      "en": "Type the capital of France.",
+      "sl": "Vpiši glavno mesto Francije."
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Paris",
+      "sl": "Pariz"
+    }
+  },
+  {
+    "question": {
+      "en": "Which one is a bus?",
+      "sl": "Kateri je avtobus?"
+    },
+    "type": "picture_select",
+    "roles": ["grandparent"],
+    "options": {
+      "en": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "car" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "bus" }
+      ],
+      "sl": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "avto" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "avtobus" }
+      ]
+    },
+    "answer": {
+      "en": "bus",
+      "sl": "avtobus"
+    }
+  }
+]

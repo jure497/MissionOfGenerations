@@ -1,3 +1,4 @@
+//QuestionRenderer.jsx
 import React from "react";
 import MultipleChoice from "./questions/MultipleChoice.jsx";
 import TextInput from "./questions/TextInput.jsx";

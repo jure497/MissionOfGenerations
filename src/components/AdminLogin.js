@@ -1,30 +1,47 @@
-// AdminLogin.js
-import { useState } from "react";
+import React, { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
-export default function AdminLogin({ onLogin }) {
+function AdminLogin({ onLogin }) {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (password === process.env.REACT_APP_ADMIN_PASSWORD) {
+    try {
+      await signInWithEmailAndPassword(getAuth(), email, password);
       onLogin();
-    } else {
-      alert("Wrong password");
+    } catch (err) {
+      alert("Login failed: " + err.message);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4">
-      <input
-        type="password"
-        placeholder="Enter Admin Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="border p-2"
-      />
-      <button type="submit" className="ml-2 p-2 bg-blue-500 text-white">
-        Login
-      </button>
-    </form>
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Admin Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="border p-2 mb-2 w-full"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="border p-2 mb-2 w-full"
+          required
+        />
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+          Login
+        </button>
+      </form>
+    </div>
   );
 }
+
+export default AdminLogin;

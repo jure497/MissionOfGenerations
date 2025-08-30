@@ -3,220 +3,165 @@ import { db } from "../firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 
 export default function AdminPage() {
-  const [question, setQuestion] = useState("");
-  const [roles, setRoles] = useState(["grandchild"]);
-  const [language, setLanguage] = useState("en");
+  const [question, setQuestion] = useState({ en: "", sl: "" });
   const [type, setType] = useState("multiple_choice");
-  const [answer, setAnswer] = useState("");
+  const [roles, setRoles] = useState([]);
+  const [options, setOptions] = useState({ en: [""], sl: [""] });
+  const [answer, setAnswer] = useState({ en: "", sl: "" });
 
-  // For multiple choice
-  const [options, setOptions] = useState("");
-
-  // For picture-select
-  const [pictureOptions, setPictureOptions] = useState([
-    { src: "", value: "" },
-  ]);
-
-  const [status, setStatus] = useState(null);
-
-  const handleRoleChange = (e) => {
-    const { value, checked } = e.target;
-    if (checked) {
-      setRoles([...roles, value]);
-    } else {
-      setRoles(roles.filter((r) => r !== value));
-    }
+  const handleRoleChange = (role) => {
+    setRoles((prev) =>
+      prev.includes(role) ? prev.filter((r) => r !== role) : [...prev, role]
+    );
   };
 
-  const handlePictureOptionChange = (index, field, value) => {
-    const newOptions = [...pictureOptions];
-    newOptions[index][field] = value;
-    setPictureOptions(newOptions);
-  };
-
-  const addPictureOption = () => {
-    setPictureOptions([...pictureOptions, { src: "", value: "" }]);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleAddQuestion = async () => {
     try {
-      let docData = {
+      const newQuestion = {
         question,
         type,
         roles,
-        language,
+        options: type !== "text_input" ? options : undefined,
         answer,
       };
-
-      if (type === "multiple_choice") {
-        docData.options = options.split(",").map((o) => o.trim());
-      }
-
-      if (type === "picture-select") {
-        docData.options = pictureOptions.map((o) => ({
-          src: o.src.trim(),
-          value: o.value.trim(),
-        }));
-      }
-
-      await addDoc(collection(db, "questions"), docData);
-
-      setStatus("✅ Question saved!");
-      setQuestion("");
-      setAnswer("");
-      setOptions("");
-      setPictureOptions([{ src: "", value: "" }]);
+      await addDoc(collection(db, "questions"), newQuestion);
+      alert("Question added!");
+      setQuestion({ en: "", sl: "" });
+      setOptions({ en: [""], sl: [""] });
+      setAnswer({ en: "", sl: "" });
+      setRoles([]);
     } catch (err) {
-      console.error("Error adding document: ", err);
-      setStatus("❌ Error saving question");
+      console.error("Error adding question: ", err);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-400 to-purple-500 p-6">
-      <div className="bg-white/90 rounded-2xl shadow-xl p-6 w-full max-w-lg">
-        <h2 className="text-xl font-bold mb-4">Admin – Add Question</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Roles */}
-          <div>
-            <label className="block font-medium">Roles</label>
-            <div className="flex gap-4">
-              <label>
-                <input
-                  type="checkbox"
-                  value="grandchild"
-                  checked={roles.includes("grandchild")}
-                  onChange={handleRoleChange}
-                />
-                Grandchild
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  value="grandparent"
-                  checked={roles.includes("grandparent")}
-                  onChange={handleRoleChange}
-                />
-                Grandparent
-              </label>
-            </div>
-          </div>
+    <div className="p-6 max-w-xl mx-auto">
+      <h2 className="text-xl font-bold mb-4">Add New Question</h2>
 
-          {/* Language */}
-          <div>
-            <label className="block font-medium">Language</label>
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              className="w-full border rounded p-2"
-            >
-              <option value="en">English</option>
-              <option value="sl">Slovenian</option>
-            </select>
-          </div>
+      {/* Question fields */}
+      <input
+        type="text"
+        placeholder="Question (English)"
+        value={question.en}
+        onChange={(e) => setQuestion({ ...question, en: e.target.value })}
+        className="border p-2 w-full mb-2"
+      />
+      <input
+        type="text"
+        placeholder="Vprašanje (Slovensko)"
+        value={question.sl}
+        onChange={(e) => setQuestion({ ...question, sl: e.target.value })}
+        className="border p-2 w-full mb-2"
+      />
 
-          {/* Type */}
-          <div>
-            <label className="block font-medium">Question Type</label>
-            <select
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-              className="w-full border rounded p-2"
-            >
-              <option value="multiple_choice">Multiple Choice</option>
-              <option value="text_input">Text Input</option>
-              <option value="picture-select">Picture Select</option>
-            </select>
-          </div>
+      {/* Type selector */}
+      <select
+        value={type}
+        onChange={(e) => setType(e.target.value)}
+        className="border p-2 w-full mb-2"
+      >
+        <option value="multiple_choice">Multiple Choice</option>
+        <option value="text_input">Text Input</option>
+        <option value="picture_select">Picture Select</option>
+      </select>
 
-          {/* Question */}
-          <div>
-            <label className="block font-medium">Question</label>
-            <input
-              type="text"
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              className="w-full border rounded p-2"
-              required
-            />
-          </div>
-
-          {/* Answer */}
-          <div>
-            <label className="block font-medium">Correct Answer</label>
-            <input
-              type="text"
-              value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
-              className="w-full border rounded p-2"
-              required
-            />
-          </div>
-
-          {/* Options (multiple choice only) */}
-          {type === "multiple_choice" && (
-            <div>
-              <label className="block font-medium">
-                Options (comma separated)
-              </label>
-              <input
-                type="text"
-                value={options}
-                onChange={(e) => setOptions(e.target.value)}
-                className="w-full border rounded p-2"
-                placeholder="e.g. Dog, Eagle, Cat"
-              />
-            </div>
-          )}
-
-          {/* Picture Select */}
-          {type === "picture-select" && (
-            <div>
-              <label className="block font-medium">Picture Options</label>
-              {pictureOptions.map((opt, index) => (
-                <div key={index} className="flex gap-2 mb-2">
-                  <input
-                    type="text"
-                    value={opt.src}
-                    onChange={(e) =>
-                      handlePictureOptionChange(index, "src", e.target.value)
-                    }
-                    className="w-1/2 border rounded p-2"
-                    placeholder="Image URL"
-                  />
-                  <input
-                    type="text"
-                    value={opt.value}
-                    onChange={(e) =>
-                      handlePictureOptionChange(index, "value", e.target.value)
-                    }
-                    className="w-1/2 border rounded p-2"
-                    placeholder="Value (e.g. bicycle)"
-                  />
-                </div>
-              ))}
-              <button
-                type="button"
-                onClick={addPictureOption}
-                className="px-3 py-1 mt-2 bg-blue-500 text-white rounded"
-              >
-                + Add Option
-              </button>
-            </div>
-          )}
-
-          <button
-            type="submit"
-            className="w-full py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700"
-          >
-            Save Question
-          </button>
-        </form>
-
-        {status && <p className="mt-4 text-center">{status}</p>}
+      {/* Roles */}
+      <div className="mb-2">
+        <label>
+          <input
+            type="checkbox"
+            checked={roles.includes("grandchild")}
+            onChange={() => handleRoleChange("grandchild")}
+          />
+          Grandchild
+        </label>
+        <label className="ml-4">
+          <input
+            type="checkbox"
+            checked={roles.includes("grandparent")}
+            onChange={() => handleRoleChange("grandparent")}
+          />
+          Grandparent
+        </label>
       </div>
+
+      {/* Options (if needed) */}
+      {type !== "text_input" && (
+        <>
+          <h3 className="font-semibold">Options (English)</h3>
+          {options.en.map((opt, idx) => (
+            <input
+              key={idx}
+              type="text"
+              value={opt}
+              onChange={(e) => {
+                const newOpts = [...options.en];
+                newOpts[idx] = e.target.value;
+                setOptions({ ...options, en: newOpts });
+              }}
+              placeholder={`Option ${idx + 1} (English)`}
+              className="border p-2 w-full mb-2"
+            />
+          ))}
+          <button
+            onClick={() =>
+              setOptions({ ...options, en: [...options.en, ""] })
+            }
+            className="bg-blue-500 text-white px-2 py-1 rounded mb-4"
+          >
+            Add Option (EN)
+          </button>
+
+          <h3 className="font-semibold">Options (Slovenian)</h3>
+          {options.sl.map((opt, idx) => (
+            <input
+              key={idx}
+              type="text"
+              value={opt}
+              onChange={(e) => {
+                const newOpts = [...options.sl];
+                newOpts[idx] = e.target.value;
+                setOptions({ ...options, sl: newOpts });
+              }}
+              placeholder={`Možnost ${idx + 1} (Slovenščina)`}
+              className="border p-2 w-full mb-2"
+            />
+          ))}
+          <button
+            onClick={() =>
+              setOptions({ ...options, sl: [...options.sl, ""] })
+            }
+            className="bg-blue-500 text-white px-2 py-1 rounded mb-4"
+          >
+            Dodaj možnost (SL)
+          </button>
+        </>
+      )}
+
+      {/* Answer fields (EN + SL) */}
+      <input
+        type="text"
+        placeholder="Answer (English)"
+        value={answer.en}
+        onChange={(e) => setAnswer({ ...answer, en: e.target.value })}
+        className="border p-2 w-full mb-2"
+      />
+      <input
+        type="text"
+        placeholder="Odgovor (Slovenščina)"
+        value={answer.sl}
+        onChange={(e) => setAnswer({ ...answer, sl: e.target.value })}
+        className="border p-2 w-full mb-2"
+      />
+
+      {/* Submit */}
+      <button
+        onClick={handleAddQuestion}
+        className="bg-green-600 text-white px-4 py-2 rounded"
+      >
+        Add Question
+      </button>
     </div>
   );
 }

@@ -1,26 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "../../LanguageContext";
+import { pickByLang, getExpectedAnswers } from "../../utils/pickByLang";
 
 export default function TextInput({ question, onAnswered }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [value, setValue] = useState("");
 
+  // Reset input when question (or language) changes
+  useEffect(() => {
+    setValue("");
+  }, [question?.id, lang]);
+
+  const text = pickByLang(question?.question, lang) || "";
+  const expected = getExpectedAnswers(question, lang);
+
   const submit = () => {
-    const expected =
-      question.correctAnswers && Array.isArray(question.correctAnswers) && question.correctAnswers.length
-        ? question.correctAnswers
-        : [question.answer].filter(Boolean);
-
-    const ok = expected
-      .map((s) => String(s).trim().toLowerCase())
-      .includes(String(value).trim().toLowerCase());
-
+    const norm = (s) => String(s).trim().toLowerCase();
+    const ok = expected.includes(norm(value));
     onAnswered(!!ok);
   };
 
   return (
     <div className="w-full">
-      <h2 className="text-lg font-semibold mb-4">{question.question}</h2>
+      <h2 className="text-lg font-semibold mb-4">{text}</h2>
       <input
         type="text"
         value={value}

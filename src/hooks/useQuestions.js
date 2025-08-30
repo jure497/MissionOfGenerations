@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase.js";
 
-// helper to turn possible stringified arrays into real arrays
+// helper to turn possible stringified arrays into real arrays (kept for older data)
 function parseArrayField(val) {
   if (Array.isArray(val)) return val;
   if (!val && val !== 0) return [];
@@ -17,37 +17,42 @@ function parseArrayField(val) {
   return [val];
 }
 
-// normalize one firestore docSnapshot into canonical shape
+// normalize one firestore docSnapshot into canonical shape, but keep multilingual objects
 function normalizeDoc(docSnap) {
   const data = docSnap.data ? docSnap.data() : docSnap;
   const raw = { ...data };
 
+  // type (supports variants)
   let typeRaw = data.type || data.questionType || data.qtype || "";
   if (Array.isArray(typeRaw)) typeRaw = typeRaw[0];
   if (typeof typeRaw !== "string") typeRaw = String(typeRaw || "");
   const type = typeRaw.trim().toLowerCase().replace(/[-\s]/g, "_");
 
-  // Question text: store the plain string as fallback; renderer will prefer localized raw.question if present
-  let questionText = "";
-  if (typeof data.prompt === "string" && data.prompt.trim()) questionText = data.prompt;
-  else if (typeof data.question === "string" && data.question.trim()) questionText = data.question;
-  else if (typeof data.text === "string" && data.text.trim()) questionText = data.text;
-  else if (typeof data.q === "string" && data.q.trim()) questionText = data.q;
-
-  const roles = parseArrayField(data.roles || data.role);
-
-  let options = data.options || data.choices || data.answers || [];
-  options = parseArrayField(options);
-
-  let answer = data.answer ?? data.correct ?? null;
-  if ((answer === null || answer === undefined) && data.correctIndex !== undefined) {
-    const idx = Number(data.correctIndex);
-    if (!Number.isNaN(idx) && Array.isArray(options) && options.length > idx) {
-      const val = options[idx];
-      answer = typeof val === "string" ? val : val?.value || "";
+  // question: allow string or object { en, sl, ... }
+  let question = data.question ?? data.prompt ?? data.text ?? data.q ?? "";
+  // options: allow array OR object-of-arrays { en: [], sl: [] }
+  let options = data.options ?? data.choices ?? data.answers ?? [];
+  // If options looks like an object with language keys, keep as-is; else normalize to array
+  if (!(options && typeof options === "object" && !Array.isArray(options))) {
+    options = parseArrayField(options);
+    // try to JSON.parse any stringified option rows
+    if (Array.isArray(options)) {
+      options = options.map((opt) => {
+        if (typeof opt === "string") {
+          try {
+            const p = JSON.parse(opt);
+            return p;
+          } catch {}
+        }
+        return opt;
+      });
     }
   }
 
+  // answer: allow string OR object { en, sl, ... }
+  let answer = data.answer ?? data.correct ?? null;
+
+  // correctAnswers: allow array, string, or object-of-arrays
   let correctAnswers = data.correctAnswers || data.correct_answers || data.corrects || null;
   if (typeof correctAnswers === "string") {
     try {
@@ -57,28 +62,18 @@ function normalizeDoc(docSnap) {
       correctAnswers = [correctAnswers];
     }
   }
-  if (!correctAnswers && answer != null) {
-    correctAnswers = [String(answer)];
-  }
 
-  options = options.map((opt) => {
-    if (typeof opt === "string") {
-      try {
-        const p = JSON.parse(opt);
-        return p;
-      } catch {}
-    }
-    return opt;
-  });
+  // roles
+  const roles = parseArrayField(data.roles || data.role).map((r) => String(r).toLowerCase());
 
   return {
     id: docSnap.id ?? data.id ?? null,
     type,
-    question: questionText, // fallback only; renderer will check raw.question for {en,sl}
-    options,
-    answer,
-    correctAnswers,
-    roles: roles.map((r) => String(r).toLowerCase()),
+    question,        // string OR { en, sl, ... }
+    options,         // array OR { en: [], sl: [] }
+    answer,          // string OR { en, sl, ... }
+    correctAnswers,  // array OR { en: [], sl: [] }
+    roles,
     raw,
   };
 }

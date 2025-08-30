@@ -142,9 +142,7 @@ function Quiz() {
           <div className="bg-white/90 backdrop-blur rounded-2xl shadow-xl p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-bold text-purple-800">{roleLabel} • {t("app_title")}</h2>
-              <div className="text-sm text-gray-600">
-                {loading ? t("loading") : `${t("question")} ${Math.min(index + 1, order.length)} / ${order.length}`}
-              </div>
+              
             </div>
   
             <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
@@ -199,19 +197,17 @@ function Quiz() {
                 </div>
               </>
             ) : (
-              <div className="text-center">
+             <div className="text-center">
                 <h3 className="text-2xl font-extrabold text-purple-800">🎉 {t("finished")}</h3>
-                <p className="mt-2">
-                  {t("your_score")}: <span className="font-semibold">{score}</span> / {order.length}
-                </p>
+                
                 <button
                   onClick={restart}
                   className="mt-4 px-5 py-2 rounded-xl bg-purple-600 text-white hover:bg-purple-700 shadow"
                 >
                   {t("play_again")}
                 </button>
-              </div>
-            )}
+              </div> 
+            )} 
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
-languages
-random questions
+gamification - 
 more types of questions
 
 
@@ -11,3 +10,4 @@ firebase deploy
 node importData.js
 
 https://mission-of-generations.web.app/
+https://console.firebase.google.com/u/0/project/mission-of-generations/firestore/databases/-default-/data/~2Fquestions~2FTvpJK94PwxMPwk4tjoVo
