@@ -8,6 +8,7 @@ export default function AdminPage() {
   const [roles, setRoles] = useState([]);
   const [options, setOptions] = useState({ en: [""], sl: [""] });
   const [answer, setAnswer] = useState({ en: "", sl: "" });
+  const [media, setMedia] = useState(""); // for audio or images
 
   const handleRoleChange = (role) => {
     setRoles((prev) =>
@@ -21,8 +22,16 @@ export default function AdminPage() {
         question,
         type,
         roles,
-        options: type !== "text_input" ? options : undefined,
-        answer,
+        options:
+          ["multiple_choice", "picture_select", "sound_choice"].includes(type)
+            ? options
+            : undefined,
+        answer:
+          ["text_input", "guessing_game", "find_difference"].includes(type) ||
+          type === "sound_choice"
+            ? answer
+            : undefined,
+        media: type === "sound_choice" || type === "find_difference" ? media : undefined,
       };
       await addDoc(collection(db, "questions"), newQuestion);
       alert("Question added!");
@@ -30,6 +39,7 @@ export default function AdminPage() {
       setOptions({ en: [""], sl: [""] });
       setAnswer({ en: "", sl: "" });
       setRoles([]);
+      setMedia("");
     } catch (err) {
       console.error("Error adding question: ", err);
     }
@@ -64,6 +74,11 @@ export default function AdminPage() {
         <option value="multiple_choice">Multiple Choice</option>
         <option value="text_input">Text Input</option>
         <option value="picture_select">Picture Select</option>
+        <option value="challenge_task">Challenge Task</option>
+        <option value="sound_choice">Sound Choice</option>
+        <option value="drag_drop">Drag & Drop</option>
+        <option value="riddle_guess">Guessing Game</option>
+        <option value="spot_difference">Find the Difference</option>
       </select>
 
       {/* Roles */}
@@ -86,8 +101,8 @@ export default function AdminPage() {
         </label>
       </div>
 
-      {/* Options (if needed) */}
-      {type !== "text_input" && (
+      {/* Options (only for certain types) */}
+      {["multiple_choice", "picture_select", "sound_choice"].includes(type) && (
         <>
           <h3 className="font-semibold">Options (English)</h3>
           {options.en.map((opt, idx) => (
@@ -105,9 +120,7 @@ export default function AdminPage() {
             />
           ))}
           <button
-            onClick={() =>
-              setOptions({ ...options, en: [...options.en, ""] })
-            }
+            onClick={() => setOptions({ ...options, en: [...options.en, ""] })}
             className="bg-blue-500 text-white px-2 py-1 rounded mb-4"
           >
             Add Option (EN)
@@ -129,9 +142,7 @@ export default function AdminPage() {
             />
           ))}
           <button
-            onClick={() =>
-              setOptions({ ...options, sl: [...options.sl, ""] })
-            }
+            onClick={() => setOptions({ ...options, sl: [...options.sl, ""] })}
             className="bg-blue-500 text-white px-2 py-1 rounded mb-4"
           >
             Dodaj možnost (SL)
@@ -139,21 +150,36 @@ export default function AdminPage() {
         </>
       )}
 
-      {/* Answer fields (EN + SL) */}
-      <input
-        type="text"
-        placeholder="Answer (English)"
-        value={answer.en}
-        onChange={(e) => setAnswer({ ...answer, en: e.target.value })}
-        className="border p-2 w-full mb-2"
-      />
-      <input
-        type="text"
-        placeholder="Odgovor (Slovenščina)"
-        value={answer.sl}
-        onChange={(e) => setAnswer({ ...answer, sl: e.target.value })}
-        className="border p-2 w-full mb-2"
-      />
+      {/* Media field (sound/pictures) */}
+      {(type === "sound_choice" || type === "find_difference") && (
+        <input
+          type="text"
+          placeholder="Media URL (audio or image)"
+          value={media}
+          onChange={(e) => setMedia(e.target.value)}
+          className="border p-2 w-full mb-2"
+        />
+      )}
+
+      {/* Answer (if needed) */}
+      {["text_input", "guessing_game", "find_difference", "sound_choice"].includes(type) && (
+        <>
+          <input
+            type="text"
+            placeholder="Answer (English)"
+            value={answer.en}
+            onChange={(e) => setAnswer({ ...answer, en: e.target.value })}
+            className="border p-2 w-full mb-2"
+          />
+          <input
+            type="text"
+            placeholder="Odgovor (Slovenščina)"
+            value={answer.sl}
+            onChange={(e) => setAnswer({ ...answer, sl: e.target.value })}
+            className="border p-2 w-full mb-2"
+          />
+        </>
+      )}
 
       {/* Submit */}
       <button

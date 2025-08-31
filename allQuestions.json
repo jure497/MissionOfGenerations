@@ -1,86 +1,64 @@
 [
   {
+    "type": "challenge_task",
     "question": {
-      "en": "Which of these fruits is yellow?",
-      "sl": "Katero izmed teh sadežev je rumeno?"
+      "en": "Find a spoon in your home",
+      "sl": "Najdi žlico v tvojem domu"
     },
-    "type": "multiple_choice",
+    "roles": ["grandchild", "grandparent"],
+    "answer": { "en": "Spoon", "sl": "Žlica" }
+  },
+  {
+    "type": "sound_choice",
+    "question": {
+      "en": "Which animal makes this sound?",
+      "sl": "Katera žival oddaja ta zvok?"
+    },
     "roles": ["grandchild"],
+    "soundUrl": "/sounds/dog.mp3",
     "options": {
-      "en": ["Apple", "Banana", "Grapes"],
-      "sl": ["Jabolko", "Banana", "Grozdje"]
+      "en": ["Cat", "Dog", "Cow"],
+      "sl": ["Mačka", "Pes", "Krava"]
     },
-    "answer": {
-      "en": "Banana",
-      "sl": "Banana"
-    }
+    "answer": { "en": "Dog", "sl": "Pes" }
   },
   {
+    "type": "drag_drop",
     "question": {
-      "en": "Type the capital of Slovenia.",
-      "sl": "Vpiši glavno mesto Slovenije."
+      "en": "Sort the fruits by color",
+      "sl": "Razvrsti sadje po barvah"
     },
-    "type": "text_input",
-    "roles": ["grandparent"],
-    "answer": {
-      "en": "Ljubljana",
-      "sl": "Ljubljana"
-    }
-  },
-  {
-    "question": {
-      "en": "Which one is a bicycle?",
-      "sl": "Kateri je kolo?"
-    },
-    "type": "picture_select",
     "roles": ["grandchild"],
-    "options": {
-      "en": [
-        { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "car" },
-        { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "bicycle" }
-      ],
-      "sl": [
-        { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "avto" },
-        { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "kolo" }
-      ]
-    },
-    "answer": {
-      "en": "bicycle",
-      "sl": "kolo"
-    }
+    "items": ["/img/apple.png", "/img/banana.png", "/img/lemon.png"],
+    "categories": [
+      { "name": "Green", "items": ["/img/apple.png"] },
+      { "name": "Yellow", "items": ["/img/banana.png", "/img/lemon.png"] }
+    ],
+    "answer": { "en": "Sorted fruits", "sl": "Razvrščeno sadje" }
   },
   {
+    "type": "riddle_guess",
     "question": {
-      "en": "Type the capital of France.",
-      "sl": "Vpiši glavno mesto Francije."
+      "en": "What has keys but can’t open locks?",
+      "sl": "Kaj ima tipke, a ne more odpreti ključavnic?"
     },
-    "type": "text_input",
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Piano", "sl": "Klavir" }
+  },
+  {
+    "type": "spot_difference",
+    "question": {
+      "en": "Find 3 differences between the pictures",
+      "sl": "Najdi 3 razlike med slikami"
+    },
     "roles": ["grandchild"],
-    "answer": {
-      "en": "Paris",
-      "sl": "Pariz"
-    }
-  },
-  {
-    "question": {
-      "en": "Which one is a bus?",
-      "sl": "Kateri je avtobus?"
-    },
-    "type": "picture_select",
-    "roles": ["grandparent"],
-    "options": {
-      "en": [
-        { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "car" },
-        { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "bus" }
-      ],
-      "sl": [
-        { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "avto" },
-        { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "avtobus" }
-      ]
-    },
-    "answer": {
-      "en": "bus",
-      "sl": "avtobus"
-    }
+    "image1": "/img/pic1.png",
+    "image2": "/img/pic2.png",
+    "differences": [
+      "Tree missing",
+      "Hat color changed",
+      "Window open"
+    ],
+    "answer": { "en": "3 differences found", "sl": "3 razlike najdene" }
   }
 ]
