@@ -29,10 +29,10 @@
       "sl": "Razvrsti sadje po barvah"
     },
     "roles": ["grandchild"],
-    "items": ["/img/apple.png", "/img/banana.png", "/img/lemon.png"],
+    "items": ["/img/apple.jpg", "/img/banana.jpg", "/img/lemon.jpg"],
     "categories": [
-      { "name": "Green", "items": ["/img/apple.png"] },
-      { "name": "Yellow", "items": ["/img/banana.png", "/img/lemon.png"] }
+      { "name": "Green", "items": ["/img/apple.jpg"] },
+      { "name": "Yellow", "items": ["/img/banana.jpg", "/img/lemon.jpg"] }
     ],
     "answer": { "en": "Sorted fruits", "sl": "Razvrščeno sadje" }
   },

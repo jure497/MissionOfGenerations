@@ -107,7 +107,7 @@ export default function FeedbackOverlay({ trigger, streak }) {
             initial={{ opacity: 0, y: -40, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -40, scale: 0.9 }}
-            transition={{ duration: 5.6, ease: "easeOut" }}
+            transition={{ duration: 1.6, ease: "easeOut" }}
             className="fixed top-8 left-1/2 transform -translate-x-1/2 
                        bg-white/20 backdrop-blur-md px-6 py-3 
                        rounded-2xl shadow-lg text-center"
