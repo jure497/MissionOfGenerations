@@ -42,14 +42,11 @@ export default function FeedbackOverlay({ trigger, streak }) {
 
       if (doConfetti) {
         setConfettiPieces(streak >= 5 ? 400 : 200);
-        setTimeout(() => setConfettiPieces(0), 3000);
+        setTimeout(() => setConfettiPieces(0), 2000);
       }
 
       if (newEmoji) {
-        setEmojis((prev) => [
-          ...prev,
-          { id: Date.now(), symbol: newEmoji },
-        ]);
+        setEmojis([{ id: Date.now(), symbol: newEmoji }]);
       }
       if (newMessage) {
         setStreakMessage({ id: Date.now(), text: newMessage });
@@ -58,7 +55,7 @@ export default function FeedbackOverlay({ trigger, streak }) {
       const timer = setTimeout(() => {
         setEmojis([]);
         setStreakMessage(null);
-      }, 4000);
+      }, 1500); // ⬅️ shorter, clears quickly
 
       return () => clearTimeout(timer);
     }
@@ -94,7 +91,7 @@ export default function FeedbackOverlay({ trigger, streak }) {
               rotate: 0,
             }}
             exit={{ opacity: 0, y: -200 }}
-            transition={{ duration: 2.5, ease: "easeOut" }}
+            transition={{ duration: 1.5, ease: "easeOut" }} // ⬅️ faster
             className="absolute text-6xl"
           >
             {e.symbol}
@@ -110,7 +107,7 @@ export default function FeedbackOverlay({ trigger, streak }) {
             initial={{ opacity: 0, y: -40, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -40, scale: 0.9 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 5.6, ease: "easeOut" }}
             className="fixed top-8 left-1/2 transform -translate-x-1/2 
                        bg-white/20 backdrop-blur-md px-6 py-3 
                        rounded-2xl shadow-lg text-center"

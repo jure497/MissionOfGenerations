@@ -22,7 +22,8 @@ export default function ChallengeTask({ question, onAnswered }) {
         onClick={() => onAnswered(true)}
         className="mt-3 px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700"
       >
-        {t?.("i_did_it") || "I did it"}
+        
+        {t("done")}
       </button>
     </div>
   );

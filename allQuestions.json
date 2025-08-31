@@ -61,4 +61,89 @@
     ],
     "answer": { "en": "3 differences found", "sl": "3 razlike najdene" }
   }
+,
+  {
+    "question": {
+      "en": "Which of these fruits is yellow?",
+      "sl": "Katero izmed teh sadežev je rumeno?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Apple", "Banana", "Grapes"],
+      "sl": ["Jabolko", "Banana", "Grozdje"]
+    },
+    "answer": {
+      "en": "Banana",
+      "sl": "Banana"
+    }
+  },
+  {
+    "question": {
+      "en": "Type the capital of Slovenia.",
+      "sl": "Vpišssi glavno mesto Slovenije."
+    },
+    "type": "text_input",
+    "roles": ["grandparent"],
+    "answer": {
+      "en": "Ljubljana",
+      "sl": "Ljubljana"
+    }
+  },
+  {
+    "question": {
+      "en": "Which one is a bicycle?",
+      "sl": "Kateri je kolo?"
+    },
+    "type": "picture_select",
+    "roles": ["grandchild"],
+    "options": {
+      "en": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "car" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "bicycle" }
+      ],
+      "sl": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "avto" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "kolo" }
+      ]
+    },
+    "answer": {
+      "en": "bicycle",
+      "sl": "kolo"
+    }
+  },
+  {
+    "question": {
+      "en": "Type the capital of France.",
+      "sl": "Vpiši glavno mesto Francije."
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Paris",
+      "sl": "Pariz"
+    }
+  },
+  {
+    "question": {
+      "en": "Which one is a bus?",
+      "sl": "Kateri je avtobus?"
+    },
+    "type": "picture_select",
+    "roles": ["grandparent"],
+    "options": {
+      "en": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "car" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "bus" }
+      ],
+      "sl": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "avto" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "avtobus" }
+      ]
+    },
+    "answer": {
+      "en": "bus",
+      "sl": "avtobus"
+    }
+  }
 ]

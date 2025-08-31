@@ -28,6 +28,7 @@ const DICT = {
     wrong: "Not quite. ❌",
     your_answer_placeholder: "Your answer…",
     submit: "Submit",
+    done: "Done!"
   },
   sl: {
     app_title: "Misija Generacij",
@@ -55,6 +56,7 @@ const DICT = {
     wrong: "Ni čisto. ❌",
     your_answer_placeholder: "Tvoj odgovor…",
     submit: "Pošlji",
+    done: "Narejeno!"
   },
 };
 

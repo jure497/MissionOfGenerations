@@ -27,7 +27,7 @@ export default function Mascot({ visible, mood }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 40 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="fixed bottom-0 left-6 z-50 flex flex-col items-center"
+          className="fixed bottom-0 left-3 z-50 flex flex-col items-center"
         >
           <motion.div
             animate={{
