@@ -20,6 +20,7 @@ export default function SpotDifference({ question, onAnswered }) {
   return (
     <div className="w-full">
       <h2 className="text-lg font-semibold mb-4">{text}</h2>
+
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
         <img
           src={question?.image1}
@@ -37,7 +38,7 @@ export default function SpotDifference({ question, onAnswered }) {
         <button
           onClick={() => {
             setShown(true);
-            onAnswered(true); // allow Next without showing a red "wrong"
+            onAnswered(null); // ✅ NEUTRAL: unlocks Next, no correct/incorrect feedback
           }}
           className="px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-sky-700"
         >

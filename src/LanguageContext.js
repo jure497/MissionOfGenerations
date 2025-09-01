@@ -28,7 +28,12 @@ const DICT = {
     wrong: "Not quite. ❌",
     your_answer_placeholder: "Your answer…",
     submit: "Submit",
-    done: "Done!"
+    done: "Done!",
+    congratulations: "Congratulations! 🎉",
+    encourage: "Nice try — keep going!",
+    didGood:"I succeeded",
+    didPoor:"I Failed",
+    show_differences: "Show differences"
   },
   sl: {
     app_title: "Misija Generacij",
@@ -56,7 +61,12 @@ const DICT = {
     wrong: "Ni čisto. ❌",
     your_answer_placeholder: "Tvoj odgovor…",
     submit: "Pošlji",
-    done: "Narejeno!"
+    done: "Narejeno!",
+    congratulations: "Čestitke! 🎉",
+    encourage: "Dober poskus — nadaljuj!",
+    didGood: "Sem uspel",
+    didPoor:"Ni mi uspelo",
+    show_differences: "Pokaži razlike"
   },
 };
 

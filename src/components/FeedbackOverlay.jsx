@@ -1,4 +1,3 @@
-// FeedbackOverlay.jsx
 import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { AnimatePresence, motion } from "framer-motion";
@@ -9,61 +8,77 @@ export default function FeedbackOverlay({ trigger, streak }) {
   const [streakMessage, setStreakMessage] = useState(null);
 
   useEffect(() => {
-    if (trigger) {
-      let doConfetti = Math.random() < 0.5;
-      let doEmoji = Math.random() < 0.8;
-      let newEmoji = null;
-      let newMessage = null;
+    if (!trigger) return;
 
-      // 🌟 Streak bonuses
-      if (streak === 3) {
-        newEmoji = "🔥";
-        newMessage = "🔥 Amazing! 3 in a row!";
-        doEmoji = true;
-      }
-      if (streak === 5) {
-        newEmoji = "🏆";
-        newMessage = "🏆 Incredible! 5 correct in a row!";
-        doConfetti = true;
-        doEmoji = true;
-      }
-      if (streak === 10) {
-        newEmoji = "👑";
-        newMessage = "👑 Unstoppable! 10 streak!";
-        doConfetti = true;
-        doEmoji = true;
-      }
+    // Normalize in case trigger is boolean/null accidentally
+    const isCorrect =
+      typeof trigger === "object" && trigger !== null && "isCorrect" in trigger
+        ? trigger.isCorrect
+        : trigger;
 
-      // 🎲 Normal random emojis
-      if (!newEmoji && doEmoji) {
-        const emojiList = ["🎉", "🌟", "🔥", "💯", "😺", "🎯", "👏", "🚀"];
-        newEmoji = emojiList[Math.floor(Math.random() * emojiList.length)];
-      }
-
-      if (doConfetti) {
-        setConfettiPieces(streak >= 5 ? 400 : 200);
-        setTimeout(() => setConfettiPieces(0), 2000);
-      }
-
-      if (newEmoji) {
-        setEmojis([{ id: Date.now(), symbol: newEmoji }]);
-      }
-      if (newMessage) {
-        setStreakMessage({ id: Date.now(), text: newMessage });
-      }
-
-      const timer = setTimeout(() => {
-        setEmojis([]);
-        setStreakMessage(null);
-      }, 1500); // ⬅️ shorter, clears quickly
-
-      return () => clearTimeout(timer);
+    // 🟢 Ignore neutral
+    if (isCorrect === null) {
+      setConfettiPieces(0);
+      setEmojis([]);
+      setStreakMessage(null);
+      return;
     }
+
+    if (isCorrect === false) {
+      // ❌ Wrong answer → clear everything
+      setConfettiPieces(0);
+      setEmojis([]);
+      setStreakMessage(null);
+      return;
+    }
+
+    // ✅ Correct answer
+    let doConfetti = Math.random() < 0.4;
+    let doEmoji = Math.random() < 0.6;
+    let newEmoji = null;
+    let newMessage = null;
+
+    if (streak === 3) {
+      newEmoji = "🔥";
+      newMessage = "🔥 Amazing! 3 in a row!";
+      doEmoji = true;
+    }
+    if (streak === 5) {
+      newEmoji = "🏆";
+      newMessage = "🏆 Incredible! 5 correct in a row!";
+      doConfetti = true;
+      doEmoji = true;
+    }
+    if (streak === 10) {
+      newEmoji = "👑";
+      newMessage = "👑 Unstoppable! 10 streak!";
+      doConfetti = true;
+      doEmoji = true;
+    }
+
+    if (!newEmoji && doEmoji) {
+      const emojiList = ["🎉", "🌟", "🔥", "💯", "😺", "🎯", "👏", "🚀"];
+      newEmoji = emojiList[Math.floor(Math.random() * emojiList.length)];
+    }
+
+    if (doConfetti) {
+      setConfettiPieces(streak >= 5 ? 400 : 200);
+      setTimeout(() => setConfettiPieces(0), 1500);
+    }
+
+    if (newEmoji) setEmojis([{ id: Date.now(), symbol: newEmoji }]);
+    if (newMessage) setStreakMessage({ id: Date.now(), text: newMessage });
+
+    const timer = setTimeout(() => {
+      setEmojis([]);
+      setStreakMessage(null);
+    }, 1200);
+
+    return () => clearTimeout(timer);
   }, [trigger, streak]);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50">
-      {/* 🎉 Confetti */}
       <Confetti
         width={window.innerWidth}
         height={window.innerHeight}
@@ -72,7 +87,6 @@ export default function FeedbackOverlay({ trigger, streak }) {
         gravity={0.25}
       />
 
-      {/* 😀 Floating Emojis */}
       <AnimatePresence>
         {emojis.map((e) => (
           <motion.div
@@ -91,7 +105,7 @@ export default function FeedbackOverlay({ trigger, streak }) {
               rotate: 0,
             }}
             exit={{ opacity: 0, y: -200 }}
-            transition={{ duration: 1.5, ease: "easeOut" }} // ⬅️ faster
+            transition={{ duration: 1.2, ease: "easeOut" }}
             className="absolute text-6xl"
           >
             {e.symbol}
@@ -99,7 +113,6 @@ export default function FeedbackOverlay({ trigger, streak }) {
         ))}
       </AnimatePresence>
 
-      {/* 🏆 Streak Badge */}
       <AnimatePresence>
         {streakMessage && (
           <motion.div
@@ -107,7 +120,7 @@ export default function FeedbackOverlay({ trigger, streak }) {
             initial={{ opacity: 0, y: -40, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -40, scale: 0.9 }}
-            transition={{ duration: 1.6, ease: "easeOut" }}
+            transition={{ duration: 1.4, ease: "easeOut" }}
             className="fixed top-8 left-1/2 transform -translate-x-1/2 
                        bg-white/20 backdrop-blur-md px-6 py-3 
                        rounded-2xl shadow-lg text-center"
