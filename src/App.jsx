@@ -15,6 +15,8 @@ import { getAvailableQuestions, markQuestionUsed } from "./utils/questionUtils";
 import { AnimatePresence, motion } from "framer-motion";
 
 
+// ...imports stay the same
+
 function Quiz() {
   const { t } = useLanguage();
   const navigate = useNavigate();
@@ -27,8 +29,11 @@ function Quiz() {
   const [index, setIndex] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const [answered, setAnswered] = React.useState(false);
-  const [lastCorrect, setLastCorrect] = React.useState(null); // can be: true, false, "success", "encourage", null
+  const [lastCorrect, setLastCorrect] = React.useState(null);
   const [finished, setFinished] = React.useState(false);
+
+  // 🆕 streak state
+  const [streak, setStreak] = React.useState(0);
 
   // Load persistent state
   React.useEffect(() => {
@@ -43,6 +48,7 @@ function Quiz() {
         setAnswered(false);
         setLastCorrect(null);
         setFinished(parsed.finished || false);
+        setStreak(parsed.streak || 0); // 🆕 load streak
         return;
       } catch {}
     }
@@ -52,6 +58,7 @@ function Quiz() {
     setAnswered(false);
     setLastCorrect(null);
     setFinished(false);
+    setStreak(0);
   }, [role]);
 
   // Persist state
@@ -59,11 +66,10 @@ function Quiz() {
     if (!role) return;
     localStorage.setItem(
       `quiz_state_${role}`,
-      JSON.stringify({ order, index, score, finished })
+      JSON.stringify({ order, index, score, finished, streak }) // 🆕 include streak
     );
-  }, [role, order, index, score, finished]);
+  }, [role, order, index, score, finished, streak]);
 
-  // Shuffle helper
   function shuffleArray(arr) {
     const copy = [...arr];
     for (let i = copy.length - 1; i > 0; i--) {
@@ -73,28 +79,11 @@ function Quiz() {
     return copy;
   }
 
-  // Ensure order
   React.useEffect(() => {
     if (questions.length > 0 && order.length === 0) {
       setOrder(shuffleArray(questions.map((q) => q.id)));
     }
   }, [questions, order]);
-
-  if (!role) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-fuchsia-400 via-purple-400 to-sky-400 p-6">
-        <div className="bg-white/90 backdrop-blur rounded-2xl shadow-xl p-8 text-center">
-          <p className="mb-4">{t("no_role")}</p>
-          <button
-            onClick={() => navigate("/")}
-            className="px-4 py-2 rounded-lg bg-gray-800 text-white"
-          >
-            {t("go_home")}
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   const roleLabel =
     role === "grandparent" ? t("role_grandparent") : t("role_grandchild");
@@ -102,15 +91,15 @@ function Quiz() {
   const currentQuestionId = order[index];
   const currentQuestion = questions.find((q) => q.id === currentQuestionId);
 
-  // Accepts boolean true/false or strings: "success" (challenge succeeded),
-  // "encourage" (challenge failed but be gentle), or null/"neutral"
   const onAnswered = (result) => {
     setAnswered(true);
     setLastCorrect(result);
 
-    // Treat boolean true or "success" as a correct answer for scoring
     if (result === true || result === "success") {
       setScore((s) => s + 1);
+      setStreak((s) => s + 1); // 🆕 increase streak
+    } else if (result === false || result === "encourage") {
+      setStreak(0); // 🆕 reset streak
     }
   };
 
@@ -120,7 +109,6 @@ function Quiz() {
       setAnswered(false);
       setLastCorrect(null);
     } else {
-      // finished / reshuffle
       setOrder(shuffleArray(questions.map((q) => q.id)));
       setIndex(0);
       setAnswered(false);
@@ -136,19 +124,18 @@ function Quiz() {
     setAnswered(false);
     setLastCorrect(null);
     setFinished(false);
+    setStreak(0); // 🆕 reset streak on restart
   };
 
   const progressPct = order.length
     ? Math.round(((Math.min(index + 1, order.length)) / order.length) * 100)
     : 0;
 
-  // Decide whether to show feedback box and what text/class
   const shouldShowFeedback =
     answered && lastCorrect !== null && lastCorrect !== "neutral";
 
   let feedbackText = "";
-  let feedbackClass =
-    "bg-gray-50 border-gray-300 text-gray-800"; // fallback
+  let feedbackClass = "bg-gray-50 border-gray-300 text-gray-800";
 
   if (lastCorrect === true || lastCorrect === "success") {
     feedbackText = t("congratulations");
@@ -164,6 +151,7 @@ function Quiz() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-fuchsia-400 via-purple-400 to-sky-400 p-4">
       <div className="max-w-xl mx-auto relative">
+        {/* header buttons */}
         <div className="absolute top-2 left-2 flex gap-2">
           <button
             onClick={() => navigate("/")}
@@ -188,12 +176,21 @@ function Quiz() {
             </h2>
           </div>
 
-          <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
-            <div
-              className="bg-purple-600 h-2 rounded-full"
-              style={{ width: `${progressPct}%` }}
-            />
+          {/* progress + streak */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-full bg-gray-200 rounded-full h-2 mr-3">
+              <div
+                className="bg-purple-600 h-2 rounded-full"
+                style={{ width: `${progressPct}%` }}
+              />
+            </div>
+            <div className="text-sm font-semibold text-purple-700">
+              🔥 {streak}
+            </div>
           </div>
+
+          {/* rest of your code unchanged */}
+
 
           {error && (
             <div className="p-3 mb-3 rounded border border-red-300 bg-red-50 text-red-800">
@@ -308,6 +305,7 @@ function Quiz() {
     </div>
   );
 }
+
 
 export default function App() {
   return (
