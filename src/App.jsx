@@ -12,6 +12,8 @@ import useQuestions from "./hooks/useQuestions.js";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import AdminWrapper from "./AdminWrapper";
 import { getAvailableQuestions, markQuestionUsed } from "./utils/questionUtils";
+import { AnimatePresence, motion } from "framer-motion";
+
 
 function Quiz() {
   const { t } = useLanguage();
@@ -219,10 +221,59 @@ function Quiz() {
 
               {/* only show feedback for boolean/explicit challenge responses */}
               {shouldShowFeedback && (
-                <div className={`mt-4 p-3 rounded-lg border ${feedbackClass}`}>
-                  {feedbackText}
-                </div>
-              )}
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={`feedback-${lastCorrect}`}
+      initial={{ opacity: 0, y: 10, scale: 0.85 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: { type: "spring", stiffness: 300, damping: 20 }
+      }}
+      exit={{
+        opacity: 0,
+        y: 10,
+        scale: 0.85,
+        transition: { duration: 0.2 }
+      }}
+      className={`relative mt-4 p-3 rounded-lg border flex items-center justify-center text-center
+        ${feedbackClass}`}
+    >
+      <span className="mr-2">
+        {lastCorrect === true && "🎉"}
+        {lastCorrect === false && "❌"}
+        {lastCorrect === "encourage" && "✨"}
+      </span>
+      {feedbackText}
+
+      {/* Emoji burst for correct answers */}
+      {lastCorrect === true && (
+        <div className="absolute inset-0 pointer-events-none">
+          {Array.from({ length: 8 }).map((_, i) => {
+            const left = 10 + Math.random() * 80 + "%";
+            const top = 10 + Math.random() * 60 + "%";
+            const emojiList = ["⭐️", "✨", "🌟", "🎉"];
+            const emoji = emojiList[Math.floor(Math.random() * emojiList.length)];
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 1, y: 0, scale: 0.7 }}
+                animate={{ opacity: 0, y: -20 - Math.random() * 30, scale: 1.2 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                style={{ position: "absolute", left, top }}
+                className="text-xl select-none"
+              >
+                {emoji}
+              </motion.div>
+            );
+          })}
+        </div>
+      )}
+    </motion.div>
+  </AnimatePresence>
+)}
+
 
               <div className="mt-4 flex justify-end">
                 <button
