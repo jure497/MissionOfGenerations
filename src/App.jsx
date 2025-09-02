@@ -29,11 +29,10 @@ function Quiz() {
   const [index, setIndex] = React.useState(0);
   const [score, setScore] = React.useState(0);
   const [answered, setAnswered] = React.useState(false);
+  const [streak, setStreak] = React.useState(0);
   const [lastCorrect, setLastCorrect] = React.useState(null);
   const [finished, setFinished] = React.useState(false);
-
-  // 🆕 streak state
-  const [streak, setStreak] = React.useState(0);
+  const [brokenStreak, setBrokenStreak] = React.useState(false); // 🆕 broken streak logic
 
   // Load persistent state
   React.useEffect(() => {
@@ -45,20 +44,20 @@ function Quiz() {
         setOrder(parsed.order || []);
         setIndex(parsed.index || 0);
         setScore(parsed.score || 0);
+        setStreak(parsed.streak || 0);
         setAnswered(false);
         setLastCorrect(null);
         setFinished(parsed.finished || false);
-        setStreak(parsed.streak || 0); // 🆕 load streak
         return;
       } catch {}
     }
     setOrder([]);
     setIndex(0);
     setScore(0);
+    setStreak(0);
     setAnswered(false);
     setLastCorrect(null);
     setFinished(false);
-    setStreak(0);
   }, [role]);
 
   // Persist state
@@ -66,9 +65,9 @@ function Quiz() {
     if (!role) return;
     localStorage.setItem(
       `quiz_state_${role}`,
-      JSON.stringify({ order, index, score, finished, streak }) // 🆕 include streak
+      JSON.stringify({ order, index, score, streak, finished })
     );
-  }, [role, order, index, score, finished, streak]);
+  }, [role, order, index, score, streak, finished]);
 
   function shuffleArray(arr) {
     const copy = [...arr];
@@ -92,15 +91,24 @@ function Quiz() {
   const currentQuestion = questions.find((q) => q.id === currentQuestionId);
 
   const onAnswered = (result) => {
-    setAnswered(true);
-    setLastCorrect(result);
-
-    if (result === true || result === "success") {
-      setScore((s) => s + 1);
-      setStreak((s) => s + 1); // 🆕 increase streak
-    } else if (result === false || result === "encourage") {
-      setStreak(0); // 🆕 reset streak
+    let isCorrect = result;
+    if (typeof result === "object" && result !== null && "isCorrect" in result) {
+      isCorrect = result.isCorrect;
     }
+
+    if (isCorrect === true || isCorrect === "success") {
+      setScore((s) => s + 1);
+      setStreak((s) => s + 1);
+    } else if (isCorrect === false || isCorrect === "encourage") {
+      if (streak > 0) {
+        setBrokenStreak(true);
+        setTimeout(() => setBrokenStreak(false), 1000);
+      }
+      setStreak(0);
+    }
+
+    setAnswered(true);
+    setLastCorrect(isCorrect);
   };
 
   const next = () => {
@@ -124,7 +132,7 @@ function Quiz() {
     setAnswered(false);
     setLastCorrect(null);
     setFinished(false);
-    setStreak(0); // 🆕 reset streak on restart
+    setStreak(0); // 🆕 reset streak
   };
 
   const progressPct = order.length
@@ -151,7 +159,6 @@ function Quiz() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-fuchsia-400 via-purple-400 to-sky-400 p-4">
       <div className="max-w-xl mx-auto relative">
-        {/* header buttons */}
         <div className="absolute top-2 left-2 flex gap-2">
           <button
             onClick={() => navigate("/")}
@@ -176,7 +183,7 @@ function Quiz() {
             </h2>
           </div>
 
-          {/* progress + streak */}
+          {/* Progress + streak */}
           <div className="flex items-center justify-between mb-4">
             <div className="w-full bg-gray-200 rounded-full h-2 mr-3">
               <div
@@ -184,13 +191,49 @@ function Quiz() {
                 style={{ width: `${progressPct}%` }}
               />
             </div>
-            <div className="text-sm font-semibold text-purple-700">
-              🔥 {streak}
+
+            {/* New streak logic */}
+            <div className="relative w-16 h-8 flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                {streak > 0 && (
+                  <motion.div
+                    key={streak}
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{
+                      opacity: 1,
+                      scale: streak >= 10 ? [1, 1.2, 0.9, 1] : 1.1,
+                      rotate: streak >= 10 ? [-5, 5, -5, 5, 0] : 0,
+                      color: streak >= 10 ? "#FFD700" : "#fff",
+                    }}
+                    exit={{ opacity: 0, scale: 0.7 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="font-bold text-lg select-none"
+                  >
+                    🔥 {streak}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <AnimatePresence>
+                {brokenStreak && (
+                  <motion.div
+                    key="broken"
+                    initial={{ opacity: 1, scale: 1 }}
+                    animate={{
+                      opacity: 0,
+                      scale: 0.5,
+                      rotate: [-10, 10, -10, 10, 0],
+                      y: 50,
+                    }}
+                    transition={{ duration: 1 }}
+                    className="absolute text-red-500 font-bold text-lg select-none"
+                  >
+                    ❌
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
-
-          {/* rest of your code unchanged */}
-
 
           {error && (
             <div className="p-3 mb-3 rounded border border-red-300 bg-red-50 text-red-800">
@@ -216,61 +259,63 @@ function Quiz() {
                 />
               )}
 
-              {/* only show feedback for boolean/explicit challenge responses */}
               {shouldShowFeedback && (
-  <AnimatePresence mode="wait">
-    <motion.div
-      key={`feedback-${lastCorrect}`}
-      initial={{ opacity: 0, y: 10, scale: 0.85 }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: { type: "spring", stiffness: 300, damping: 20 }
-      }}
-      exit={{
-        opacity: 0,
-        y: 10,
-        scale: 0.85,
-        transition: { duration: 0.2 }
-      }}
-      className={`relative mt-4 p-3 rounded-lg border flex items-center justify-center text-center
-        ${feedbackClass}`}
-    >
-      <span className="mr-2">
-        {lastCorrect === true && "🎉"}
-        {lastCorrect === false && "❌"}
-        {lastCorrect === "encourage" && "✨"}
-      </span>
-      {feedbackText}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`feedback-${lastCorrect}`}
+                    initial={{ opacity: 0, y: 10, scale: 0.85 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: { type: "spring", stiffness: 300, damping: 20 },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: 10,
+                      scale: 0.85,
+                      transition: { duration: 0.2 },
+                    }}
+                    className={`relative mt-4 p-3 rounded-lg border flex items-center justify-center text-center
+                      ${feedbackClass}`}
+                  >
+                    <span className="mr-2">
+                      {lastCorrect === true && "🎉"}
+                      {lastCorrect === false && "❌"}
+                      {lastCorrect === "encourage" && "✨"}
+                    </span>
+                    {feedbackText}
 
-      {/* Emoji burst for correct answers */}
-      {lastCorrect === true && (
-        <div className="absolute inset-0 pointer-events-none">
-          {Array.from({ length: 8 }).map((_, i) => {
-            const left = 10 + Math.random() * 80 + "%";
-            const top = 10 + Math.random() * 60 + "%";
-            const emojiList = ["⭐️", "✨", "🌟", "🎉"];
-            const emoji = emojiList[Math.floor(Math.random() * emojiList.length)];
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 1, y: 0, scale: 0.7 }}
-                animate={{ opacity: 0, y: -20 - Math.random() * 30, scale: 1.2 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                style={{ position: "absolute", left, top }}
-                className="text-xl select-none"
-              >
-                {emoji}
-              </motion.div>
-            );
-          })}
-        </div>
-      )}
-    </motion.div>
-  </AnimatePresence>
-)}
-
+                    {lastCorrect === true && (
+                      <div className="absolute inset-0 pointer-events-none">
+                        {Array.from({ length: 8 }).map((_, i) => {
+                          const left = 10 + Math.random() * 80 + "%";
+                          const top = 10 + Math.random() * 60 + "%";
+                          const emojiList = ["⭐️", "✨", "🌟", "🎉"];
+                          const emoji =
+                            emojiList[Math.floor(Math.random() * emojiList.length)];
+                          return (
+                            <motion.div
+                              key={i}
+                              initial={{ opacity: 1, y: 0, scale: 0.7 }}
+                              animate={{
+                                opacity: 0,
+                                y: -20 - Math.random() * 30,
+                                scale: 1.2,
+                              }}
+                              transition={{ duration: 1, ease: "easeOut" }}
+                              style={{ left, top, position: "absolute" }}
+                              className="text-xl select-none"
+                            >
+                              {emoji}
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              )}
 
               <div className="mt-4 flex justify-end">
                 <button
