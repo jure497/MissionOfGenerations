@@ -99,7 +99,7 @@ export default function FeedbackOverlay({ trigger, streak }) {
       setVisible(false);
       setEmojiBurst([]);
       setStreakMessage(null);
-    }, 1500);
+    }, 1200);
 
     return () => clearTimeout(hideTimer);
   }, [trigger, streak]);

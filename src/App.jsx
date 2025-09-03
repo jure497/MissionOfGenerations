@@ -1,4 +1,4 @@
-//app.jsx - kle ni več tistga odspodi da ti napiše congrats / not quite. je bolsa verzija samo se ni v efektu dokler se ne poprav feedbackoverlay, aja pa kle se ni uredu streak, ker lahko na istem vprasanju farmas strekek
+//app.jsx
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -31,6 +31,9 @@ function Quiz() {
   const [finished, setFinished] = React.useState(false);
   const [brokenStreak, setBrokenStreak] = React.useState(false);
 
+  // NEW: track if current question's streak has been counted
+  const [hasCountedStreak, setHasCountedStreak] = React.useState(false);
+
   React.useEffect(() => {
     if (!role) return;
     const saved = localStorage.getItem(`quiz_state_${role}`);
@@ -44,6 +47,7 @@ function Quiz() {
         setAnswered(false);
         setLastCorrect(null);
         setFinished(parsed.finished || false);
+        setHasCountedStreak(false);
         return;
       } catch {}
     }
@@ -54,6 +58,7 @@ function Quiz() {
     setAnswered(false);
     setLastCorrect(null);
     setFinished(false);
+    setHasCountedStreak(false);
   }, [role]);
 
   React.useEffect(() => {
@@ -85,38 +90,46 @@ function Quiz() {
   const currentQuestionId = order[index];
   const currentQuestion = questions.find((q) => q.id === currentQuestionId);
 
-  const onAnswered = (result) => {
-    let isCorrect = result;
-    if (typeof result === "object" && result !== null && "isCorrect" in result) {
-      isCorrect = result.isCorrect;
-    }
+ const onAnswered = (result) => {
+  let isCorrect = result;
+  if (typeof result === "object" && result !== null && "isCorrect" in result) {
+    isCorrect = result.isCorrect;
+  }
 
-    if (isCorrect === true || isCorrect === "success") {
-      setScore((s) => s + 1);
-      setStreak((s) => s + 1);
-    } else if (isCorrect === false || isCorrect === "encourage") {
-      if (streak > 0) {
-        setBrokenStreak(true);
-        setTimeout(() => setBrokenStreak(false), 1000);
-      }
-      setStreak(0);
+  // Only count streak once per question
+  if ((isCorrect === true || isCorrect === "success") && !hasCountedStreak) {
+    setScore((s) => s + 1);
+    setStreak((s) => s + 1);
+    setHasCountedStreak(true); // lock this question's streak
+  } 
+  // Only reset streak if user hasn't already counted this question
+  else if ((isCorrect === false || isCorrect === "encourage") && !hasCountedStreak) {
+    if (streak > 0) {
+      setBrokenStreak(true);
+      setTimeout(() => setBrokenStreak(false), 1000);
     }
+    setStreak(0);
+    setHasCountedStreak(true); // mark as counted so wrongs can't reset it again
+  }
 
-    setAnswered(true);
-    setLastCorrect(isCorrect);
-  };
+  setAnswered(true);
+  setLastCorrect(isCorrect);
+};
+
 
   const next = () => {
     if (index + 1 < order.length) {
       setIndex((i) => i + 1);
       setAnswered(false);
       setLastCorrect(null);
+      setHasCountedStreak(false); // reset for next question
     } else {
       setOrder(shuffleArray(questions.map((q) => q.id)));
       setIndex(0);
       setAnswered(false);
       setLastCorrect(null);
       setFinished(true);
+      setHasCountedStreak(false);
     }
   };
 
@@ -128,6 +141,7 @@ function Quiz() {
     setLastCorrect(null);
     setFinished(false);
     setStreak(0);
+    setHasCountedStreak(false);
   };
 
   const progressPct = order.length

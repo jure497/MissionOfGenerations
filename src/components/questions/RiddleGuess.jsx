@@ -6,10 +6,12 @@ export default function RiddleGuess({ question, onAnswered }) {
   const { lang, t } = useLanguage();
   const [value, setValue] = useState("");
   const [revealed, setRevealed] = useState(false);
+  const [answered, setAnswered] = useState(false); // track if user has submitted
 
   useEffect(() => {
     setValue("");
     setRevealed(false);
+    setAnswered(false);
   }, [question?.id, lang]);
 
   const text =
@@ -21,13 +23,13 @@ export default function RiddleGuess({ question, onAnswered }) {
   const submit = () => {
     const norm = (s) => String(s).trim().toLowerCase();
     const ok = expected.includes(norm(value));
+    setAnswered(true);
     onAnswered(!!ok);
   };
 
   const reveal = () => {
     setRevealed(true);
-    // Let them move on even if they didn't guess it.
-    onAnswered(false);
+    // showing answer doesn't count as wrong
   };
 
   const showAnswer =
@@ -47,21 +49,27 @@ export default function RiddleGuess({ question, onAnswered }) {
         className="w-full border rounded-lg px-3 py-2"
         placeholder={t?.("your_answer_placeholder") || "Your answer"}
         onKeyDown={(e) => e.key === "Enter" && submit()}
+        disabled={answered} // optional: prevent retyping after submission
       />
 
       <div className="mt-3 flex gap-2">
-        <button
-          onClick={submit}
-          className="px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-sky-700"
-        >
-          {t?.("submit") || "Submit"}
-        </button>
-        <button
-          onClick={reveal}
-          className="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300"
-        >
-          {t?.("show_answer") || "Show Answer"}
-        </button>
+        {!answered && (
+          <button
+            onClick={submit}
+            className="px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-sky-700"
+          >
+            {t?.("submit") || "Submit"}
+          </button>
+        )}
+
+        {answered && !revealed && (
+          <button
+            onClick={reveal}
+            className="px-4 py-2 rounded-lg bg-red-600 hover:bg-yellow-300"
+          >
+            {t?.("show_answer") || "Show Answer"}
+          </button>
+        )}
       </div>
 
       {revealed && (
