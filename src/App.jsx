@@ -287,6 +287,34 @@ function Quiz() {
                 />
               )}
 
+              {/* Success Feedback */}
+              {shouldShowFeedback && lastCorrect === "success" && (
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`feedback-${lastCorrect}`}
+                    initial={{ opacity: 0, y: 10, scale: 0.85 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: { type: "spring", stiffness: 300, damping: 20 },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: 10,
+                      scale: 0.85,
+                      transition: { duration: 0.2 },
+                    }}
+                    className="relative mt-4 p-3 rounded-lg border flex items-center justify-center text-center
+                      bg-green-50 border-green-300 text-green-800"
+                  >
+                    <span className="mr-2">🎉</span>
+                    {t("congratulations")}
+                  </motion.div>
+                </AnimatePresence>
+              )}
+
+
               {/* Only show "encourage" feedback */}
               {shouldShowFeedback && lastCorrect === "encourage" && (
                 <AnimatePresence mode="wait">
