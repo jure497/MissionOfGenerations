@@ -1,4 +1,3 @@
-// FeedbackOverlay.jsx
 import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { AnimatePresence, motion } from "framer-motion";
@@ -27,9 +26,13 @@ export default function FeedbackOverlay({ trigger, streak }) {
   };
 
   useEffect(() => {
+    // When the trigger becomes null (from the parent), hide everything
     if (!trigger) {
       setVisible(false);
       setMode(null);
+      setConfettiPieces(0);
+      setEmojis([]);
+      setStreakMessage(null);
       return;
     }
 
@@ -96,9 +99,17 @@ export default function FeedbackOverlay({ trigger, streak }) {
         setConfettiPieces(0);
       }
 
-      if (newEmoji) {
-        setEmojis([{ id: Date.now(), symbol: newEmoji }]);
-      }
+      // 💥 Emoji burst logic from the old file
+      const emojisToBurst = ["⭐️", "✨", "🌟", "🎉"];
+      const burst = Array.from({ length: 10 }).map(() => ({
+        id: Math.random().toString(36).slice(2),
+        symbol: emojisToBurst[Math.floor(Math.random() * emojisToBurst.length)],
+        x: Math.random() * 340 - 170,
+        y: Math.random() * 180 - 90,
+        rotate: -30 + Math.random() * 60,
+        scale: 0.8 + Math.random() * 0.8,
+      }));
+      setEmojis(burst);
       
       if (newMessage) {
         setStreakMessage({ id: Date.now(), text: newMessage });
@@ -131,29 +142,19 @@ export default function FeedbackOverlay({ trigger, streak }) {
         gravity={0.25}
       />
 
-      {/* Floating Emojis */}
+      {/* Floating emoji burst */}
       <AnimatePresence>
-        {emojis.map((e) => (
+        {emojis.map((p) => (
           <motion.div
-            key={e.id}
-            initial={{
-              opacity: 0,
-              y: window.innerHeight - 100,
-              x: Math.random() * window.innerWidth,
-              scale: 0.6,
-              rotate: -30 + Math.random() * 60,
-            }}
-            animate={{
-              opacity: 1,
-              y: window.innerHeight / 2 - 300,
-              scale: 1.4,
-              rotate: 0,
-            }}
-            exit={{ opacity: 0, y: -200 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="absolute text-6xl"
+            key={p.id}
+            initial={{ opacity: 1, x: 0, y: 0, scale: p.scale, rotate: p.rotate }}
+            animate={{ opacity: 0, x: p.x, y: p.y - 80, scale: p.scale + 0.6, rotate: p.rotate }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute left-1/2 top-1/2 text-3xl select-none"
+            style={{ transform: "translate(-50%,-50%)" }}
           >
-            {e.symbol}
+            {p.symbol}
           </motion.div>
         ))}
       </AnimatePresence>
