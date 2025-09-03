@@ -1,4 +1,3 @@
-//app.jsx
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -30,44 +29,11 @@ function Quiz() {
   const [lastCorrect, setLastCorrect] = React.useState(null);
   const [finished, setFinished] = React.useState(false);
   const [brokenStreak, setBrokenStreak] = React.useState(false);
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
 
   // NEW: track if current question's streak has been counted
   const [hasCountedStreak, setHasCountedStreak] = React.useState(false);
-
-  React.useEffect(() => {
-    if (!role) return;
-    const saved = localStorage.getItem(`quiz_state_${role}`);
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        setOrder(parsed.order || []);
-        setIndex(parsed.index || 0);
-        setScore(parsed.score || 0);
-        setStreak(parsed.streak || 0);
-        setAnswered(false);
-        setLastCorrect(null);
-        setFinished(parsed.finished || false);
-        setHasCountedStreak(false);
-        return;
-      } catch {}
-    }
-    setOrder([]);
-    setIndex(0);
-    setScore(0);
-    setStreak(0);
-    setAnswered(false);
-    setLastCorrect(null);
-    setFinished(false);
-    setHasCountedStreak(false);
-  }, [role]);
-
-  React.useEffect(() => {
-    if (!role) return;
-    localStorage.setItem(
-      `quiz_state_${role}`,
-      JSON.stringify({ order, index, score, streak, finished })
-    );
-  }, [role, order, index, score, streak, finished]);
 
   function shuffleArray(arr) {
     const copy = [...arr];
@@ -78,11 +44,72 @@ function Quiz() {
     return copy;
   }
 
+  // This is the new, combined useEffect hook. It now handles both loading from
+  // localStorage and initializing a new game if no saved state is found.
   React.useEffect(() => {
-    if (questions.length > 0 && order.length === 0) {
-      setOrder(shuffleArray(questions.map((q) => q.id)));
+    // Only proceed if we have a role, the questions have been loaded, and we haven't already processed the state
+    if (!role || questions.length === 0 || isLoaded) {
+      return;
     }
-  }, [questions, order]);
+
+    const saved = localStorage.getItem(`quiz_state_${role}`);
+    let loadedState = null;
+
+    if (saved) {
+      try {
+        loadedState = JSON.parse(saved);
+      } catch (e) {
+        console.error("Failed to parse saved state from localStorage:", e);
+      }
+    }
+
+    // A list of question IDs from the newly fetched questions to validate the saved state.
+    const fetchedQuestionIds = new Set(questions.map(q => q.id));
+
+    // If we successfully loaded a state AND it has a valid order, use it.
+    // The order is valid only if all saved question IDs exist in the new questions array.
+    if (
+      loadedState &&
+      loadedState.order &&
+      loadedState.order.length > 0 &&
+      loadedState.order.every(id => fetchedQuestionIds.has(id))
+    ) {
+      setOrder(loadedState.order);
+      setIndex(loadedState.index || 0);
+      setScore(loadedState.score || 0);
+      setStreak(loadedState.streak || 0);
+      setFinished(loadedState.finished || false);
+      
+      // We always reset these ephemeral states on load
+      setAnswered(false);
+      setLastCorrect(null);
+      setHasCountedStreak(false);
+      
+    } else {
+      // Otherwise, no saved state was found or it was invalid, so we start a new game.
+      setOrder(shuffleArray(questions.map((q) => q.id)));
+      setIndex(0);
+      setScore(0);
+      setStreak(0);
+      setFinished(false);
+      setAnswered(false);
+      setLastCorrect(null);
+      setHasCountedStreak(false);
+    }
+
+    // Mark as loaded once the initial state has been determined
+    setIsLoaded(true);
+  }, [role, questions, isLoaded]); // Now depends on `role` and `questions`
+
+  // This useEffect still correctly saves the state whenever it changes.
+  React.useEffect(() => {
+    if (!role || !isLoaded) return;
+    localStorage.setItem(
+      `quiz_state_${role}`,
+      JSON.stringify({ order, index, score, streak, finished })
+    );
+  }, [role, order, index, score, streak, finished, isLoaded]);
+
 
   const roleLabel =
     role === "grandparent" ? t("role_grandparent") : t("role_grandchild");
@@ -90,31 +117,31 @@ function Quiz() {
   const currentQuestionId = order[index];
   const currentQuestion = questions.find((q) => q.id === currentQuestionId);
 
- const onAnswered = (result) => {
-  let isCorrect = result;
-  if (typeof result === "object" && result !== null && "isCorrect" in result) {
-    isCorrect = result.isCorrect;
-  }
-
-  // Only count streak once per question
-  if ((isCorrect === true || isCorrect === "success") && !hasCountedStreak) {
-    setScore((s) => s + 1);
-    setStreak((s) => s + 1);
-    setHasCountedStreak(true); // lock this question's streak
-  } 
-  // Only reset streak if user hasn't already counted this question
-  else if ((isCorrect === false || isCorrect === "encourage") && !hasCountedStreak) {
-    if (streak > 0) {
-      setBrokenStreak(true);
-      setTimeout(() => setBrokenStreak(false), 1000);
+  const onAnswered = (result) => {
+    let isCorrect = result;
+    if (typeof result === "object" && result !== null && "isCorrect" in result) {
+      isCorrect = result.isCorrect;
     }
-    setStreak(0);
-    setHasCountedStreak(true); // mark as counted so wrongs can't reset it again
-  }
 
-  setAnswered(true);
-  setLastCorrect(isCorrect);
-};
+    // Only count streak once per question
+    if ((isCorrect === true || isCorrect === "success") && !hasCountedStreak) {
+      setScore((s) => s + 1);
+      setStreak((s) => s + 1);
+      setHasCountedStreak(true); // lock this question's streak
+    } 
+    // Only reset streak if user hasn't already counted this question
+    else if ((isCorrect === false || isCorrect === "encourage") && !hasCountedStreak) {
+      if (streak > 0) {
+        setBrokenStreak(true);
+        setTimeout(() => setBrokenStreak(false), 1000);
+      }
+      setStreak(0);
+      setHasCountedStreak(true); // mark as counted so wrongs can't reset it again
+    }
+
+    setAnswered(true);
+    setLastCorrect(isCorrect);
+  };
 
 
   const next = () => {
@@ -124,6 +151,8 @@ function Quiz() {
       setLastCorrect(null);
       setHasCountedStreak(false); // reset for next question
     } else {
+      // When finished, we need to completely reset the state to avoid
+      // saving a finished state that would immediately load as finished again.
       setOrder(shuffleArray(questions.map((q) => q.id)));
       setIndex(0);
       setAnswered(false);
@@ -142,6 +171,8 @@ function Quiz() {
     setFinished(false);
     setStreak(0);
     setHasCountedStreak(false);
+    // Explicitly clear the localStorage to ensure a fresh start
+    localStorage.removeItem(`quiz_state_${role}`);
   };
 
   const progressPct = order.length
@@ -235,8 +266,10 @@ function Quiz() {
             </div>
           )}
 
-          {loading ? (
-            <div>{t("loading")}</div>
+          {loading || !isLoaded ? (
+            <div className="text-center p-8 text-lg font-medium">
+              {t("loading")}...
+            </div>
           ) : !questions.length ? (
             <div>
               <p className="mb-2">
