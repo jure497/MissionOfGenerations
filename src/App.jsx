@@ -1,3 +1,4 @@
+//app.jsx
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -11,11 +12,7 @@ import QuestionRenderer from "./components/QuestionRenderer.jsx";
 import useQuestions from "./hooks/useQuestions.js";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import AdminWrapper from "./AdminWrapper";
-import { getAvailableQuestions, markQuestionUsed } from "./utils/questionUtils";
 import { AnimatePresence, motion } from "framer-motion";
-
-
-// ...imports stay the same
 
 function Quiz() {
   const { t } = useLanguage();
@@ -32,9 +29,8 @@ function Quiz() {
   const [streak, setStreak] = React.useState(0);
   const [lastCorrect, setLastCorrect] = React.useState(null);
   const [finished, setFinished] = React.useState(false);
-  const [brokenStreak, setBrokenStreak] = React.useState(false); // 🆕 broken streak logic
+  const [brokenStreak, setBrokenStreak] = React.useState(false);
 
-  // Load persistent state
   React.useEffect(() => {
     if (!role) return;
     const saved = localStorage.getItem(`quiz_state_${role}`);
@@ -60,7 +56,6 @@ function Quiz() {
     setFinished(false);
   }, [role]);
 
-  // Persist state
   React.useEffect(() => {
     if (!role) return;
     localStorage.setItem(
@@ -132,7 +127,7 @@ function Quiz() {
     setAnswered(false);
     setLastCorrect(null);
     setFinished(false);
-    setStreak(0); // 🆕 reset streak
+    setStreak(0);
   };
 
   const progressPct = order.length
@@ -141,20 +136,6 @@ function Quiz() {
 
   const shouldShowFeedback =
     answered && lastCorrect !== null && lastCorrect !== "neutral";
-
-  let feedbackText = "";
-  let feedbackClass = "bg-gray-50 border-gray-300 text-gray-800";
-
-  if (lastCorrect === true || lastCorrect === "success") {
-    feedbackText = t("congratulations");
-    feedbackClass = "bg-green-50 border-green-300 text-green-800";
-  } else if (lastCorrect === false) {
-    feedbackText = t("wrong");
-    feedbackClass = "bg-red-50 border-red-300 text-red-800";
-  } else if (lastCorrect === "encourage") {
-    feedbackText = t("encourage");
-    feedbackClass = "bg-yellow-50 border-yellow-300 text-yellow-800";
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-fuchsia-400 via-purple-400 to-sky-400 p-4">
@@ -192,7 +173,6 @@ function Quiz() {
               />
             </div>
 
-            {/* New streak logic */}
             <div className="relative w-16 h-8 flex items-center justify-center">
               <AnimatePresence mode="wait">
                 {streak > 0 && (
@@ -256,10 +236,12 @@ function Quiz() {
                 <QuestionRenderer
                   question={currentQuestion}
                   onAnswered={onAnswered}
+                  streak={streak}
                 />
               )}
 
-              {shouldShowFeedback && (
+              {/* Encourage feedback */}
+              {shouldShowFeedback && lastCorrect === "encourage" && (
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`feedback-${lastCorrect}`}
@@ -276,46 +258,42 @@ function Quiz() {
                       scale: 0.85,
                       transition: { duration: 0.2 },
                     }}
-                    className={`relative mt-4 p-3 rounded-lg border flex items-center justify-center text-center
-                      ${feedbackClass}`}
+                    className="relative mt-4 p-3 rounded-lg border flex items-center justify-center text-center
+                      bg-yellow-50 border-yellow-300 text-yellow-800"
                   >
-                    <span className="mr-2">
-                      {lastCorrect === true && "🎉"}
-                      {lastCorrect === false && "❌"}
-                      {lastCorrect === "encourage" && "✨"}
-                    </span>
-                    {feedbackText}
-
-                    {lastCorrect === true && (
-                      <div className="absolute inset-0 pointer-events-none">
-                        {Array.from({ length: 8 }).map((_, i) => {
-                          const left = 10 + Math.random() * 80 + "%";
-                          const top = 10 + Math.random() * 60 + "%";
-                          const emojiList = ["⭐️", "✨", "🌟", "🎉"];
-                          const emoji =
-                            emojiList[Math.floor(Math.random() * emojiList.length)];
-                          return (
-                            <motion.div
-                              key={i}
-                              initial={{ opacity: 1, y: 0, scale: 0.7 }}
-                              animate={{
-                                opacity: 0,
-                                y: -20 - Math.random() * 30,
-                                scale: 1.2,
-                              }}
-                              transition={{ duration: 1, ease: "easeOut" }}
-                              style={{ left, top, position: "absolute" }}
-                              className="text-xl select-none"
-                            >
-                              {emoji}
-                            </motion.div>
-                          );
-                        })}
-                      </div>
-                    )}
+                    <span className="mr-2">✨</span>
+                    {t("encourage")}
                   </motion.div>
                 </AnimatePresence>
               )}
+
+              {/* Congratulations feedback */}
+              {shouldShowFeedback &&
+                (lastCorrect === true || lastCorrect === "success") && (
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`feedback-${lastCorrect}`}
+                      initial={{ opacity: 0, y: 10, scale: 0.85 }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        transition: { type: "spring", stiffness: 300, damping: 20 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        y: 10,
+                        scale: 0.85,
+                        transition: { duration: 0.2 },
+                      }}
+                      className="relative mt-4 p-3 rounded-lg border flex items-center justify-center text-center
+                        bg-green-50 border-green-300 text-green-800"
+                    >
+                      <span className="mr-2">🎉</span>
+                      {t("congratulations")}
+                    </motion.div>
+                  </AnimatePresence>
+                )}
 
               <div className="mt-4 flex justify-end">
                 <button
@@ -350,7 +328,6 @@ function Quiz() {
     </div>
   );
 }
-
 
 export default function App() {
   return (
