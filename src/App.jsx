@@ -1,4 +1,4 @@
-//app.jsx
+//app.jsx - kle ni več tistga odspodi da ti napiše congrats / not quite. je bolsa verzija samo se ni v efektu dokler se ne poprav feedbackoverlay, aja pa kle se ni uredu streak, ker lahko na istem vprasanju farmas strekek
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -240,7 +240,7 @@ function Quiz() {
                 />
               )}
 
-              {/* Encourage feedback */}
+              {/* Only show "encourage" feedback */}
               {shouldShowFeedback && lastCorrect === "encourage" && (
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -266,34 +266,6 @@ function Quiz() {
                   </motion.div>
                 </AnimatePresence>
               )}
-
-              {/* Congratulations feedback */}
-              {shouldShowFeedback &&
-                (lastCorrect === true || lastCorrect === "success") && (
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={`feedback-${lastCorrect}`}
-                      initial={{ opacity: 0, y: 10, scale: 0.85 }}
-                      animate={{
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        transition: { type: "spring", stiffness: 300, damping: 20 },
-                      }}
-                      exit={{
-                        opacity: 0,
-                        y: 10,
-                        scale: 0.85,
-                        transition: { duration: 0.2 },
-                      }}
-                      className="relative mt-4 p-3 rounded-lg border flex items-center justify-center text-center
-                        bg-green-50 border-green-300 text-green-800"
-                    >
-                      <span className="mr-2">🎉</span>
-                      {t("congratulations")}
-                    </motion.div>
-                  </AnimatePresence>
-                )}
 
               <div className="mt-4 flex justify-end">
                 <button
