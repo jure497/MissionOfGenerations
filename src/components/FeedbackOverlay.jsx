@@ -5,9 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 
 /**
  * trigger: can be:
- *  - boolean true/false
- *  - "success" | "encourage" | "neutral"
- *  - or an object: { key: <unique>, isCorrect: true|false|null|"encourage"|"success" }
+ * - boolean true/false
+ * - "success" | "encourage" | "neutral"
+ * - or an object: { key: <unique>, isCorrect: true|false|null|"encourage"|"success" }
  *
  * streak: number (used only to show streak milestone messages/confetti)
  */
@@ -16,7 +16,7 @@ export default function FeedbackOverlay({ trigger, streak }) {
   const [visible, setVisible] = useState(false);
   const [mode, setMode] = useState(null); // "correct" | "wrong" | null
   const [confettiPieces, setConfettiPieces] = useState(0);
-  const [emojiBurst, setEmojiBurst] = useState([]); // particles for star/emoji burst
+  const [emojis, setEmojis] = useState([]);
   const [streakMessage, setStreakMessage] = useState(null);
 
   // normalize trigger value to one of: true, false, null, "encourage", "success", "neutral"
@@ -55,51 +55,67 @@ export default function FeedbackOverlay({ trigger, streak }) {
 
     setVisible(true);
 
-    // emoji burst only for correct
-    if (val === true || val === "success") {
-      const emojis = ["⭐️", "✨", "🌟", "🎉"];
-      const burst = Array.from({ length: 10 }).map(() => ({
-        id: Math.random().toString(36).slice(2),
-        symbol: emojis[Math.floor(Math.random() * emojis.length)],
-        x: Math.random() * 340 - 170,
-        y: Math.random() * 180 - 90,
-        rotate: -30 + Math.random() * 60,
-        scale: 0.8 + Math.random() * 0.8,
-      }));
-      setEmojiBurst(burst);
-    } else {
-      setEmojiBurst([]);
-    }
+    let doConfetti = false;
+    let newEmoji = null;
+    let newMessage = null;
+    let doEmoji = false;
 
-    // confetti: random chance, but always when big streaks (>=5)
     if (val === true || val === "success") {
-      const doConfetti = streak >= 5 ? true : Math.random() < 0.35;
+      doConfetti = streak >= 5 ? true : Math.random() < 0.35;
+      doEmoji = Math.random() < 0.8;
+      
+      // 🌟 Streak bonuses
+      if (streak === 3) {
+        newEmoji = "🔥";
+        newMessage = "🔥 Amazing! 3 in a row!";
+        doEmoji = true;
+      }
+      if (streak === 5) {
+        newEmoji = "🏆";
+        newMessage = "🏆 Incredible! 5 correct in a row!";
+        doConfetti = true;
+        doEmoji = true;
+      }
+      if (streak === 10) {
+        newEmoji = "👑";
+        newMessage = "👑 Unstoppable! 10 streak!";
+        doConfetti = true;
+        doEmoji = true;
+      }
+
+      // 🎲 Normal random emojis
+      if (!newEmoji && doEmoji) {
+        const emojiList = ["🎉", "🌟", "🔥", "💯", "😺", "🎯", "👏", "🚀"];
+        newEmoji = emojiList[Math.floor(Math.random() * emojiList.length)];
+      }
+
       if (doConfetti) {
-        setConfettiPieces(streak >= 10 ? 500 : 220);
-        setTimeout(() => setConfettiPieces(0), 1400);
+        setConfettiPieces(streak >= 5 ? 400 : 200);
+        setTimeout(() => setConfettiPieces(0), 2000);
       } else {
         setConfettiPieces(0);
       }
-    } else {
-      setConfettiPieces(0);
-    }
 
-    // streak message for milestone (3,5,10)
-    if (val === true || val === "success") {
-      if (streak === 3) setStreakMessage("🔥 Amazing! 3 in a row!");
-      else if (streak === 5) setStreakMessage("🏆 Incredible! 5 correct in a row!");
-      else if (streak === 10) setStreakMessage("👑 Unstoppable! 10 streak!");
-      else setStreakMessage(null);
-    } else {
+      if (newEmoji) {
+        setEmojis([{ id: Date.now(), symbol: newEmoji }]);
+      }
+      
+      if (newMessage) {
+        setStreakMessage({ id: Date.now(), text: newMessage });
+      }
+
+    } else { // Handle wrong answer case
+      setConfettiPieces(0);
+      setEmojis([]);
       setStreakMessage(null);
     }
-
+    
     // hide overlay after short timeout
     const hideTimer = setTimeout(() => {
       setVisible(false);
-      setEmojiBurst([]);
+      setEmojis([]);
       setStreakMessage(null);
-    }, 1200);
+    }, 1500);
 
     return () => clearTimeout(hideTimer);
   }, [trigger, streak]);
@@ -115,19 +131,29 @@ export default function FeedbackOverlay({ trigger, streak }) {
         gravity={0.25}
       />
 
-      {/* Floating emoji burst */}
+      {/* Floating Emojis */}
       <AnimatePresence>
-        {emojiBurst.map((p) => (
+        {emojis.map((e) => (
           <motion.div
-            key={p.id}
-            initial={{ opacity: 1, x: 0, y: 0, scale: p.scale, rotate: p.rotate }}
-            animate={{ opacity: 0, x: p.x, y: p.y - 80, scale: p.scale + 0.6, rotate: p.rotate }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute left-1/2 top-1/2 text-3xl select-none"
-            style={{ transform: "translate(-50%,-50%)" }}
+            key={e.id}
+            initial={{
+              opacity: 0,
+              y: window.innerHeight - 100,
+              x: Math.random() * window.innerWidth,
+              scale: 0.6,
+              rotate: -30 + Math.random() * 60,
+            }}
+            animate={{
+              opacity: 1,
+              y: window.innerHeight / 2 - 300,
+              scale: 1.4,
+              rotate: 0,
+            }}
+            exit={{ opacity: 0, y: -200 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="absolute text-6xl"
           >
-            {p.symbol}
+            {e.symbol}
           </motion.div>
         ))}
       </AnimatePresence>
@@ -136,16 +162,18 @@ export default function FeedbackOverlay({ trigger, streak }) {
       <AnimatePresence>
         {streakMessage && (
           <motion.div
-            key={`streakMsg-${streakMessage}`}
-            initial={{ opacity: 0, y: -24, scale: 0.9 }}
+            key={streakMessage.id}
+            initial={{ opacity: 0, y: -40, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -16, scale: 0.95 }}
-            transition={{ duration: 0.45, ease: "easeInOut" }}
-            className="fixed top-6 left-1/2 transform -translate-x-1/2 bg-white/20 backdrop-blur-md px-6 py-3 rounded-2xl shadow-lg pointer-events-none"
+            exit={{ opacity: 0, y: -40, scale: 0.9 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="fixed top-8 left-1/2 transform -translate-x-1/2
+              bg-white/20 backdrop-blur-md px-6 py-3
+              rounded-2xl shadow-lg text-center"
           >
-            <div className="text-center text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500">
-              {streakMessage}
-            </div>
+            <p className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent drop-shadow-md">
+              {streakMessage.text}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
