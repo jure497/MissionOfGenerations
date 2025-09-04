@@ -62,24 +62,27 @@ export default function QuestionRenderer({ question, onAnswered }) {
     const nowKey = Date.now();
 
     if (isCorrect === true) {
-      setStreak((s) => s + 1);
-      setFeedback({ key: nowKey, isCorrect: true });
-      setMascotMood((prev) => ((streak + 1) % 3 === 0 ? "celebrate" : "happy"));
-      playSound("/sounds/correct.mp3");
-      setTimeout(() => setMascotMood("idle"), 2000);
-    } else if (isCorrect === false) {
-      setStreak(0);
-      setFeedback({ key: nowKey, isCorrect: false });
-      setMascotMood("sad");
-      playSound("/sounds/incorrect.mp3");
-      setTimeout(() => setMascotMood("idle"), 2000);
-    } else {
-      setFeedback({ key: nowKey, isCorrect: null });
-      setMascotMood("idle");
-    }
+      setStreak((s) => s + 1);
+      setFeedback({ key: nowKey, isCorrect: true });
+      setMascotMood((prev) => ((streak + 1) % 3 === 0 ? "celebrate" : "happy"));
+      playSound("/sounds/correct.mp3");
+      setTimeout(() => setMascotMood("idle"), 2000);
+    } else if (isCorrect === false) {
+      setStreak(0);
+      setFeedback({ key: nowKey, isCorrect: false });
+      setMascotMood("sad");
+      // Play incorrect sound at full volume
+      const incorrectAudio = new Audio("/sounds/incorrect.mp3");
+      incorrectAudio.volume = 1.0;
+      incorrectAudio.play().catch(() => {});
+      setTimeout(() => setMascotMood("idle"), 2000);
+    } else {
+      setFeedback({ key: nowKey, isCorrect: null });
+      setMascotMood("idle");
+    }
 
-    onAnswered(isCorrect);
-  };
+    onAnswered(isCorrect);
+  };
 
   const renderQuestion = () => {
     switch (typeKey) {
@@ -124,7 +127,7 @@ export default function QuestionRenderer({ question, onAnswered }) {
         <FeedbackOverlay trigger={feedback} streak={streak} />
       </div>
 
-      <Mascot visible={false} mood={mascotMood} />
+      <Mascot visible={true} mood={mascotMood} />
     </div>
   );
 }
