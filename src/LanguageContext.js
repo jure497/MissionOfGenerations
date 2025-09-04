@@ -33,7 +33,9 @@ const DICT = {
     encourage: "Nice try — keep going!",
     didGood:"I succeeded",
     didPoor:"I Failed",
-    show_differences: "Show differences"
+    show_differences: "Show differences",
+    correct_answer: "Correct answer",
+    show_answer: "Show answer"
   },
   sl: {
     app_title: "Misija Generacij",
@@ -66,7 +68,9 @@ const DICT = {
     encourage: "Dober poskus — nadaljuj!",
     didGood: "Sem uspel",
     didPoor:"Ni mi uspelo",
-    show_differences: "Pokaži razlike"
+    show_differences: "Pokaži razlike",
+    correct_answer: "Pravilen odgovor",
+    show_answer: "Prikaži odgovor"
   },
 };
 

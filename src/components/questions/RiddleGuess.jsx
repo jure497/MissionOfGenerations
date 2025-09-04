@@ -75,6 +75,7 @@ export default function RiddleGuess({ question, onAnswered }) {
       {revealed && (
         <div className="mt-3 p-3 rounded bg-yellow-50 border border-yellow-300">
           <b>{t?.("correct_answer") || "Correct answer"}:</b> {showAnswer}
+          
         </div>
       )}
     </div>
