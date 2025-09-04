@@ -183,7 +183,7 @@ function Quiz() {
     answered && lastCorrect !== null && lastCorrect !== "neutral";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-fuchsia-400 via-purple-400 to-sky-400 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-fuchsia-400 via-purple-400 to-sky-400 p-4 overflow-x-hidden">
       <div className="max-w-xl mx-auto relative">
         <div className="absolute top-2 left-2 flex gap-2">
           <button
@@ -202,7 +202,7 @@ function Quiz() {
 
         <div className="pt-14" />
 
-        <div className="bg-white/90 backdrop-blur rounded-2xl shadow-xl p-6">
+        <div className="bg-white/90 backdrop-blur rounded-2xl shadow-xl p-6 relative">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold text-purple-800">
               {roleLabel} • {t("app_title")}
@@ -286,62 +286,64 @@ function Quiz() {
                   streak={streak}
                 />
               )}
-
-              {/* Success Feedback */}
-              {shouldShowFeedback && lastCorrect === "success" && (
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`feedback-${lastCorrect}`}
-                    initial={{ opacity: 0, y: 10, scale: 0.85 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      transition: { type: "spring", stiffness: 300, damping: 20 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      y: 10,
-                      scale: 0.85,
-                      transition: { duration: 0.2 },
-                    }}
-                    className="relative mt-4 p-3 rounded-lg border flex items-center justify-center text-center
-                      bg-green-50 border-green-300 text-green-800"
-                  >
-                    <span className="mr-2">🎉</span>
-                    {t("congratulations")}
-                  </motion.div>
-                </AnimatePresence>
-              )}
-
-
-              {/* Only show "encourage" feedback */}
-              {shouldShowFeedback && lastCorrect === "encourage" && (
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`feedback-${lastCorrect}`}
-                    initial={{ opacity: 0, y: 10, scale: 0.85 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      transition: { type: "spring", stiffness: 300, damping: 20 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      y: 10,
-                      scale: 0.85,
-                      transition: { duration: 0.2 },
-                    }}
-                    className="relative mt-4 p-3 rounded-lg border flex items-center justify-center text-center
-                      bg-yellow-50 border-yellow-300 text-yellow-800"
-                  >
-                    <span className="mr-2">✨</span>
-                    {t("encourage")}
-                  </motion.div>
-                </AnimatePresence>
-              )}
-
+              
+              {/* This is the new container for the feedback to prevent layout shift */}
+              <div className="absolute inset-x-0 bottom-40 w-full flex justify-center pointer-events-none">
+                {/* Success Feedback */}
+                {shouldShowFeedback && lastCorrect === "success" && (
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`feedback-${lastCorrect}`}
+                      initial={{ opacity: 0, y: 10, scale: 0.85 }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        transition: { type: "spring", stiffness: 300, damping: 20 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        y: 10,
+                        scale: 0.85,
+                        transition: { duration: 0.2 },
+                      }}
+                      className="p-3 rounded-lg border flex items-center justify-center text-center
+                        bg-green-50 border-green-300 text-green-800 pointer-events-auto"
+                    >
+                      <span className="mr-2">🎉</span>
+                      {t("congratulations")}
+                    </motion.div>
+                  </AnimatePresence>
+                )}
+  
+                {/* Only show "encourage" feedback */}
+                {shouldShowFeedback && lastCorrect === "encourage" && (
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`feedback-${lastCorrect}`}
+                      initial={{ opacity: 0, y: 10, scale: 0.85 }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        transition: { type: "spring", stiffness: 300, damping: 20 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        y: 10,
+                        scale: 0.85,
+                        transition: { duration: 0.2 },
+                      }}
+                      className="p-3 rounded-lg border flex items-center justify-center text-center
+                        bg-yellow-50 border-yellow-300 text-yellow-800 pointer-events-auto"
+                    >
+                      <span className="mr-2">✨</span>
+                      {t("encourage")}
+                    </motion.div>
+                  </AnimatePresence>
+                )}
+              </div>
+  
               <div className="mt-4 flex justify-end">
                 <button
                   onClick={next}
