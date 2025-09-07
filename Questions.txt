@@ -1,0 +1,720 @@
+[
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find a spoon in your home",
+      "sl": "Najdi žlico v tvojem domu"
+    },
+    "roles": ["grandchild", "grandparent"],
+    "answer": { "en": "Spoon", "sl": "Žlica" }
+  },
+  {
+    "type": "sound_choice",
+    "question": {
+      "en": "Which animal makes this sound?",
+      "sl": "Katera žival oddaja ta zvok?"
+    },
+    "roles": ["grandchild"],
+    "soundUrl": "/sounds/dog.mp3",
+    "options": {
+      "en": ["Cat", "Dog", "Cow"],
+      "sl": ["Mačka", "Pes", "Krava"]
+    },
+    "answer": { "en": "Dog", "sl": "Pes" }
+  },
+  {
+    "type": "drag_drop",
+    "question": {
+      "en": "Sort the fruits by color",
+      "sl": "Razvrsti sadje po barvah"
+    },
+    "roles": ["grandchild"],
+    "items": ["/img/apple.jpg", "/img/banana.jpg", "/img/lemon.jpg"],
+    "categories": [
+      { "name": "Green", "items": ["/img/apple.jpg"] },
+      { "name": "Yellow", "items": ["/img/banana.jpg", "/img/lemon.jpg"] }
+    ],
+    "answer": { "en": "Sorted fruits", "sl": "Razvrščeno sadje" }
+  },
+  {
+    "type": "riddle_guess",
+    "question": {
+      "en": "What has keys but can’t open locks?",
+      "sl": "Kaj ima tipke, a ne more odpreti ključavnic?"
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Piano", "sl": "Klavir" }
+  },
+  {
+    "type": "spot_difference",
+    "question": {
+      "en": "Find 3 differences between the pictures",
+      "sl": "Najdi 3 razlike med slikami"
+    },
+    "roles": ["grandchild"],
+    "image1": "/img/pic1.png",
+    "image2": "/img/pic2.png",
+    "differences": [
+      "Tree missing",
+      "Hat color changed",
+      "Window open"
+    ],
+    "answer": { "en": "3 differences found", "sl": "3 razlike najdene" }
+  }
+,
+  {
+    "question": {
+      "en": "Which of these fruits is yellow?",
+      "sl": "Katero izmed teh sadežev je rumeno?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Apple", "Banana", "Grapes"],
+      "sl": ["Jabolko", "Banana", "Grozdje"]
+    },
+    "answer": {
+      "en": "Banana",
+      "sl": "Banana"
+    }
+  },
+  {
+    "question": {
+      "en": "Type the capital of Slovenia.",
+      "sl": "Vpišssi glavno mesto Slovenije."
+    },
+    "type": "text_input",
+    "roles": ["grandparent"],
+    "answer": {
+      "en": "Ljubljana",
+      "sl": "Ljubljana"
+    }
+  },
+  {
+    "question": {
+      "en": "Which one is a bicycle?",
+      "sl": "Kateri je kolo?"
+    },
+    "type": "picture_select",
+    "roles": ["grandchild"],
+    "options": {
+      "en": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "car" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "bicycle" }
+      ],
+      "sl": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "avto" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "kolo" }
+      ]
+    },
+    "answer": {
+      "en": "bicycle",
+      "sl": "kolo"
+    }
+  },
+  {
+    "question": {
+      "en": "Type the capital of France.",
+      "sl": "Vpiši glavno mesto Francije."
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Paris",
+      "sl": "Pariz"
+    }
+  },
+  {
+    "question": {
+      "en": "Which one is a bus?",
+      "sl": "Kateri je avtobus?"
+    },
+    "type": "picture_select",
+    "roles": ["grandparent"],
+    "options": {
+      "en": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "car" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "bus" }
+      ],
+      "sl": [
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "avto" },
+        { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "avtobus" }
+      ]
+    },
+    "answer": {
+      "en": "bus",
+      "sl": "avtobus"
+    }
+  }
+]
+
+
+
+
+[
+  {
+    "question": {
+      "en": "Which planet is known as the Red Planet?",
+      "sl": "Kateri planet poznamo kot Rdeči planet?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Earth", "Mars", "Venus"],
+      "sl": ["Zemlja", "Mars", "Venera"]
+    },
+    "answer": {
+      "en": "Mars",
+      "sl": "Mars"
+    }
+  },
+  {
+    "question": {
+      "en": "Which of these animals can fly?",
+      "sl": "Katera izmed teh živali lahko leti?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Dog", "Cat", "Eagle"],
+      "sl": ["Pes", "Mačka", "Orel"]
+    },
+    "answer": {
+      "en": "Eagle",
+      "sl": "Orel"
+    }
+  },
+  {
+    "question": {
+      "en": "Which shape has three sides?",
+      "sl": "Katera oblika ima tri stranice?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Square", "Triangle", "Circle"],
+      "sl": ["Kvadrat", "Trikotnik", "Krog"]
+    },
+    "answer": {
+      "en": "Triangle",
+      "sl": "Trikotnik"
+    }
+  },
+  {
+    "question": {
+      "en": "Which ocean is the largest?",
+      "sl": "Katero morje je največje?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Atlantic Ocean", "Pacific Ocean", "Indian Ocean"],
+      "sl": ["Atlantski ocean", "Tihi ocean", "Indijski ocean"]
+    },
+    "answer": {
+      "en": "Pacific Ocean",
+      "sl": "Tihi ocean"
+    }
+  },
+  {
+    "question": {
+      "en": "Which fruit is red?",
+      "sl": "Katero sadje je rdeče?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Apple", "Banana", "Pear"],
+      "sl": ["Jabolko", "Banana", "Hruška"]
+    },
+    "answer": {
+      "en": "Apple",
+      "sl": "Jabolko"
+    }
+  },
+  {
+    "question": {
+      "en": "Which number is even?",
+      "sl": "Katera številka je soda?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["3", "6", "9"],
+      "sl": ["3", "6", "9"]
+    },
+    "answer": {
+      "en": "6",
+      "sl": "6"
+    }
+  },
+  {
+    "question": {
+      "en": "Which of these is a mammal?",
+      "sl": "Katera izmed teh živali je sesalec?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Shark", "Whale", "Octopus"],
+      "sl": ["Morski pes", "Kit", "Hobotnica"]
+    },
+    "answer": {
+      "en": "Whale",
+      "sl": "Kit"
+    }
+  },
+  {
+    "question": {
+      "en": "Which day comes after Monday?",
+      "sl": "Kateri dan pride po ponedeljku?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Sunday", "Tuesday", "Friday"],
+      "sl": ["Nedelja", "Torek", "Petek"]
+    },
+    "answer": {
+      "en": "Tuesday",
+      "sl": "Torek"
+    }
+  },
+  {
+    "question": {
+      "en": "Which of these is the tallest animal?",
+      "sl": "Katera izmed teh živali je najvišja?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Elephant", "Giraffe", "Horse"],
+      "sl": ["Slon", "Žirafa", "Konj"]
+    },
+    "answer": {
+      "en": "Giraffe",
+      "sl": "Žirafa"
+    }
+  },
+  {
+    "question": {
+      "en": "Which season is the coldest?",
+      "sl": "Katero letni čas je najhladnejši?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Spring", "Summer", "Winter"],
+      "sl": ["Pomlad", "Poletje", "Zima"]
+    },
+    "answer": {
+      "en": "Winter",
+      "sl": "Zima"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the capital of Italy?",
+      "sl": "Katero je glavno mesto Italije?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Rome",
+      "sl": "Rim"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the capital of Germany?",
+      "sl": "Katero je glavno mesto Nemčije?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Berlin",
+      "sl": "Berlin"
+    }
+  },
+  {
+    "question": {
+      "en": "What is 5 + 7?",
+      "sl": "Koliko je 5 + 7?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "12",
+      "sl": "12"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the capital of Spain?",
+      "sl": "Katero je glavno mesto Španije?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Madrid",
+      "sl": "Madrid"
+    }
+  },
+  {
+    "question": {
+      "en": "How many days are in a week?",
+      "sl": "Koliko dni je v tednu?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "7",
+      "sl": "7"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the capital of Austria?",
+      "sl": "Katero je glavno mesto Avstrije?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Vienna",
+      "sl": "Dunaj"
+    }
+  },
+  {
+    "question": {
+      "en": "What is 9 - 4?",
+      "sl": "Koliko je 9 - 4?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "5",
+      "sl": "5"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the capital of Croatia?",
+      "sl": "Katero je glavno mesto Hrvaške?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Zagreb",
+      "sl": "Zagreb"
+    }
+  },
+  {
+    "question": {
+      "en": "How many legs does a spider have?",
+      "sl": "Koliko nog ima pajek?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "8",
+      "sl": "8"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the capital of Portugal?",
+      "sl": "Katero je glavno mesto Portugalske?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Lisbon",
+      "sl": "Lizbona"
+    }
+  }
+]
+
+
+
+[
+  {
+    "question": {
+      "en": "What is H2O?",
+      "sl": "Kaj je H2O?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Oxygen", "Water", "Salt"],
+      "sl": ["Kisik", "Voda", "Sol"]
+    },
+    "answer": {
+      "en": "Water",
+      "sl": "Voda"
+    }
+  },
+  {
+    "question": {
+      "en": "Which gas do humans need to breathe?",
+      "sl": "Kateri plin ljudje potrebujemo za dihanje?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Carbon dioxide", "Oxygen", "Helium"],
+      "sl": ["Ogljikov dioksid", "Kisik", "Helij"]
+    },
+    "answer": {
+      "en": "Oxygen",
+      "sl": "Kisik"
+    }
+  },
+  {
+    "question": {
+      "en": "What do plants take from the air to make food?",
+      "sl": "Kaj rastline vzamejo iz zraka za izdelavo hrane?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Carbon dioxide", "Oxygen", "Nitrogen"],
+      "sl": ["Ogljikov dioksid", "Kisik", "Dušik"]
+    },
+    "answer": {
+      "en": "Carbon dioxide",
+      "sl": "Ogljikov dioksid"
+    }
+  },
+  {
+    "question": {
+      "en": "Which of these is a metal?",
+      "sl": "Katera izmed teh je kovina?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Iron", "Plastic", "Wood"],
+      "sl": ["Železo", "Plastika", "Les"]
+    },
+    "answer": {
+      "en": "Iron",
+      "sl": "Železo"
+    }
+  },
+  {
+    "question": {
+      "en": "What do we call frozen water?",
+      "sl": "Kako imenujemo zamrznjeno vodo?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Steam", "Ice", "Snow"],
+      "sl": ["Para", "Led", "Sneg"]
+    },
+    "answer": {
+      "en": "Ice",
+      "sl": "Led"
+    }
+  },
+  {
+    "question": {
+      "en": "Which of these is NOT a state of matter?",
+      "sl": "Katero od teh NI agregatno stanje snovi?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Solid", "Liquid", "Energy"],
+      "sl": ["Trdno", "Tekoče", "Energija"]
+    },
+    "answer": {
+      "en": "Energy",
+      "sl": "Energija"
+    }
+  },
+  {
+    "question": {
+      "en": "What gas do bubbles in soda contain?",
+      "sl": "Kateri plin vsebujejo mehurčki v gazirani pijači?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Oxygen", "Carbon dioxide", "Nitrogen"],
+      "sl": ["Kisik", "Ogljikov dioksid", "Dušik"]
+    },
+    "answer": {
+      "en": "Carbon dioxide",
+      "sl": "Ogljikov dioksid"
+    }
+  },
+  {
+    "question": {
+      "en": "Which is the main gas in the air?",
+      "sl": "Kateri plin je glavni v zraku?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Nitrogen", "Oxygen", "Carbon dioxide"],
+      "sl": ["Dušik", "Kisik", "Ogljikov dioksid"]
+    },
+    "answer": {
+      "en": "Nitrogen",
+      "sl": "Dušik"
+    }
+  },
+  {
+    "question": {
+      "en": "Which part of the atom has a positive charge?",
+      "sl": "Kateri del atoma ima pozitiven naboj?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Proton", "Electron", "Neutron"],
+      "sl": ["Proton", "Elektron", "Nevtron"]
+    },
+    "answer": {
+      "en": "Proton",
+      "sl": "Proton"
+    }
+  },
+  {
+    "question": {
+      "en": "Which of these is a chemical change?",
+      "sl": "Katera izmed teh je kemijska sprememba?"
+    },
+    "type": "multiple_choice",
+    "roles": ["grandchild"],
+    "options": {
+      "en": ["Melting ice", "Burning wood", "Breaking glass"],
+      "sl": ["Taljenje ledu", "Gorenje lesa", "Razbijanje stekla"]
+    },
+    "answer": {
+      "en": "Burning wood",
+      "sl": "Gorenje lesa"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the chemical symbol for Oxygen?",
+      "sl": "Kakšna je kemijska oznaka za kisik?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "O",
+      "sl": "O"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the chemical symbol for Hydrogen?",
+      "sl": "Kakšna je kemijska oznaka za vodik?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "H",
+      "sl": "H"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the chemical symbol for Carbon?",
+      "sl": "Kakšna je kemijska oznaka za ogljik?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "C",
+      "sl": "C"
+    }
+  },
+  {
+    "question": {
+      "en": "What do we call the table of chemical elements?",
+      "sl": "Kako imenujemo tabelo kemijskih elementov?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Periodic table",
+      "sl": "Periodni sistem"
+    }
+  },
+  {
+    "question": {
+      "en": "What is NaCl commonly called?",
+      "sl": "Kako imenujemo NaCl?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Salt",
+      "sl": "Sol"
+    }
+  },
+  {
+    "question": {
+      "en": "What do we call water in gas form?",
+      "sl": "Kako imenujemo vodo v plinastem stanju?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Steam",
+      "sl": "Para"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the smallest unit of matter?",
+      "sl": "Kaj je najmanjša enota snovi?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Atom",
+      "sl": "Atom"
+    }
+  },
+  {
+    "question": {
+      "en": "What gas do humans exhale?",
+      "sl": "Kateri plin izdihujejo ljudje?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Carbon dioxide",
+      "sl": "Ogljikov dioksid"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the chemical symbol for Gold?",
+      "sl": "Kakšna je kemijska oznaka za zlato?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Au",
+      "sl": "Au"
+    }
+  },
+  {
+    "question": {
+      "en": "What is the chemical symbol for Silver?",
+      "sl": "Kakšna je kemijska oznaka za srebro?"
+    },
+    "type": "text_input",
+    "roles": ["grandchild"],
+    "answer": {
+      "en": "Ag",
+      "sl": "Ag"
+    }
+  }
+]

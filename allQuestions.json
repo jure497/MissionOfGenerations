@@ -2,148 +2,136 @@
   {
     "type": "challenge_task",
     "question": {
-      "en": "Find a spoon in your home",
-      "sl": "Najdi žlico v tvojem domu"
+      "en": "Open the camera app and take a picture of your hand.",
+      "sl": "Odprite kamero in posnemite sliko svojega vnuka."
     },
-    "roles": ["grandchild", "grandparent"],
-    "answer": { "en": "Spoon", "sl": "Žlica" }
-  },
-  {
-    "type": "sound_choice",
-    "question": {
-      "en": "Which animal makes this sound?",
-      "sl": "Katera žival oddaja ta zvok?"
-    },
-    "roles": ["grandchild"],
-    "soundUrl": "/sounds/dog.mp3",
-    "options": {
-      "en": ["Cat", "Dog", "Cow"],
-      "sl": ["Mačka", "Pes", "Krava"]
-    },
-    "answer": { "en": "Dog", "sl": "Pes" }
-  },
-  {
-    "type": "drag_drop",
-    "question": {
-      "en": "Sort the fruits by color",
-      "sl": "Razvrsti sadje po barvah"
-    },
-    "roles": ["grandchild"],
-    "items": ["/img/apple.jpg", "/img/banana.jpg", "/img/lemon.jpg"],
-    "categories": [
-      { "name": "Green", "items": ["/img/apple.jpg"] },
-      { "name": "Yellow", "items": ["/img/banana.jpg", "/img/lemon.jpg"] }
-    ],
-    "answer": { "en": "Sorted fruits", "sl": "Razvrščeno sadje" }
-  },
-  {
-    "type": "riddle_guess",
-    "question": {
-      "en": "What has keys but can’t open locks?",
-      "sl": "Kaj ima tipke, a ne more odpreti ključavnic?"
-    },
-    "roles": ["grandparent", "grandchild"],
-    "answer": { "en": "Piano", "sl": "Klavir" }
-  },
-  {
-    "type": "spot_difference",
-    "question": {
-      "en": "Find 3 differences between the pictures",
-      "sl": "Najdi 3 razlike med slikami"
-    },
-    "roles": ["grandchild"],
-    "image1": "/img/pic1.png",
-    "image2": "/img/pic2.png",
-    "differences": [
-      "Tree missing",
-      "Hat color changed",
-      "Window open"
-    ],
-    "answer": { "en": "3 differences found", "sl": "3 razlike najdene" }
-  }
-,
-  {
-    "question": {
-      "en": "Which of these fruits is yellow?",
-      "sl": "Katero izmed teh sadežev je rumeno?"
-    },
-    "type": "multiple_choice",
-    "roles": ["grandchild"],
-    "options": {
-      "en": ["Apple", "Banana", "Grapes"],
-      "sl": ["Jabolko", "Banana", "Grozdje"]
-    },
-    "answer": {
-      "en": "Banana",
-      "sl": "Banana"
-    }
-  },
-  {
-    "question": {
-      "en": "Type the capital of Slovenia.",
-      "sl": "Vpišssi glavno mesto Slovenije."
-    },
-    "type": "text_input",
     "roles": ["grandparent"],
-    "answer": {
-      "en": "Ljubljana",
-      "sl": "Ljubljana"
-    }
+    "answer": { "en": "Photo of hand", "sl": "Slika roke" }
   },
   {
+    "type": "challenge_task",
     "question": {
-      "en": "Which one is a bicycle?",
-      "sl": "Kateri je kolo?"
+      "en": "Find the Wi-Fi symbol on your phone.",
+      "sl": "Poiščite simbol Wi-Fi na svojem telefonu."
     },
-    "type": "picture_select",
-    "roles": ["grandchild"],
-    "options": {
-      "en": [
-        { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "car" },
-        { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "bicycle" }
-      ],
-      "sl": [
-        { "src": "https://cdn-icons-png.flaticon.com/512/741/741407.png", "value": "avto" },
-        { "src": "https://cdn-icons-png.flaticon.com/512/2972/2972187.png", "value": "kolo" }
-      ]
-    },
-    "answer": {
-      "en": "bicycle",
-      "sl": "kolo"
-    }
-  },
-  {
-    "question": {
-      "en": "Type the capital of France.",
-      "sl": "Vpiši glavno mesto Francije."
-    },
-    "type": "text_input",
-    "roles": ["grandchild"],
-    "answer": {
-      "en": "Paris",
-      "sl": "Pariz"
-    }
-  },
-  {
-    "question": {
-      "en": "Which one is a bus?",
-      "sl": "Kateri je avtobus?"
-    },
-    "type": "picture_select",
     "roles": ["grandparent"],
-    "options": {
-      "en": [
-        { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "car" },
-        { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "bus" }
-      ],
-      "sl": [
-        { "src": "https://cdn-icons-png.flaticon.com/512/61/61240.png", "value": "avto" },
-        { "src": "https://cdn-icons-png.flaticon.com/512/61/61258.png", "value": "avtobus" }
-      ]
+    "answer": { "en": "Wi-Fi symbol", "sl": "Simbol Wi-Fi" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open your messages and type the word HELLO.",
+      "sl": "Odprite svoja sporočila in nekommu pošlji sporočilo."
     },
-    "answer": {
-      "en": "bus",
-      "sl": "avtobus"
-    }
+    "roles": ["grandparent"],
+    "answer": { "en": "HELLO", "sl": "ŽIVJO" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Increase the volume on your phone by one level.",
+      "sl": "Povečajte glasnost na svojem telefonu za eno stopnjo."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Volume up", "sl": "Glasnost višje" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open the clock app and check what time it is.",
+      "sl": "Odprite aplikacijo ura in preverite, koliko je ura."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Current time", "sl": "Trenutna ura" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find the contacts app on your phone.",
+      "sl": "Poiščite aplikacijo za stike na svojem telefonu."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Contacts", "sl": "Stiki" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Turn on the flashlight on your phone.",
+      "sl": "Vklopite svetilko na svojem telefonu."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Flashlight", "sl": "Svetilka" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open your photo gallery and find the last photo.",
+      "sl": "Odprite galerijo fotografij in poiščite zadnjo sliko."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Last photo", "sl": "Zadnja fotografija" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Search for the word WEATHER on your phone.",
+      "sl": "Na svojem telefonu poglej kakšno je vreme."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Weather", "sl": "Vreme" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open your phone settings and find the Bluetooth option.",
+      "sl": "Odprite nastavitve telefona in poiščite možnost Bluetooth."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Bluetooth", "sl": "Bluetooth" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open the calculator app and calculate 12 + 8.",
+      "sl": "Odprite kalkulator in izračunajte 19 + 28."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "20", "sl": "20" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find the battery percentage of your phone.",
+      "sl": "Poiščite odstotek baterije na svojem telefonu."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Battery %", "sl": "Odstotek baterije" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open the internet browser on your phone.",
+      "sl": "Odprite spletni brskalnik na svojem telefonu."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Browser", "sl": "Brskalnik" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Zoom in on a photo using your fingers.",
+      "sl": "Povečajte fotografijo s prsti."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Zoomed photo", "sl": "Povečana fotografija" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open YouTube and find a video about cooking.",
+      "sl": "Odprite YouTube in poiščite video o kuhanju."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Cooking video", "sl": "Video o kuhanju" }
   }
 ]

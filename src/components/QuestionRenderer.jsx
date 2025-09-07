@@ -127,7 +127,7 @@ export default function QuestionRenderer({ question, onAnswered }) {
         <FeedbackOverlay trigger={feedback} streak={streak} />
       </div>
 
-      <Mascot visible={true} mood={mascotMood} />
+      <Mascot visible={false} mood={mascotMood} />
     </div>
   );
 }
