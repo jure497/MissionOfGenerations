@@ -110,6 +110,14 @@ function Quiz() {
     );
   }, [role, order, index, score, streak, finished, isLoaded]);
 
+  React.useEffect(() => {
+    if (lastCorrect !== null && lastCorrect !== "neutral") {
+      const timer = setTimeout(() => {
+        setLastCorrect(null);
+      }, 1900); // Hide after 1.5 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [lastCorrect]);
 
   const roleLabel =
     role === "grandparent" ? t("role_grandparent") : t("role_grandchild");

@@ -1,5 +1,5 @@
 // src/components/questions/ChallengeTask.jsx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLanguage } from "../../LanguageContext";
 import { pickByLang } from "../../utils/pickByLang";
 
@@ -21,29 +21,40 @@ export default function ChallengeTask({ question, onAnswered }) {
     pickByLang(question?.prompt, lang) ||
     "";
 
+  // Track whether user has clicked one of the buttons
+  const [answered, setAnswered] = useState(false);
+
   useEffect(() => {
-    // Reset / no auto-answer — wait for user choice
+    // Reset when a new question loads
+    setAnswered(false);
   }, [question?.id, lang]);
+
+  const handleAnswer = (type) => {
+    setAnswered(true);
+    onAnswered(type);
+  };
 
   return (
     <div className="w-full text-center">
       <h2 className="text-lg font-semibold mb-6">{text}</h2>
 
-      <div className="flex justify-center gap-4">
-        <button
-          onClick={() => onAnswered("success")}
-          className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700"
-        >
-          {t("didGood") || "I succeeded"}
-        </button>
+      {!answered && (
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={() => handleAnswer("success")}
+            className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700"
+          >
+            {t("didGood") || "I succeeded"}
+          </button>
 
-        <button
-          onClick={() => onAnswered("encourage")}
-          className="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-yellow-600"
-        >
-          {t("didPoor") || "I failed"}
-        </button>
-      </div>
+          <button
+            onClick={() => handleAnswer("encourage")}
+            className="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-yellow-600"
+          >
+            {t("didPoor") || "I failed"}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
