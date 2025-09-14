@@ -436,6 +436,14 @@
 
 
 
+
+
+
+
+
+
+
+
 [
   {
     "question": {
@@ -718,3 +726,830 @@
     }
   }
 ]
+
+
+-------------
+
+
+[
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find an object in the room and describe how it is used in daily life.",
+      "sl": "Najdi predmet v sobi in povej, kako ga uporabljamo vsak dan."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "A common object and its daily use.", "sl": "Predmet in njegova uporaba v vsakdanjem življenju." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Can you fold a piece of clothing neatly and show your grandparent how to do it?",
+      "sl": "Zloži kos oblačila lepo in pokaži starišu, kako se to naredi."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Folded clothing.", "sl": "Zloženo oblačilo." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find a spoon and a fork. Show your grandparent how you would set the table for one person.",
+      "sl": "Najdi žlico in vilico. Pokaži starišu, kako bi pripravil mizo za eno osebo."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Correctly set table.", "sl": "Pravilno pripravljena miza." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Can you describe how to tie your shoelaces without using your hands?",
+      "sl": "Opiši, kako zavežeš vezalke, brez da bi uporabil roke."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Verbal explanation of shoelace tying.", "sl": "Opis, kako zavezati vezalke." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Teach your grandparent a small exercise or stretch you know.",
+      "sl": "Nauči stariša preprosto vajo ali razteg, ki ga znaš."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Grandparent performs the exercise/stretch.", "sl": "Stariš izvede vajo ali razteg." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Close your eyes and listen. What’s the quietest sound you can hear?",
+      "sl": "Zapri oči in prisluhni. Kateri je najtišji zvok, ki ga slišiš?"
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Description of the quietest sound.", "sl": "Opis najtišjega zvoka." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Touch three objects with different textures. Describe them to your grandparent.",
+      "sl": "Dotakni se treh predmetov z različnimi občutki. Opiši jih starišu."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Descriptions of three textures.", "sl": "Opisi treh občutkov (tekstur)." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Smell three different things around you. Which one is your favorite?",
+      "sl": "Povohaj tri različne stvari okoli sebe. Katera ti je najbolj všeč?"
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Favorite smell chosen.", "sl": "Izbran najljubši vonj." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Look outside for 10 seconds. What are 3 things you noticed that you didn’t see before?",
+      "sl": "Poglej skozi okno za 10 sekund. Katere tri stvari si opazil, ki jih prej nisi?"
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Three new observations.", "sl": "Tri nove opažene stvari." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find something cold and something warm. How do they feel different?",
+      "sl": "Najdi nekaj hladnega in nekaj toplega. Kako se razlikujeta po občutku?"
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Comparison of cold and warm sensations.", "sl": "Primerjava občutka hladnega in toplega." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Look at an object for 5 seconds. Close your eyes and describe it in as much detail as possible.",
+      "sl": "Glej predmet 5 sekund. Zapri oči in ga čim bolj natančno opiši."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Detailed description of object.", "sl": "Podroben opis predmeta." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Say a simple sentence and ask your grandparent to repeat it backward!",
+      "sl": "Izreci kratek stavek in prosi stariša, naj ga ponovi nazaj!"
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Grandparent repeats sentence backward.", "sl": "Stariš ponovi stavek nazaj." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Count the number of steps it takes to walk across the room. Who takes more steps – grandchild or grandparent?",
+      "sl": "Preštej, koliko korakov potrebuješ, da prehodiš sobo. Kdo jih naredi več – ti ali stariš?"
+    },
+    "roles": ["both"],
+    "answer": { "en": "Comparison of steps taken.", "sl": "Primerjava števila korakov." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find something that has a shape similar to a square, triangle, and circle.",
+      "sl": "Najdi nekaj, kar je podobno kvadratu, trikotniku in krogu."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Three objects matching shapes.", "sl": "Trije predmeti, ki ustrezajo oblikam." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Grandchild: Show your grandparent a new technology you use today.",
+      "sl": "Pokaži starišu eno novo tehnologijo, ki jo danes uporabljaš."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Grandparent sees and understands new technology.", "sl": "Stariš vidi in spozna novo tehnologijo." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find a plant nearby. What do you think it needs to grow?",
+      "sl": "Najdi rastlino v bližini. Kaj misliš, da potrebuje, da zraste?"
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Answer about plant needs.", "sl": "Odgovor o tem, kaj rastlina potrebuje." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Look at the sky. What do you think the weather will be like tomorrow?",
+      "sl": "Poglej v nebo. Kakšno bo po tvojem mnenju vreme jutri?"
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Prediction of tomorrow's weather.", "sl": "Napoved vremena za jutri." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find an object in your home that was made before the year 2000.",
+      "sl": "Najdi predmet v hiši, ki je bil narejen pred letom 2000."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Object older than year 2000.", "sl": "Predmet, starejši od leta 2000." }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Imagine you’re in space. Describe how things would feel different without gravity.",
+      "sl": "Predstavljaj si, da si v vesolju. Opiši, kako bi bilo brez gravitacije."
+    },
+    "roles": ["grandchild"],
+    "answer": { "en": "Description of life without gravity.", "sl": "Opis življenja brez gravitacije." }
+  }
+]
+
+
+
+
+
+
+
+
+[
+  {
+    "type": "sound_choice",
+    "question": {
+      "en": "Which object makes this sound?",
+      "sl": "Kateri predmet oddaja ta zvok?"
+    },
+    "roles": ["grandchild"],
+    "soundUrl": "/sounds/doorbell.mp3",
+    "options": {
+      "en": ["Microwave", "Doorbell", "Alarm Clock"],
+      "sl": ["Mikrovalovka", "Zvonec", "Budilka"]
+    },
+    "answer": { "en": "Doorbell", "sl": "Zvonec" }
+  },
+  {
+    "type": "sound_choice",
+    "question": {
+      "en": "Which sport is this sound from?",
+      "sl": "Iz katerega športa je ta zvok?"
+    },
+    "roles": ["grandchild"],
+    "soundUrl": "/sounds/basketball-bounce.mp3",
+    "options": {
+      "en": ["Basketball", "Bowling", "Swimming"],
+      "sl": ["Košarka", "Bowling", "Plavanje"]
+    },
+    "answer": { "en": "Basketball", "sl": "Košarka" }
+  },
+  
+  {
+    "type": "sound_choice",
+    "question": {
+      "en": "Which vehicle is making this sound?",
+      "sl": "Katero vozilo oddaja ta zvok?"
+    },
+    "roles": ["grandchild"],
+    "soundUrl": "/sounds/train-horn.mp3",
+    "options": {
+      "en": ["Car", "Train", "Airplane"],
+      "sl": ["Avto", "Vlak", "Letalo"]
+    },
+    "answer": { "en": "Train", "sl": "Vlak" }
+  },
+  {
+    "type": "sound_choice",
+    "question": {
+      "en": "Which tool is this sound from?",
+      "sl": "Iz katerega orodja je ta zvok?"
+    },
+    "roles": ["grandchild"],
+    "soundUrl": "/sounds/hammer.mp3",
+    "options": {
+      "en": ["Hammer", "Saw", "Drill"],
+      "sl": ["Kladivo", "Žaga", "Vrtalnik"]
+    },
+    "answer": { "en": "Hammer", "sl": "Kladivo" }
+  },
+  {
+    "type": "sound_choice",
+    "question": {
+      "en": "Which action does this sound match?",
+      "sl": "Kateremu dejanju ustreza ta zvok?"
+    },
+    "roles": ["grandchild"],
+    "soundUrl": "/sounds/applause.mp3",
+    "options": {
+      "en": ["Clapping hands", "Running", "Whispering"],
+      "sl": ["Ploskanje", "Tek", "Šepetanje"]
+    },
+    "answer": { "en": "Clapping hands", "sl": "Ploskanje" }
+  },
+  {
+    "type": "sound_choice",
+    "question": {
+      "en": "What do you hear?",
+      "sl": "Kaj slišiš?"
+    },
+    "roles": ["grandchild"],
+    "soundUrl": "/sounds/cat-meow.mp3",
+    "options": {
+      "en": ["Cat meowing", "Baby crying", "Bird singing"],
+      "sl": ["Mačka mijavka", "Dojenček joka", "Ptica poje"]
+    },
+    "answer": { "en": "Cat meowing", "sl": "Mačka mijavka" }
+  },
+  {
+    "type": "sound_choice",
+    "question": {
+      "en": "What time of day does this sound remind you of?",
+      "sl": "Na kateri del dneva te spominja ta zvok?"
+    },
+    "roles": ["grandchild"],
+    "soundUrl": "/sounds/rooster.mp3",
+    "options": {
+      "en": ["Morning", "Afternoon", "Night"],
+      "sl": ["Jutro", "Popoldne", "Noč"]
+    },
+    "answer": { "en": "Morning", "sl": "Jutro" }
+  },
+  {
+    "type": "sound_choice",
+    "question": {
+      "en": "Which place does this sound belong to?",
+      "sl": "Kje bi slišal ta zvok?"
+    },
+    "roles": ["grandchild"],
+    "soundUrl": "/sounds/school-bell.mp3",
+    "options": {
+      "en": ["At a school", "At a hospital", "At a park"],
+      "sl": ["V šoli", "V bolnišnici", "V parku"]
+    },
+    "answer": { "en": "At a school", "sl": "V šoli" }
+  }
+]
+
+
+
+
+
+
+[
+  {
+    "type": "drag_drop",
+    "question": {
+      "en": "Sort the animals into pets and wild animals",
+      "sl": "Razvrsti živali na hišne in divje živali"
+    },
+    "roles": ["grandchild"],
+    "items": ["/img/cat.jpg", "/img/lion.jpg", "/img/dog.jpg", "/img/elephant.jpg"],
+    "categories": [
+      { "name": "Pets", "items": ["/img/cat.jpg", "/img/dog.jpg"] },
+      { "name": "Wild Animals", "items": ["/img/lion.jpg", "/img/elephant.jpg"] }
+    ],
+    "answer": { "en": "Animals sorted", "sl": "Živali razvrščene" }
+  },
+  {
+    "type": "drag_drop",
+    "question": {
+      "en": "Match the object to the room it belongs in",
+      "sl": "Poveži predmet s prostorom, kamor spada"
+    },
+    "roles": ["grandchild"],
+    "items": ["/img/fork.jpg", "/img/bed.jpg", "/img/soap.jpg"],
+    "categories": [
+      { "name": "Kitchen", "items": ["/img/fork.jpg"] },
+      { "name": "Bedroom", "items": ["/img/bed.jpg"] },
+      { "name": "Bathroom", "items": ["/img/soap.jpg"] }
+    ],
+    "answer": { "en": "Objects matched to rooms", "sl": "Predmeti razvrščeni po sobah" }
+  },
+  {
+    "type": "drag_drop",
+    "question": {
+      "en": "Sort the activities into morning and evening routines",
+      "sl": "Razvrsti aktivnosti na jutranje in večerne"
+    },
+    "roles": ["grandchild"],
+    "items": ["/img/toothbrush.jpg", "/img/bedtime-story.jpg", "/img/eat-breakfast.jpg"],
+    "categories": [
+      { "name": "Morning", "items": ["/img/toothbrush.jpg", "/img/eat-breakfast.jpg"] },
+      { "name": "Evening", "items": ["/img/bedtime-story.jpg"] }
+    ],
+    "answer": { "en": "Activities sorted", "sl": "Aktivnosti razvrščene" }
+  },
+  {
+    "type": "drag_drop",
+    "question": {
+      "en": "Match the flag to its country",
+      "sl": "Poveži zastavo z državo"
+    },
+    "roles": ["grandchild"],
+    "items": ["/img/flag-slovenia.jpg", "/img/flag-france.jpg", "/img/flag-japan.jpg"],
+    "categories": [
+      { "name": "Slovenia", "items": ["/img/flag-slovenia.jpg"] },
+      { "name": "France", "items": ["/img/flag-france.jpg"] },
+      { "name": "Japan", "items": ["/img/flag-japan.jpg"] }
+    ],
+    "answer": { "en": "Flags matched", "sl": "Zastave povezane" }
+  },
+  {
+    "type": "drag_drop",
+    "question": {
+      "en": "Match the object to its material",
+      "sl": "Poveži predmet z materialom"
+    },
+    "roles": ["grandchild"],
+    "items": ["/img/spoon.jpg", "/img/book.jpg", "/img/glass.jpg"],
+    "categories": [
+      { "name": "Metal", "items": ["/img/spoon.jpg"] },
+      { "name": "Paper", "items": ["/img/book.jpg"] },
+      { "name": "Glass", "items": ["/img/glass.jpg"] }
+    ],
+    "answer": { "en": "Objects matched to materials", "sl": "Predmeti povezani z materiali" }
+  },
+  {
+    "type": "drag_drop",
+    "question": {
+      "en": "Sort the foods into healthy and treat foods",
+      "sl": "Razvrsti hrano na zdravo in poslastice"
+    },
+    "roles": ["grandchild"],
+    "items": ["/img/apple.jpg", "/img/candy.jpg", "/img/carrot.jpg"],
+    "categories": [
+      { "name": "Healthy", "items": ["/img/apple.jpg", "/img/carrot.jpg"] },
+      { "name": "Treats", "items": ["/img/candy.jpg"] }
+    ],
+    "answer": { "en": "Food sorted", "sl": "Hrana razvrščena" }
+  },
+  {
+    "type": "drag_drop",
+    "question": {
+      "en": "Group the objects into things that need electricity and things that don’t",
+      "sl": "Razvrsti predmete na tiste, ki potrebujejo elektriko, in tiste, ki je ne"
+    },
+    "roles": ["grandchild"],
+    "items": ["/img/lamp.jpg", "/img/book.jpg", "/img/tv.jpg"],
+    "categories": [
+      { "name": "Needs Electricity", "items": ["/img/lamp.jpg", "/img/tv.jpg"] },
+      { "name": "No Electricity", "items": ["/img/book.jpg"] }
+    ],
+    "answer": { "en": "Objects grouped", "sl": "Predmeti razvrščeni" }
+  },
+  {
+    "type": "drag_drop",
+    "question": {
+      "en": "Match the shadow to the correct object",
+      "sl": "Poveži senco s pravim predmetom"
+    },
+    "roles": ["grandchild"],
+    "items": ["/img/shadow-dog.jpg", "/img/shadow-cat.jpg", "/img/shadow-giraffe.jpg"],
+    "categories": [
+      { "name": "Dog", "items": ["/img/shadow-dog.jpg"] },
+      { "name": "Cat", "items": ["/img/shadow-cat.jpg"] },
+      { "name": "Giraffe", "items": ["/img/shadow-giraffe.jpg"] }
+    ],
+    "answer": { "en": "Shadows matched", "sl": "Sence povezane" }
+  }
+]
+
+
+
+
+
+
+
+[
+  {
+    "type": "riddle_guess",
+    "question": {
+      "en": "I’m your home and the third from the Sun. I’ve got water and life—aren’t I the fun one? What am I?",
+      "sl": "Sem tvoj dom in tretji od Sonca. Imam vodo in življenje – ali nisem zabaven? Kaj sem?"
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": {
+      "en": ["Earth", "The Earth", "Planet Earth", "Our planet"],
+      "sl": ["Zemlja", "Planet Zemlja", "Naš planet"]
+    }
+  },
+  {
+    "type": "riddle_guess",
+    "question": {
+      "en": "I’m the planet with the most bling, I’ve got rings you can’t help noticing! What am I?",
+      "sl": "Sem planet z največ nakita, imam obroče, ki jih ni mogoče spregledati! Kaj sem?"
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": {
+      "en": ["Saturn", "Planet Saturn"],
+      "sl": ["Saturn", "Planet Saturn"]
+    }
+  },
+  {
+    "type": "riddle_guess",
+    "question": {
+      "en": "I’m red all over, with dust in the air. Some people think I might have had water to share. What am I?",
+      "sl": "Sem ves rdeč, z veliko prahu v zraku. Nekateri menijo, da sem imel vodo. Kaj sem?"
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": {
+      "en": ["Mars", "Planet Mars", "The Red Planet"],
+      "sl": ["Mars", "Planet Mars", "Rdeči planet"]
+    }
+  },
+  {
+    "type": "riddle_guess",
+    "question": {
+      "en": "I’m closest to the Sun, but I don’t get much attention. I’m small and speedy—just thought I’d mention! What am I?",
+      "sl": "Sem najbližji Soncu, a me redko kdo omenja. Sem majhen in hiter! Kaj sem?"
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": {
+      "en": ["Mercury", "Planet Mercury"],
+      "sl": ["Merkur", "Planet Merkur"]
+    }
+  },
+  {
+    "type": "riddle_guess",
+    "question": {
+      "en": "I’m made of sand, and I might have a moat. Build me near water, but I’m not a boat. What am I?",
+      "sl": "Narejen sem iz peska in morda imam jarek. Zgradi me blizu vode, a nisem čoln. Kaj sem?"
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": {
+      "en": ["Sandcastle", "A sandcastle", "Castle made of sand"],
+      "sl": ["Peščeni grad", "Grad iz peska"]
+    }
+  },
+  {
+    "type": "riddle_guess",
+    "question": {
+      "en": "I have a sail but no captain or crew. I fly in the sky, and kids love me too. What am I?",
+      "sl": "Imam jadro, a nimam kapitana ali posadke. Letim po nebu in otroci me imajo radi. Kaj sem?"
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": {
+      "en": ["Kite", "A kite"],
+      "sl": ["Zmaj", "Papirnati zmaj"]
+    }
+  },
+  {
+    "type": "riddle_guess",
+    "question": {
+      "en": "I’m full of words and pictures too. Open me up to learn something new. What am I?",
+      "sl": "Poln sem besed in slik. Odpri me, da se naučiš nekaj novega. Kaj sem?"
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": {
+      "en": ["Textbook", "A textbook", "Book", "A book", "School book"],
+      "sl": ["Učbenik", "Knjiga", "Šolska knjiga"]
+    }
+  },
+  {
+    "type": "riddle_guess",
+    "question": {
+      "en": "I ring when it’s time to start or end. I’m not a phone, but I’m every student’s friend. What am I?",
+      "sl": "Zazvonim, ko je čas za začetek ali konec. Nisem telefon, a me ima vsak učenec rad. Kaj sem?"
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": {
+      "en": ["School bell", "A school bell", "Bell"],
+      "sl": ["Šolski zvonec", "Zvonec"]
+    }
+  }
+]
+
+
+
+
+
+
+
+
+
+[
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Send a heart emoji to someone in your contacts.",
+      "sl": "Pošlji srček emoji nekomu iz svojih stikov."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "❤️", "sl": "❤️" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open Google Maps and find your home on the map.",
+      "sl": "Odpri Google Zemljevide in poišči svoj dom na zemljevidu."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Home on map", "sl": "Dom na zemljevidu" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Turn off the sound on your phone (silent mode).",
+      "sl": "Utišaj telefon (vključi tihi način)."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Silent mode", "sl": "Tihi način" }
+  },
+ 
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find the volume buttons and lower the sound.",
+      "sl": "Najdi gumba za glasnost in zmanjšaj zvok."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Volume down", "sl": "Glasnost manj" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Take a picture of something red in the room.",
+      "sl": "Posnemi sliko nečesa rdečega v sobi."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Red object photo", "sl": "Slika rdečega predmeta" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Send a voice message to someone.",
+      "sl": "Pošlji glasovno sporočilo nekomu."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Voice message", "sl": "Glasovno sporočilo" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open YouTube and find a song you like.",
+      "sl": "Odpri YouTube in poišči pesem, ki ti je všeč."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Song video", "sl": "Video pesmi" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Adjust the screen brightness.",
+      "sl": "Prilagodi svetlost zaslona."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Brightness changed", "sl": "Svetlost spremenjena" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Search for a photo of a cat on the internet.",
+      "sl": "Poišči fotografijo mačke na internetu."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Cat photo", "sl": "Slika mačke" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find how much battery your phone has left.",
+      "sl": "Preveri, koliko baterije ima tvoj telefon."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Battery percentage", "sl": "Odstotek baterije" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open your call history and find the last call.",
+      "sl": "Odpri zgodovino klicev in poišči zadnji klic."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Last missed call", "sl": "Zadnji zgrešeni klic" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Search for 'recipe for soup' on Google.",
+      "sl": "Na Googlu poišči 'recept za juho'."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Soup recipe", "sl": "Recept za juho" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Switch your phone to airplane mode and then back.",
+      "sl": "Preklopi telefon v letalski način in ga nato izklopi."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Airplane mode toggled", "sl": "Letalski način preklopljen" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Take a screenshot of your home screen.",
+      "sl": "Naredi posnetek zaslona začetnega zaslona."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Screenshot", "sl": "Posnetek zaslona" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Open the calendar app and check what day it is today.",
+      "sl": "Odpri aplikacijo koledar in preveri, kateri dan je danes."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Today's date", "sl": "Današnji datum" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Search for a news website and read a headline.",
+      "sl": "Poišči spletno stran z novicami in preberi naslov."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "News headline", "sl": "Naslov novice" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Record a short video with your phone camera.",
+      "sl": "Posnemi kratek video s kamero na telefonu."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Video clip", "sl": "Kratek video" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find the alarm feature and set a test alarm.",
+      "sl": "Poišči funkcijo alarma in nastavi testni alarm."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Alarm set", "sl": "Alarm nastavljen" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Use the search function to find a contact by name.",
+      "sl": "Uporabi funkcijo iskanja za najdbo stika po imenu."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Contact found", "sl": "Stik najden" }
+  }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+[
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Together, take the funniest picture using the silliest camera filter you can find.",
+      "sl": "Skupaj posnemita najbolj zabavno sliko z najbolj norim filtrom, ki ga najdeta."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Funny filtered photo", "sl": "Zabavna slika s filtrom" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Record a 10-second video together while making funny faces.",
+      "sl": "Posnemita 10-sekundni video, medtem ko delata smešne grimase."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Funny video", "sl": "Smešen video" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Search online together for a joke and read it out loud.",
+      "sl": "Skupaj poiščita šalo na internetu in jo glasno preberita."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Told a joke", "sl": "Povedala šalo" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Find a song you both like and play it while dancing together for 20 seconds.",
+      "sl": "Poiščita pesem, ki vama je všeč, in zaplešita 20 sekund."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Dance video", "sl": "Video plesa" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Use the phone to draw or doodle something silly together.",
+      "sl": "Na telefonu skupaj narišita nekaj zabavnega."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Silly drawing", "sl": "Smešna risba" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Take a photo of both of you making the biggest smile you can.",
+      "sl": "Posnemita fotografijo, na kateri imata največji nasmeh."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Big smile photo", "sl": "Fotografija z velikim nasmehom" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Search online together for a picture of your favorite animal.",
+      "sl": "Skupaj poiščita sliko vajine najljubše živali na internetu."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Favorite animal photo", "sl": "Slika najljubše živali" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Together, find a recipe online for a dessert you would both like to try.",
+      "sl": "Skupaj na internetu poiščita recept za sladico, ki bi jo rada poskusila."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Dessert recipe", "sl": "Recept za sladico" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Take a selfie together and send it to a family member.",
+      "sl": "Posnemita selfie in ga pošljita družinskemu članu."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Sent selfie", "sl": "Poslan selfie" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Use the voice recorder on the phone to record both of you saying something silly.",
+      "sl": "Uporabita snemalnik glasu in posnemita, kako skupaj rečeta nekaj zabavnega."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Voice recording", "sl": "Zvočni posnetek" }
+  }
+]
+
+
+
+
+
+
+
+
+

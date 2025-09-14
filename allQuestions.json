@@ -2,136 +2,91 @@
   {
     "type": "challenge_task",
     "question": {
-      "en": "Open the camera app and take a picture of your hand.",
-      "sl": "Odprite kamero in posnemite sliko svojega vnuka."
+      "en": "Together, take the funniest picture using the silliest camera filter you can find.",
+      "sl": "Skupaj posnemita najbolj zabavno sliko z najbolj norim filtrom, ki ga najdeta."
     },
-    "roles": ["grandparent"],
-    "answer": { "en": "Photo of hand", "sl": "Slika roke" }
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Funny filtered photo", "sl": "Zabavna slika s filtrom" }
   },
   {
     "type": "challenge_task",
     "question": {
-      "en": "Find the Wi-Fi symbol on your phone.",
-      "sl": "Poiščite simbol Wi-Fi na svojem telefonu."
+      "en": "Record a 10-second video together while making funny faces.",
+      "sl": "Posnemita 10-sekundni video, medtem ko delata smešne grimase."
     },
-    "roles": ["grandparent"],
-    "answer": { "en": "Wi-Fi symbol", "sl": "Simbol Wi-Fi" }
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Funny video", "sl": "Smešen video" }
   },
   {
     "type": "challenge_task",
     "question": {
-      "en": "Open your messages and type the word HELLO.",
-      "sl": "Odprite svoja sporočila in nekommu pošlji sporočilo."
+      "en": "Search online together for a joke and read it out loud.",
+      "sl": "Skupaj poiščita šalo na internetu in jo glasno preberita."
     },
-    "roles": ["grandparent"],
-    "answer": { "en": "HELLO", "sl": "ŽIVJO" }
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Told a joke", "sl": "Povedala šalo" }
   },
   {
     "type": "challenge_task",
     "question": {
-      "en": "Increase the volume on your phone by one level.",
-      "sl": "Povečajte glasnost na svojem telefonu za eno stopnjo."
+      "en": "Find a song you both like and play it while dancing together for 20 seconds.",
+      "sl": "Poiščita pesem, ki vama je všeč, in zaplešita 20 sekund."
     },
-    "roles": ["grandparent"],
-    "answer": { "en": "Volume up", "sl": "Glasnost višje" }
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Dance video", "sl": "Video plesa" }
   },
   {
     "type": "challenge_task",
     "question": {
-      "en": "Open the clock app and check what time it is.",
-      "sl": "Odprite aplikacijo ura in preverite, koliko je ura."
+      "en": "Use the phone to draw or doodle something silly together.",
+      "sl": "Na telefonu skupaj narišita nekaj zabavnega."
     },
-    "roles": ["grandparent"],
-    "answer": { "en": "Current time", "sl": "Trenutna ura" }
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Silly drawing", "sl": "Smešna risba" }
   },
   {
     "type": "challenge_task",
     "question": {
-      "en": "Find the contacts app on your phone.",
-      "sl": "Poiščite aplikacijo za stike na svojem telefonu."
+      "en": "Take a photo of both of you making the biggest smile you can.",
+      "sl": "Posnemita fotografijo, na kateri imata največji nasmeh."
     },
-    "roles": ["grandparent"],
-    "answer": { "en": "Contacts", "sl": "Stiki" }
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Big smile photo", "sl": "Fotografija z velikim nasmehom" }
   },
   {
     "type": "challenge_task",
     "question": {
-      "en": "Turn on the flashlight on your phone.",
-      "sl": "Vklopite svetilko na svojem telefonu."
+      "en": "Search online together for a picture of your favorite animal.",
+      "sl": "Skupaj poiščita sliko vajine najljubše živali na internetu."
     },
-    "roles": ["grandparent"],
-    "answer": { "en": "Flashlight", "sl": "Svetilka" }
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Favorite animal photo", "sl": "Slika najljubše živali" }
   },
   {
     "type": "challenge_task",
     "question": {
-      "en": "Open your photo gallery and find the last photo.",
-      "sl": "Odprite galerijo fotografij in poiščite zadnjo sliko."
+      "en": "Together, find a recipe online for a dessert you would both like to try.",
+      "sl": "Skupaj na internetu poiščita recept za sladico, ki bi jo rada poskusila."
     },
-    "roles": ["grandparent"],
-    "answer": { "en": "Last photo", "sl": "Zadnja fotografija" }
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Dessert recipe", "sl": "Recept za sladico" }
   },
   {
     "type": "challenge_task",
     "question": {
-      "en": "Search for the word WEATHER on your phone.",
-      "sl": "Na svojem telefonu poglej kakšno je vreme."
+      "en": "Take a selfie together and send it to a family member.",
+      "sl": "Posnemita selfie in ga pošljita družinskemu članu."
     },
-    "roles": ["grandparent"],
-    "answer": { "en": "Weather", "sl": "Vreme" }
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Sent selfie", "sl": "Poslan selfie" }
   },
   {
     "type": "challenge_task",
     "question": {
-      "en": "Open your phone settings and find the Bluetooth option.",
-      "sl": "Odprite nastavitve telefona in poiščite možnost Bluetooth."
+      "en": "Use the voice recorder on the phone to record both of you saying something silly.",
+      "sl": "Uporabita snemalnik glasu in posnemita, kako skupaj rečeta nekaj zabavnega."
     },
-    "roles": ["grandparent"],
-    "answer": { "en": "Bluetooth", "sl": "Bluetooth" }
-  },
-  {
-    "type": "challenge_task",
-    "question": {
-      "en": "Open the calculator app and calculate 12 + 8.",
-      "sl": "Odprite kalkulator in izračunajte 19 + 28."
-    },
-    "roles": ["grandparent"],
-    "answer": { "en": "20", "sl": "20" }
-  },
-  {
-    "type": "challenge_task",
-    "question": {
-      "en": "Find the battery percentage of your phone.",
-      "sl": "Poiščite odstotek baterije na svojem telefonu."
-    },
-    "roles": ["grandparent"],
-    "answer": { "en": "Battery %", "sl": "Odstotek baterije" }
-  },
-  {
-    "type": "challenge_task",
-    "question": {
-      "en": "Open the internet browser on your phone.",
-      "sl": "Odprite spletni brskalnik na svojem telefonu."
-    },
-    "roles": ["grandparent"],
-    "answer": { "en": "Browser", "sl": "Brskalnik" }
-  },
-  {
-    "type": "challenge_task",
-    "question": {
-      "en": "Zoom in on a photo using your fingers.",
-      "sl": "Povečajte fotografijo s prsti."
-    },
-    "roles": ["grandparent"],
-    "answer": { "en": "Zoomed photo", "sl": "Povečana fotografija" }
-  },
-  {
-    "type": "challenge_task",
-    "question": {
-      "en": "Open YouTube and find a video about cooking.",
-      "sl": "Odprite YouTube in poiščite video o kuhanju."
-    },
-    "roles": ["grandparent"],
-    "answer": { "en": "Cooking video", "sl": "Video o kuhanju" }
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Voice recording", "sl": "Zvočni posnetek" }
   }
 ]
