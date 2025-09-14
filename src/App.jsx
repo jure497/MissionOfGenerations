@@ -228,7 +228,7 @@ function Quiz() {
                       opacity: 1,
                       scale: streak >= 10 ? [1, 1.2, 0.9, 1] : 1.1,
                       rotate: streak >= 10 ? [-5, 5, -5, 5, 0] : 0,
-                      color: streak >= 10 ? "#FFD700" : "#fff",
+                      color: streak >= 10 ? "#FFD700" : "#000",
                     }}
                     exit={{ opacity: 0, scale: 0.7 }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
