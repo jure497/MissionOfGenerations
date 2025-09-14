@@ -7,11 +7,13 @@ export default function RiddleGuess({ question, onAnswered }) {
   const [value, setValue] = useState("");
   const [revealed, setRevealed] = useState(false);
   const [answered, setAnswered] = useState(false); // track if user has submitted
+  const [isCorrect, setIsCorrect] = useState(null); // Track if the answer was correct or not
 
   useEffect(() => {
     setValue("");
     setRevealed(false);
     setAnswered(false);
+    setIsCorrect(null); // Reset the correctness state for a new question
   }, [question?.id, lang]);
 
   const text =
@@ -24,6 +26,7 @@ export default function RiddleGuess({ question, onAnswered }) {
     const norm = (s) => String(s).trim().toLowerCase();
     const ok = expected.includes(norm(value));
     setAnswered(true);
+    setIsCorrect(!!ok); // Set the isCorrect state based on the result
     onAnswered(!!ok);
   };
 
@@ -32,12 +35,14 @@ export default function RiddleGuess({ question, onAnswered }) {
     // showing answer doesn't count as wrong
   };
 
-  const showAnswer =
-    pickByLang(question?.answer, lang) ||
+  
+const showAnswer =
+  (pickByLang(question?.answer, lang) ||
     pickByLang(question?.correctAnswer, lang) ||
-    expected[0] ||
-    "";
-
+    expected ||
+    []
+  )[0] || "";
+  
   return (
     <div className="w-full">
       <h2 className="text-lg font-semibold mb-4">{text}</h2>
@@ -62,7 +67,7 @@ export default function RiddleGuess({ question, onAnswered }) {
           </button>
         )}
 
-        {answered && !revealed && (
+        {answered && !revealed && !isCorrect && (
           <button
             onClick={reveal}
             className="px-4 py-2 rounded-lg bg-red-600 hover:bg-yellow-300"

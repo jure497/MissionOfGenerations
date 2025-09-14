@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLanguage } from "../LanguageContext"; 
 
 /**
  * trigger: can be:
@@ -12,6 +13,7 @@ import { AnimatePresence, motion } from "framer-motion";
  */
 
 export default function FeedbackOverlay({ trigger, streak }) {
+  const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
   const [mode, setMode] = useState(null); // "correct" | "wrong" | null
   const [confettiPieces, setConfettiPieces] = useState(0);
@@ -231,8 +233,9 @@ export default function FeedbackOverlay({ trigger, streak }) {
                 ${mode === "wrong" ? "bg-red-500 text-white" : ""}
               `}
             >
-              {mode === "correct" && "🎉 Correct!"}
-              {mode === "wrong" && "❌ Not quite"}
+              
+              {mode === "correct" && t("correct")}
+              {mode === "wrong" && t("wrong")}
             </motion.div>
           )}
         </AnimatePresence>

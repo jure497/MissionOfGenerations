@@ -24,8 +24,8 @@ const DICT = {
     finished: "Finished!",
     your_score: "Your score",
     play_again: "Play again",
-    correct: "Correct! ✅",
-    wrong: "Not quite. ❌",
+    correct: "🎉 Correct!",
+    wrong: "❌ Not quite",
     your_answer_placeholder: "Your answer…",
     submit: "Submit",
     done: "Done!",
@@ -35,7 +35,8 @@ const DICT = {
     didPoor:"I Failed",
     show_differences: "Show differences",
     correct_answer: "Correct answer",
-    show_answer: "Show answer"
+    show_answer: "Show answer",
+    play:"Play"
   },
   sl: {
     app_title: "Misija Generacij",
@@ -59,8 +60,8 @@ const DICT = {
     finished: "Končano!",
     your_score: "Tvoj rezultat",
     play_again: "Igraj znova",
-    correct: "Pravilno! ✅",
-    wrong: "Ni čisto. ❌",
+    correct: "Pravilno! 🎉",
+    wrong: "Ni pravilno. ❌",
     your_answer_placeholder: "Tvoj odgovor…",
     submit: "Pošlji",
     done: "Narejeno!",
@@ -70,7 +71,8 @@ const DICT = {
     didPoor:"Ni mi uspelo",
     show_differences: "Pokaži razlike",
     correct_answer: "Pravilen odgovor",
-    show_answer: "Prikaži odgovor"
+    show_answer: "Prikaži odgovor",
+    play:"Igraj zvok"
   },
 };
 

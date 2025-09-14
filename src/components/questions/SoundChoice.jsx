@@ -3,6 +3,7 @@ import { useLanguage } from "../../LanguageContext";
 import { pickByLang, getExpectedAnswers } from "../../utils/pickByLang";
 
 export default function SoundChoice({ question, onAnswered }) {
+  const { t } = useLanguage();
   const { lang } = useLanguage();
   const audioRef = useRef(null);
   const [picked, setPicked] = useState(null);
@@ -37,7 +38,7 @@ export default function SoundChoice({ question, onAnswered }) {
             onClick={() => audioRef.current?.play()}
             className="px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-sky-700"
           >
-            🔊 Play
+            🔊 {t("play")}
           </button>
           <audio ref={audioRef} src={soundUrl} preload="auto" />
         </div>

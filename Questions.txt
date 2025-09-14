@@ -745,7 +745,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Can you fold a piece of clothing neatly and show your grandparent how to do it?",
-      "sl": "Zloži kos oblačila lepo in pokaži starišu, kako se to naredi."
+      "sl": "Zloži kos oblačila lepo in pokaži staremu staršu, kako se to naredi."
     },
     "roles": ["grandchild"],
     "answer": { "en": "Folded clothing.", "sl": "Zloženo oblačilo." }
@@ -754,7 +754,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Find a spoon and a fork. Show your grandparent how you would set the table for one person.",
-      "sl": "Najdi žlico in vilico. Pokaži starišu, kako bi pripravil mizo za eno osebo."
+      "sl": "Najdi žlico in vilico. Pokaži staremu staršu, kako bi pripravil mizo za eno osebo."
     },
     "roles": ["grandchild"],
     "answer": { "en": "Correctly set table.", "sl": "Pravilno pripravljena miza." }
@@ -790,7 +790,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Touch three objects with different textures. Describe them to your grandparent.",
-      "sl": "Dotakni se treh predmetov z različnimi občutki. Opiši jih starišu."
+      "sl": "Dotakni se treh predmetov z različnimi občutki. Opiši jih staremu staršu."
     },
     "roles": ["grandchild"],
     "answer": { "en": "Descriptions of three textures.", "sl": "Opisi treh občutkov (tekstur)." }
@@ -862,7 +862,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Grandchild: Show your grandparent a new technology you use today.",
-      "sl": "Pokaži starišu eno novo tehnologijo, ki jo danes uporabljaš."
+      "sl": "Pokaži staremu staršu eno novo tehnologijo, ki jo danes uporabljaš."
     },
     "roles": ["grandchild"],
     "answer": { "en": "Grandparent sees and understands new technology.", "sl": "Stariš vidi in spozna novo tehnologijo." }
@@ -924,7 +924,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Can you fold a piece of clothing neatly and show your grandparent how to do it?",
-      "sl": "Zloži kos oblačila lepo in pokaži starišu, kako se to naredi."
+      "sl": "Zloži kos oblačila lepo in pokaži staremu staršu, kako se to naredi."
     },
     "roles": ["grandchild"],
     "answer": { "en": "Folded clothing.", "sl": "Zloženo oblačilo." }
@@ -933,7 +933,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Find a spoon and a fork. Show your grandparent how you would set the table for one person.",
-      "sl": "Najdi žlico in vilico. Pokaži starišu, kako bi pripravil mizo za eno osebo."
+      "sl": "Najdi žlico in vilico. Pokaži staremu staršu, kako bi pripravil mizo za eno osebo."
     },
     "roles": ["grandchild"],
     "answer": { "en": "Correctly set table.", "sl": "Pravilno pripravljena miza." }
@@ -969,7 +969,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Touch three objects with different textures. Describe them to your grandparent.",
-      "sl": "Dotakni se treh predmetov z različnimi občutki. Opiši jih starišu."
+      "sl": "Dotakni se treh predmetov z različnimi občutki. Opiši jih staremu staršu."
     },
     "roles": ["grandchild"],
     "answer": { "en": "Descriptions of three textures.", "sl": "Opisi treh občutkov (tekstur)." }
@@ -1041,7 +1041,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Grandchild: Show your grandparent a new technology you use today.",
-      "sl": "Pokaži starišu eno novo tehnologijo, ki jo danes uporabljaš."
+      "sl": "Pokaži staremu staršu eno novo tehnologijo, ki jo danes uporabljaš."
     },
     "roles": ["grandchild"],
     "answer": { "en": "Grandparent sees and understands new technology.", "sl": "Stariš vidi in spozna novo tehnologijo." }
@@ -1131,7 +1131,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Take a close-up photo of an object. Show it to your grandparent and let them guess what it is.",
-      "sl": "Posnemi približano fotografijo predmeta. Pokaži jo starišu in naj ugane, kaj je."
+      "sl": "Posnemi približano fotografijo predmeta. Pokaži jo staremu staršu in naj ugane, kaj je."
     },
     "roles": ["both"],
     "answer": { "en": "Grandparent guesses the object.", "sl": "Stariš ugane predmet." }
@@ -1167,7 +1167,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Send a short text message to your grandparent.",
-      "sl": "Pošlji kratko sporočilo svojemu starišu."
+      "sl": "Pošlji kratko sporočilo svojemu staremu staršu."
     },
     "roles": ["grandchild"],
     "answer": { "en": "Message sent.", "sl": "Sporočilo poslano." }
@@ -1266,7 +1266,7 @@
     "type": "challenge_task",
     "question": {
       "en": "Use emojis to tell your grandparent how your day was.",
-      "sl": "Samo z emojiji povej starišu, kakšen je bil tvoj dan."
+      "sl": "Samo z emojiji povej staremu staršu, kakšen je bil tvoj dan."
     },
     "roles": ["grandchild"],
     "answer": { "en": "Grandparent guesses message.", "sl": "Stariš ugane sporočilo." }
