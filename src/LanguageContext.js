@@ -63,7 +63,7 @@ const DICT = {
     correct: "Pravilno! 🎉",
     wrong: "Ni pravilno. ❌",
     your_answer_placeholder: "Tvoj odgovor…",
-    submit: "Pošlji",
+    submit: "Preveri",
     done: "Narejeno!",
     congratulations: "Čestitke! 🎉",
     encourage: "Dober poskus — nadaljuj!",

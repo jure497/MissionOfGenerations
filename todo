@@ -1,15 +1,15 @@
 
 KIDNA DONT CARE ANYMORE FeedbackOverlay, there is still streak farming
 
+drag and drop language does not work properly
+make english the default language maybe?
+!!!!maybe something in between the questions because right now when its not ur turn u have ur new question ready - is that ok?
+no confetti and emojis in Challenge task, becasue encourage and congratulaions is handled by app.jsx not feedbackoverlay.jsx
 
 
 gamification - 
-transition between questions 
-u cant submit multiple questions more times
-more types of questions - drag n drop, just a challenge
-add sound effects
-drag and drop ne dela na fonu - še vedno ne mores dragat
-ni vec emojijev 
+transition between questions - maybe duolingo like every 5 questions a mascot pops
+
 
 ----------
 npm start

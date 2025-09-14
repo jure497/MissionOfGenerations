@@ -908,7 +908,35 @@
 
 
 
-//OD KLE ANPREJ SO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//OD KLE ANPREJ SO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 [
   {
@@ -2235,4 +2263,66 @@
     "roles": ["grandparent"],
     "answer": { "en": "Cooking video", "sl": "Video o kuhanju" }
   }
+
+
+
+
+
+
+
+
+
+
+,
+
+
+
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Check what the temperature is right now in France.",
+      "sl": "Poglej, kakšna je temperatura v Franciji zdaj."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Current temperature in France", "sl": "Trenutna temperatura v Franciji" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Set an alarm to ring in 5 minutes.",
+      "sl": "Nastavi alarm, da zazvoni čez 5 minut."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Alarm set", "sl": "Alarm nastavljen" }
+  },
+ 
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Send a heart emoji ❤️ to your grandchild in a message.",
+      "sl": "Pošlji srček ❤️ svojemu vnuku/vnukinji v sporočilu."
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Heart emoji sent", "sl": "Srček poslan" }
+  },
+  
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Search on the internet: What is the capital of Canada?",
+      "sl": "Na internetu poišči: Kaj je glavno mesto Kanade?"
+    },
+    "roles": ["grandparent"],
+    "answer": { "en": "Ottawa", "sl": "Ottawa" }
+  },
+  {
+    "type": "challenge_task",
+    "question": {
+      "en": "Take a selfie together with your grandchild.",
+      "sl": "Naredi selfie skupaj z vnukom/vnukinjo."
+    },
+    "roles": ["grandparent", "grandchild"],
+    "answer": { "en": "Selfie taken", "sl": "Selfie narejen" }
+  }
 ]
+
