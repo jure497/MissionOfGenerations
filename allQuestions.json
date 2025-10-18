@@ -1195,10 +1195,10 @@
     "type": "challenge_task",
     "question": {
       "en": "Open your messages and type the word HELLO.",
-      "sl": "Odpri sporočila in napiši besedo ŽIVJO."
+      "sl": "Odpri sporočila in napiši besedo ZDRAVO."
     },
     "roles": ["grandparent"],
-    "answer": { "en": "HELLO", "sl": "ŽIVJO" }
+    "answer": { "en": "HELLO", "sl": "ZDRAVO" }
   },
   {
     "type": "challenge_task",
