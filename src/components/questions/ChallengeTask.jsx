@@ -27,8 +27,8 @@ export default function ChallengeTask({ question, onAnswered }) {
       origin: { y: 0.6 },
     });
 
-    // Optional emoji burst (🎉 ❤️ 🥳)
-    const emojis = ["🎉", "✨", "🥳", "💪"];
+    // Optional emoji burst (🎉 ❤️ 🥳) ["🎉", "🌟", "🔥", "💯", "😺", "🎯", "👏", "🚀"];"⭐️"
+    const emojis = ["🎉", "✨", "🥳", "💪", "⭐️", "🔥", "💯", "🎯", "👏"];
     for (let i = 0; i < 20; i++) {
       const emoji = document.createElement("div");
       emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
