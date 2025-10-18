@@ -809,7 +809,7 @@
     "type": "riddle_guess",
     "question": {
       "en": "I’m red all over, with dust in the air. Some people think I might have had water to share. What am I?",
-      "sl": "Sem ves rdeč, z veliko prahu v zraku. Nekateri menijo, da sem imel vodo. Kaj sem?"
+      "sl": "Sem planet, ves rdeč, z veliko prahu v zraku. Nekateri menijo, da sem imel vodo. Kaj sem?"
     },
     "roles": ["grandchild"],
     "answer": {
@@ -821,7 +821,7 @@
     "type": "riddle_guess",
     "question": {
       "en": "I’m closest to the Sun, but I don’t get much attention. I’m small and speedy—just thought I’d mention! What am I?",
-      "sl": "Sem najbližji Soncu, a me redko kdo omenja. Sem majhen in hiter! Kaj sem?"
+      "sl": "Sem planet, ki je najbližji Soncu, a me redko kdo omenja. Sem majhen in hiter! Kaj sem?"
     },
     "roles": ["grandchild"],
     "answer": {
@@ -829,18 +829,7 @@
       "sl": ["Merkur", "Planet Merkur"]
     }
   },
-  {
-    "type": "riddle_guess",
-    "question": {
-      "en": "I’m made of sand, and I might have a moat. Build me near water, but I’m not a boat. What am I?",
-      "sl": "Narejen sem iz peska in morda imam jarek. Zgradi me blizu vode, a nisem čoln. Kaj sem?"
-    },
-    "roles": ["grandchild"],
-    "answer": {
-      "en": ["Sandcastle", "A sandcastle", "Castle made of sand"],
-      "sl": ["Peščeni grad", "Grad iz peska"]
-    }
-  },
+  
   {
     "type": "riddle_guess",
     "question": {
@@ -864,19 +853,14 @@
       "en": ["Textbook", "A textbook", "Book", "A book", "School book"],
       "sl": ["Učbenik", "Knjiga", "Šolska knjiga"]
     }
-  },
-  {
-    "type": "riddle_guess",
-    "question": {
-      "en": "I ring when it’s time to start or end. I’m not a phone, but I’m every student’s friend. What am I?",
-      "sl": "Zazvonim, ko je čas za začetek ali konec. Nisem telefon, a me ima vsak učenec rad. Kaj sem?"
-    },
-    "roles": ["grandchild"],
-    "answer": {
-      "en": ["School bell", "A school bell", "Bell"],
-      "sl": ["Šolski zvonec", "Zvonec"]
-    }
   }
+
+
+
+
+
+
+  
 ,
 
 
