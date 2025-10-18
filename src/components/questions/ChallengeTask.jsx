@@ -2,18 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useLanguage } from "../../LanguageContext";
 import { pickByLang } from "../../utils/pickByLang";
+import confetti from "canvas-confetti";
 
-/**
- * ChallengeTask
- *
- * - "I succeeded" => onAnswered("success")
- * - "I failed"    => onAnswered("encourage")
- *
- * The rest of the app (Quiz/App or QuestionRenderer) should display:
- *  - congratulations for "success"
- *  - a friendly encouragement for "encourage"
- *  - and treat null/"neutral" as no feedback
- */
 export default function ChallengeTask({ question, onAnswered }) {
   const { lang, t } = useLanguage();
   const text =
@@ -21,16 +11,43 @@ export default function ChallengeTask({ question, onAnswered }) {
     pickByLang(question?.prompt, lang) ||
     "";
 
-  // Track whether user has clicked one of the buttons
   const [answered, setAnswered] = useState(false);
 
   useEffect(() => {
-    // Reset when a new question loads
     setAnswered(false);
   }, [question?.id, lang]);
 
+ const triggerConfetti = () => {
+  // Trigger only 80% of the time
+  if (Math.random() < 0.8) {
+    // Simple confetti burst
+    confetti({
+      particleCount: 120,
+      spread: 80,
+      origin: { y: 0.6 },
+    });
+
+    // Optional emoji burst (🎉 ❤️ 🥳)
+    const emojis = ["🎉", "✨", "🥳", "💪"];
+    for (let i = 0; i < 20; i++) {
+      const emoji = document.createElement("div");
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.position = "fixed";
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.top = "100vh";
+      emoji.style.fontSize = Math.random() * 24 + 24 + "px";
+      emoji.style.animation = `flyUp ${3 + Math.random() * 2}s ease-out forwards`;
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 5000);
+    }
+  }
+};
+
   const handleAnswer = (type) => {
     setAnswered(true);
+    if (type === "success") {
+      triggerConfetti();
+    }
     onAnswered(type);
   };
 
@@ -55,6 +72,20 @@ export default function ChallengeTask({ question, onAnswered }) {
           </button>
         </div>
       )}
+
+      {/* Add animation for emojis */}
+      <style jsx>{`
+        @keyframes flyUp {
+          0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-120vh) rotate(720deg);
+            opacity: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 }
