@@ -716,8 +716,8 @@
   {
     "type": "drag_drop",
     "question": {
-      "en": "Sort the foods into healthy and treat foods",
-      "sl": "Razvrsti hrano na zdravo in poslastice"
+      "en": "Sort the foods into healthy and unhealthy foods",
+      "sl": "Razvrsti hrano na zdravo in nezdravo"
     },
     "roles": ["grandchild"],
     "items": ["/img/apple.jpg", "/img/candy.jpg", "/img/carrot.jpg"],
@@ -745,7 +745,7 @@
     "type": "drag_drop",
     "question": {
       "en": "Match the shadow to the correct object",
-      "sl": "Poveži senco s pravim predmetom"
+      "sl": "Poveži senco s pravilno obliko"
     },
     "roles": ["grandchild"],
     "items": ["/img/shadow-dog.jpg", "/img/shadow-cat.jpg", "/img/shadow-giraffe.jpg"],

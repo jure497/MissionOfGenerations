@@ -85,7 +85,7 @@ export default function FeedbackOverlay({ trigger, streak }) {
 
     if (val === true || val === "success") {
       doConfetti = streak >= 5 ? true : Math.random() < 0.40;
-      
+      /*
       // 🌟 Streak bonuses
       if (streak === 3) {
         newFlyingEmoji = "🔥";
@@ -104,6 +104,7 @@ export default function FeedbackOverlay({ trigger, streak }) {
         doConfetti = true;
         doEmoji = true;
       }
+        */
 
       // 🎲 Normal random emojis
       if (!newFlyingEmoji && doEmoji) {

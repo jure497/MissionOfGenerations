@@ -93,6 +93,8 @@ export default function DragDrop({ question, onAnswered }) {
     <div className="w-full">
       <h2 className="text-lg font-semibold mb-4">{text}</h2>
 
+      <p className="text-sm text-gray-800 italic mb-4">{t?.("dragExplain")}</p>
+
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         {/* Item pool */}
         <Droppable id="pool" name={t?.("pool") || (lang === "sl" ? "Predmeti" : "Items")}>

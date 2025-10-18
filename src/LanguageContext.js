@@ -38,7 +38,10 @@ const DICT = {
     show_answer: "Show answer",
     play:"Play",
     pool:"",
-    check: "Check"
+    check: "Check",
+    dragExplain: "Drag and drop each picture into the correct category."
+
+
   },
   sl: {
     app_title: "Misija Generacij",
@@ -76,7 +79,8 @@ const DICT = {
     show_answer: "Prikaži odgovor",
     play:"Igraj zvok",
     pool:"",
-    check: "Preveri"
+    check: "Preveri",
+    dragExplain: "Povleci in spusti vsako sliko v ustrezno kategorijo."
   },
 };
 
