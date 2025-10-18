@@ -36,7 +36,9 @@ const DICT = {
     show_differences: "Show differences",
     correct_answer: "Correct answer",
     show_answer: "Show answer",
-    play:"Play"
+    play:"Play",
+    pool:"",
+    check: "Check"
   },
   sl: {
     app_title: "Misija Generacij",
@@ -67,12 +69,14 @@ const DICT = {
     done: "Narejeno!",
     congratulations: "Čestitke! 🎉",
     encourage: "Dober poskus — nadaljuj!",
-    didGood: "Sem uspel",
+    didGood: "Uspelo mi je",
     didPoor:"Ni mi uspelo",
     show_differences: "Pokaži razlike",
     correct_answer: "Pravilen odgovor",
     show_answer: "Prikaži odgovor",
-    play:"Igraj zvok"
+    play:"Igraj zvok",
+    pool:"",
+    check: "Preveri"
   },
 };
 

@@ -25,7 +25,7 @@ function DraggableItem({ id, src }) {
   const style = {
     transform: CSS.Translate.toString(transform),
     transition,
-    touchAction: "none", // 👈 Prevents long-press/open image on mobile
+    touchAction: "none",
   };
   return (
     <div
@@ -38,7 +38,7 @@ function DraggableItem({ id, src }) {
       <img
         src={src}
         alt=""
-        draggable={false} // 👈 Prevents default image drag ghost
+        draggable={false}
         className="w-16 h-16 object-contain pointer-events-none"
       />
     </div>
@@ -76,9 +76,10 @@ export default function DragDrop({ question, onAnswered }) {
   const check = () => {
     const ok = categories.every((c) => {
       const expected = new Set(c.items || []);
+      const categoryName = pickByLang(c.name, lang); // localized
       const placed = new Set(
         Object.entries(locations)
-          .filter(([_, loc]) => loc === c.name)
+          .filter(([_, loc]) => loc === categoryName)
           .map(([item]) => item)
       );
       if (expected.size !== placed.size) return false;
@@ -94,7 +95,7 @@ export default function DragDrop({ question, onAnswered }) {
 
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         {/* Item pool */}
-        <Droppable id="pool" name={t?.("pool") || "Items"}>
+        <Droppable id="pool" name={t?.("pool") || (lang === "sl" ? "Predmeti" : "Items")}>
           {items
             .filter((it) => locations[it] === "pool")
             .map((it) => (
@@ -104,15 +105,18 @@ export default function DragDrop({ question, onAnswered }) {
 
         {/* Categories */}
         <div className="grid md:grid-cols-2 gap-4 mt-6">
-          {categories.map((c) => (
-            <Droppable key={c.name} id={c.name} name={c.name}>
-              {items
-                .filter((it) => locations[it] === c.name)
-                .map((it) => (
-                  <DraggableItem key={it} id={it} src={it} />
-                ))}
-            </Droppable>
-          ))}
+          {categories.map((c) => {
+            const localizedName = pickByLang(c.name, lang);
+            return (
+              <Droppable key={localizedName} id={localizedName} name={localizedName}>
+                {items
+                  .filter((it) => locations[it] === localizedName)
+                  .map((it) => (
+                    <DraggableItem key={it} id={it} src={it} />
+                  ))}
+              </Droppable>
+            );
+          })}
         </div>
       </DndContext>
 
@@ -120,7 +124,7 @@ export default function DragDrop({ question, onAnswered }) {
         onClick={check}
         className="mt-4 px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700"
       >
-        {t?.("check") || "Check"}
+        {t?.("check") || (lang === "sl" ? "Preveri" : "Check")}
       </button>
     </div>
   );
