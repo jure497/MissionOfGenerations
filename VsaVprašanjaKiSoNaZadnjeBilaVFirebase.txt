@@ -649,8 +649,8 @@
     "roles": ["grandchild"],
     "items": ["/img/cat.jpg", "/img/lion.jpg", "/img/dog.jpg", "/img/elephant.jpg"],
     "categories": [
-      { "name": "Pets", "items": ["/img/cat.jpg", "/img/dog.jpg"] },
-      { "name": "Wild Animals", "items": ["/img/lion.jpg", "/img/elephant.jpg"] }
+      { "name": { "en": "Pets", "sl": "Hišne živali" }, "items": ["/img/cat.jpg", "/img/dog.jpg"] },
+      { "name": { "en": "Wild Animals", "sl": "Divje živali" }, "items": ["/img/lion.jpg", "/img/elephant.jpg"] }
     ],
     "answer": { "en": "Animals sorted", "sl": "Živali razvrščene" }
   },
@@ -663,9 +663,9 @@
     "roles": ["grandchild"],
     "items": ["/img/fork.jpg", "/img/bed.jpg", "/img/soap.jpg"],
     "categories": [
-      { "name": "Kitchen", "items": ["/img/fork.jpg"] },
-      { "name": "Bedroom", "items": ["/img/bed.jpg"] },
-      { "name": "Bathroom", "items": ["/img/soap.jpg"] }
+      { "name": { "en": "Kitchen", "sl": "Kuhinja" }, "items": ["/img/fork.jpg"] },
+      { "name": { "en": "Bedroom", "sl": "Spalnica" }, "items": ["/img/bed.jpg"] },
+      { "name": { "en": "Bathroom", "sl": "Kopalnica" }, "items": ["/img/soap.jpg"] }
     ],
     "answer": { "en": "Objects matched to rooms", "sl": "Predmeti razvrščeni po sobah" }
   },
@@ -678,8 +678,8 @@
     "roles": ["grandchild"],
     "items": ["/img/toothbrush.jpg", "/img/bedtime-story.jpg", "/img/eat-breakfast.jpg"],
     "categories": [
-      { "name": "Morning", "items": ["/img/toothbrush.jpg", "/img/eat-breakfast.jpg"] },
-      { "name": "Evening", "items": ["/img/bedtime-story.jpg"] }
+      { "name": { "en": "Morning", "sl": "Jutro" }, "items": ["/img/toothbrush.jpg", "/img/eat-breakfast.jpg"] },
+      { "name": { "en": "Evening", "sl": "Večer" }, "items": ["/img/bedtime-story.jpg"] }
     ],
     "answer": { "en": "Activities sorted", "sl": "Aktivnosti razvrščene" }
   },
@@ -692,9 +692,9 @@
     "roles": ["grandchild"],
     "items": ["/img/flag-slovenia.jpg", "/img/flag-france.jpg", "/img/flag-japan.jpg"],
     "categories": [
-      { "name": "Slovenia", "items": ["/img/flag-slovenia.jpg"] },
-      { "name": "France", "items": ["/img/flag-france.jpg"] },
-      { "name": "Japan", "items": ["/img/flag-japan.jpg"] }
+      { "name": { "en": "Slovenia", "sl": "Slovenija" }, "items": ["/img/flag-slovenia.jpg"] },
+      { "name": { "en": "France", "sl": "Francija" }, "items": ["/img/flag-france.jpg"] },
+      { "name": { "en": "Japan", "sl": "Japonska" }, "items": ["/img/flag-japan.jpg"] }
     ],
     "answer": { "en": "Flags matched", "sl": "Zastave povezane" }
   },
@@ -707,9 +707,9 @@
     "roles": ["grandchild"],
     "items": ["/img/spoon.jpg", "/img/book.jpg", "/img/glass.jpg"],
     "categories": [
-      { "name": "Metal", "items": ["/img/spoon.jpg"] },
-      { "name": "Paper", "items": ["/img/book.jpg"] },
-      { "name": "Glass", "items": ["/img/glass.jpg"] }
+      { "name": { "en": "Metal", "sl": "Kovina" }, "items": ["/img/spoon.jpg"] },
+      { "name": { "en": "Paper", "sl": "Papir" }, "items": ["/img/book.jpg"] },
+      { "name": { "en": "Glass", "sl": "Steklo" }, "items": ["/img/glass.jpg"] }
     ],
     "answer": { "en": "Objects matched to materials", "sl": "Predmeti povezani z materiali" }
   },
@@ -722,8 +722,8 @@
     "roles": ["grandchild"],
     "items": ["/img/apple.jpg", "/img/candy.jpg", "/img/carrot.jpg"],
     "categories": [
-      { "name": "Healthy", "items": ["/img/apple.jpg", "/img/carrot.jpg"] },
-      { "name": "Treats", "items": ["/img/candy.jpg"] }
+      { "name": { "en": "Healthy", "sl": "Zdrava hrana" }, "items": ["/img/apple.jpg", "/img/carrot.jpg"] },
+      { "name": { "en": "Treats", "sl": "Poslastice" }, "items": ["/img/candy.jpg"] }
     ],
     "answer": { "en": "Food sorted", "sl": "Hrana razvrščena" }
   },
@@ -736,8 +736,8 @@
     "roles": ["grandchild"],
     "items": ["/img/lamp.jpg", "/img/book.jpg", "/img/tv.jpg"],
     "categories": [
-      { "name": "Needs Electricity", "items": ["/img/lamp.jpg", "/img/tv.jpg"] },
-      { "name": "No Electricity", "items": ["/img/book.jpg"] }
+      { "name": { "en": "Needs Electricity", "sl": "Potrebuje elektriko" }, "items": ["/img/lamp.jpg", "/img/tv.jpg"] },
+      { "name": { "en": "No Electricity", "sl": "Ne potrebuje elektrike" }, "items": ["/img/book.jpg"] }
     ],
     "answer": { "en": "Objects grouped", "sl": "Predmeti razvrščeni" }
   },
@@ -750,9 +750,9 @@
     "roles": ["grandchild"],
     "items": ["/img/shadow-dog.jpg", "/img/shadow-cat.jpg", "/img/shadow-giraffe.jpg"],
     "categories": [
-      { "name": "Dog", "items": ["/img/shadow-dog.jpg"] },
-      { "name": "Cat", "items": ["/img/shadow-cat.jpg"] },
-      { "name": "Giraffe", "items": ["/img/shadow-giraffe.jpg"] }
+      { "name": { "en": "Dog", "sl": "Pes" }, "items": ["/img/shadow-dog.jpg"] },
+      { "name": { "en": "Cat", "sl": "Mačka" }, "items": ["/img/shadow-cat.jpg"] },
+      { "name": { "en": "Giraffe", "sl": "Žirafa" }, "items": ["/img/shadow-giraffe.jpg"] }
     ],
     "answer": { "en": "Shadows matched", "sl": "Sence povezane" }
   }
