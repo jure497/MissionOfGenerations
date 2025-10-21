@@ -40,7 +40,7 @@ export default function SpotDifference({ question, onAnswered }) {
             setShown(true);
             onAnswered(null); // ✅ NEUTRAL: unlocks Next, no correct/incorrect feedback
           }}
-          className="px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-sky-700"
+          className="px-4 py-2 rounded-lg bg-[#577137] text-white hover:bg-[#4a5f2f]"
         >
           {t?.("show_differences") || "Show differences"}
         </button>

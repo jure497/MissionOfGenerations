@@ -38,7 +38,7 @@ export default function MultipleChoice({ question, onAnswered }) {
               key={i}
               onClick={() => choose(value)}
               className={`px-4 py-2 rounded-lg border text-left ${
-                selected ? "bg-purple-600 text-white" : "bg-white hover:bg-purple-50"
+                selected ? "bg-[#405631] text-white" : "bg-white hover:bg-purple-50"
               }`}
             >
               {label}

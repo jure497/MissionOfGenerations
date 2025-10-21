@@ -122,12 +122,14 @@ export default function DragDrop({ question, onAnswered }) {
         </div>
       </DndContext>
 
+    <div className="flex justify-center">
       <button
         onClick={check}
-        className="mt-4 px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700"
+        className="mt-4 px-4 py-2 rounded-lg bg-[#405631] text-white hover:bg-[#4a5f2f]"
       >
         {t?.("check") || (lang === "sl" ? "Preveri" : "Check")}
       </button>
+      </div>
     </div>
   );
 }

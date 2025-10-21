@@ -12,6 +12,7 @@ import useQuestions from "./hooks/useQuestions.js";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import AdminWrapper from "./AdminWrapper";
 import { AnimatePresence, motion } from "framer-motion";
+import { FaHome, FaRedo } from "react-icons/fa";
 
 function Quiz() {
   const { t } = useLanguage();
@@ -191,37 +192,43 @@ function Quiz() {
     answered && lastCorrect !== null && lastCorrect !== "neutral";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-fuchsia-400 via-purple-400 to-sky-400 p-4 overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#577137] via-[#4a5f2f] to-[#3d4f28] p-4 overflow-x-hidden">
       <div className="max-w-xl mx-auto relative">
-        <div className="absolute top-2 left-2 flex gap-2">
+        {/* Logo */}
+        <div className="mb-6 h-12">
+          <img src="/img/logo.svg" alt="Logo" className="mx-auto h-full" />
+        </div>
+        <div className="relative flex gap-3 justify-between my-5">
           <button
             onClick={() => navigate("/")}
-            className="px-3 py-2 rounded-lg bg-white/90 border shadow"
+            className="btn-white flex items-center gap-3 text-lg px-4 py-2 rounded-xl border-1 border-white bg-white/10 shadow focus:outline-none focus:ring-4 focus:ring-white/40 transition-all"
+            style={{ minWidth: 120 }}
           >
-            🏠 {t("home")}
+            <FaHome className="text-white text-xl" aria-hidden="true" />
+            <span className="font-normal text-white text-base hover:">{t("home")}</span>
           </button>
           <button
             onClick={restart}
-            className="px-3 py-2 rounded-lg bg-white/90 border shadow"
+            className="btn-white flex items-center gap-3 text-lg px-4 py-2 rounded-xl border-1 border-white bg-white/10 shadow focus:outline-none focus:ring-4 focus:ring-white/40 transition-all"
+            style={{ minWidth: 120 }}
           >
-            🔄 {t("refresh")}
+            <FaRedo className="text-white text-base" aria-hidden="true" />
+            <span className="font-normal text-white text-base">{t("refresh")}</span>
           </button>
         </div>
 
-        <div className="pt-14" />
-
-        <div className="bg-white/90 backdrop-blur rounded-2xl shadow-xl p-6 relative">
+        <div className="bg-white/90 backdrop-blur rounded-2xl shadow-xl p-6 relative m-auto">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-purple-800">
-              {roleLabel} • {t("app_title")}
+            <h2 className="text-xl font-bold text-black">
+              {roleLabel}
             </h2>
           </div>
 
           {/* Progress + streak */}
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-4 border-b pb-4 border-gray-400/60">
             <div className="w-full bg-gray-200 rounded-full h-2 mr-3">
               <div
-                className="bg-purple-600 h-2 rounded-full"
+                className="bg-[#405631] h-2 rounded-full"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
@@ -352,13 +359,13 @@ function Quiz() {
                 )}
               </div>
   
-              <div className="mt-4 flex justify-end">
+              <div className="mt-4 flex justify-end border-t pt-4 border-gray-400/60">
                 <button
                   onClick={next}
                   disabled={!answered}
                   className={`px-5 py-2 rounded-xl font-medium shadow ${
                     answered
-                      ? "bg-purple-600 text-white hover:bg-purple-700"
+                      ? "bg-[#405631] text-white hover:bg-[#4a5f2f]"
                       : "bg-gray-300 text-gray-600 cursor-not-allowed"
                   }`}
                 >
@@ -374,12 +381,17 @@ function Quiz() {
 
               <button
                 onClick={restart}
-                className="mt-4 px-5 py-2 rounded-xl bg-purple-600 text-white hover:bg-purple-700 shadow"
+                className="mt-4 px-5 py-2 rounded-xl bg-[#405631] text-white hover:bg-[#4a5f2f] shadow"
               >
                 {t("play_again")}
               </button>
             </div>
           )}
+        </div>
+
+        {/* All rights reserved */}
+        <div className="text-center text-sm text-white/50 mt-10">
+          <p>{t("all_rights_reserved")}</p>
         </div>
       </div>
     </div>

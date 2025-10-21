@@ -8,8 +8,8 @@ const DICT = {
     english: "English",
     slovenian: "Slovenščina",
     select_role: "Select a role",
-    role_grandchild: "Grandchild",
-    role_grandparent: "Grandparent",
+    role_grandchild: "Kid",
+    role_grandparent: "Adult",
     start_quiz: "Start Quiz",
     loading: "Loading…",
     question: "Question",
@@ -39,7 +39,8 @@ const DICT = {
     play:"Play",
     pool:"",
     check: "Check",
-    dragExplain: "Drag and drop each picture into the correct category."
+    dragExplain: "Drag and drop each picture into the correct category.",
+    all_rights_reserved: "© 2024-2025 Mission of Generations. All rights reserved."
 
 
   },
@@ -49,14 +50,14 @@ const DICT = {
     english: "English",
     slovenian: "Slovenščina",
     select_role: "Izberi vlogo",
-    role_grandchild: "Vnuk/Vnukinja",
-    role_grandparent: "Stari starš",
+    role_grandchild: "Otrok",
+    role_grandparent: "Odrasel",
     start_quiz: "Začni kviz",
     loading: "Nalagam…",
     question: "Vprašanje",
     next: "Naprej",
     home: "Domov",
-    refresh: "Osveži",
+    refresh: "Zamenjaj izziv",
     no_role: "Vloga ni izbrana.",
     go_home: "Nazaj domov",
     no_questions_found_for: "Ni najdenih vprašanj za",
@@ -80,18 +81,19 @@ const DICT = {
     play:"Igraj zvok",
     pool:"",
     check: "Preveri",
-    dragExplain: "Povleci in spusti vsako sliko v ustrezno kategorijo."
+    dragExplain: "Povleci in spusti vsako sliko v ustrezno kategorijo.",
+    all_rights_reserved: "© 2024-2025 Misija Generacij. Vse pravice pridržane."
   },
 };
 
 const LanguageContext = createContext({ lang: "en", t: (k) => k, setLang: () => {} });
 
 export const LanguageProvider = ({ children }) => {
-  const initial =
-    (typeof window !== "undefined" && localStorage.getItem("lang")) ||
-    (typeof navigator !== "undefined" && navigator.language?.startsWith("sl")
-      ? "sl"
-      : "en");
+  const initial = "sl";
+    // (typeof window !== "undefined" && localStorage.getItem("lang")) ||
+    // (typeof navigator !== "undefined" && navigator.language?.startsWith("sl")
+    //   ? "sl"
+    //   : "en");
 
   const [lang, setLang] = useState(initial);
 

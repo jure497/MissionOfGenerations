@@ -108,7 +108,7 @@ export default function QuestionRenderer({ question, onAnswered }) {
   };
 
   return (
-    <div className="relative w-full min-h-[200px]">
+    <div className="relative w-full min-h-[200px] flex flex-col items-center justify-center">
       <AnimatePresence mode="wait">
         <motion.div
           key={question.id}

@@ -33,7 +33,7 @@ export default function TextInput({ question, onAnswered }) {
       />
       <button
         onClick={submit}
-        className="mt-3 px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-sky-700"
+        className="mt-3 px-4 py-2 rounded-lg bg-[#577137] text-white hover:bg-[#4a5f2f]"
       >
         {t("submit")}
       </button>

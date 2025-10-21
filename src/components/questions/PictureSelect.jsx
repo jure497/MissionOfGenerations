@@ -37,7 +37,7 @@ export default function PictureSelect({ question, onAnswered }) {
               key={i}
               onClick={() => choose(opt)}
               className={`rounded-xl border-2 overflow-hidden ${
-                selected ? "border-purple-600" : "border-transparent"
+                selected ? "border-[#405631]" : "border-transparent"
               }`}
             >
               <img src={src} alt={String(value)} className="w-full h-32 object-contain bg-white" />

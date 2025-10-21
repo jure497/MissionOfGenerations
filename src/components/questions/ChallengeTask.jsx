@@ -57,18 +57,19 @@ export default function ChallengeTask({ question, onAnswered }) {
 
       {!answered && (
         <div className="flex justify-center gap-4">
-          <button
-            onClick={() => handleAnswer("success")}
-            className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700"
-          >
-            {t("didGood") || "I succeeded"}
-          </button>
 
           <button
             onClick={() => handleAnswer("encourage")}
-            className="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-yellow-600"
+            className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-yellow-600"
           >
             {t("didPoor") || "I failed"}
+          </button>
+
+          <button
+            onClick={() => handleAnswer("success")}
+            className="px-4 py-2 rounded-lg bg-green-700 text-white hover:bg-green-700"
+          >
+            {t("didGood") || "I succeeded"}
           </button>
         </div>
       )}

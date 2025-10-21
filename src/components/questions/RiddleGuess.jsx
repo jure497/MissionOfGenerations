@@ -61,7 +61,7 @@ const showAnswer =
         {!answered && (
           <button
             onClick={submit}
-            className="px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-sky-700"
+            className="px-4 py-2 rounded-lg bg-sky-600 text-white hover:bg-[#4a5f2f]"
           >
             {t?.("submit") || "Submit"}
           </button>
